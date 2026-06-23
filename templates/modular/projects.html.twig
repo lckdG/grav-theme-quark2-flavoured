@@ -8,7 +8,7 @@
                 <div class="column">
                     {% if project.url %}<a href="{{ project.url }}" style="text-decoration:none;color:inherit;display:block;">{% endif %}
                     <div class="feature-icon">
-                        {% if project.image %} {{ page.media[project.image] }}> {% endif %}
+                        {% if project.image %} {{ page.media[project.image]|raw}} {% endif %}
                         {% if project.header %}<h6>{{ project.header }}</h6>{% endif %}
                     </div>
                     <div class="feature-content">
@@ -17,7 +17,7 @@
                         <br>
                         {% for tag in project.tags %}
                             <div class="chip">
-                                {{ page.media[tag.image].html('', '', 'avatar avatar-sm') }}
+                                {{ page.media[tag.image].html('', '', 'avatar avatar-sm')|raw }}
                                 {{ tag.title|raw }}
                             </div>
                         {% endfor %}
