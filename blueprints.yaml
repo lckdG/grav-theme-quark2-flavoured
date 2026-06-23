@@ -1,5 +1,5 @@
-name: Quark 2
-slug: quark2
+name: Quark 2 Flavoured
+slug: quark2flavoured
 type: theme
 version: 1.1.1
 description: The modernized Grav default theme — Blades CSS foundation, Cal.com-inspired aesthetic, with light/dark/auto mode and Font Awesome 7 icons.
@@ -9,7 +9,7 @@ author:
   email: devs@getgrav.org
   url: https://getgrav.org
 homepage: https://github.com/getgrav/grav-theme-quark2
-keywords: quark2, blades, pico, theme, core, modern, fast, responsive, html5, dark-mode
+keywords: flavoured, quark2, blades, pico, theme, core, modern, fast, responsive, html5, dark-mode
 bugs: https://github.com/getgrav/grav-theme-quark2/issues
 license: MIT
 compatibility:
