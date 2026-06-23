@@ -18,7 +18,7 @@ form:
                 .url:
                   type: text
                   label: Link
-                .image_url:
+                .image:
                   type: filepicker
                   label: Project Thumbnail
                 .header:
@@ -34,7 +34,7 @@ form:
                   type: list
                   label: Tag List
                   fields:
-                    .image_url:
+                    .image:
                       type: filepicker
                       label: Tag Icon
                     .title:
