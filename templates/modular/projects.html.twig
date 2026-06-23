@@ -1,0 +1,30 @@
+<section class="section modular-features {{ page.header.class }}">
+    <div class="container">
+        <div class="frame-box">
+            {{ content|raw }}
+
+            <div class="columns">
+            {% for project in page.header.projects %}
+                <div class="column">
+                    {% if project.url %}<a href="{{ project.url }}" style="text-decoration:none;color:inherit;display:block;">{% endif %}
+                    <div class="feature-icon">
+                        {% if project.image_url %}<img src="{{ project.image_url }}" alt="{{ project.header ?? '' }}">{% endif %}
+                        {% if project.header %}<h6>{{ project.header }}</h6>{% endif %}
+                    </div>
+                    <div class="feature-content">
+                        {% if project.text %}<p>{{ project.text }}</p>{% endif %}
+                        {% if project.role %}<strong>Role:</strong> {{ project.role }} {% endif %}
+                        {% for tag in project.tags %}
+                            <div class="chip">
+                                <img src="{{ tag.image_url }}" class="avatar avatar-sm">
+                                {{ tag.title|raw }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% if projects.url %}</a>{% endif %}
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

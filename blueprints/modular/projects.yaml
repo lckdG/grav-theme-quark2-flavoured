@@ -1,0 +1,42 @@
+title: Projects
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        projects:
+          type: tab
+          title: Projects
+          fields:
+            header.projects:
+              name: projects
+              type: list
+              label: Projects
+
+              fields:
+                .url:
+                  type: text
+                  label: Link
+                .image_url:
+                  type: filepicker
+                  label: Project Thumbnail
+                .header:
+                  type: text
+                  label: Header
+                .text:
+                  type: text
+                  label: Description
+                .role:
+                  type: text
+                  label: Role
+                .tags:
+                  type: list
+                  label: Tag List
+                  fields:
+                    .image_url:
+                      type: filepicker
+                      label: Tag Icon
+                    .title:
+                      type: text
+                      label: Tag Title

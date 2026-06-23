@@ -4,3 +4,43 @@
  * This file is safe to edit. It is loaded last so anything here overrides
  * theme.css without having to mark rules !important.
  */
+.avatar.avatar-sm {
+    font-size: 0.6rem;
+    height: 1.4rem;
+    width: 1.4rem;
+}
+
+.chip {
+    -ms-flex-align: center;
+    align-items: center;
+    background: #f0f1f4;
+    border-radius: 5rem;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    font-size: 90%;
+    height: 1.2rem;
+    line-height: 0.8rem;
+    margin: 0.1rem;
+    max-width: 320px;
+    overflow: hidden;
+    padding: 0.2rem 0.4rem;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.chip.active {
+    background: #3085EE;
+    color: #fff;
+}
+
+.chip .avatar {
+    margin-left: -0.4rem;
+    margin-right: 0.2rem;
+}
+
+.chip .btn-clear {
+    border-radius: 50%;
+    transform: scale(0.75);
+}
