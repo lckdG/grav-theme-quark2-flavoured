@@ -8,15 +8,16 @@
                 <div class="column">
                     {% if project.url %}<a href="{{ project.url }}" style="text-decoration:none;color:inherit;display:block;">{% endif %}
                     <div class="feature-icon">
-                        {% if project.image %}<img src="{{ page.media[project.image] }}" alt="{{ project.header ?? '' }}">{% endif %}
+                        {% if project.image %} {{ page.media[project.image] }}> {% endif %}
                         {% if project.header %}<h6>{{ project.header }}</h6>{% endif %}
                     </div>
                     <div class="feature-content">
                         {% if project.text %}<p>{{ project.text }}</p>{% endif %}
                         {% if project.role %}<strong>Role:</strong> {{ project.role }} {% endif %}
+                        <br>
                         {% for tag in project.tags %}
                             <div class="chip">
-                                <img src="{{ page.media[tag.image] }}" class="avatar avatar-sm">
+                                {{ page.media[tag.image].html('', '', 'avatar avatar-sm') }}
                                 {{ tag.title|raw }}
                             </div>
                         {% endfor %}
