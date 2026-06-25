@@ -47,3 +47,7 @@
     border-radius: 50%;
     transform: scale(0.75);
 }
+
+.modular-features .columns .projects {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
