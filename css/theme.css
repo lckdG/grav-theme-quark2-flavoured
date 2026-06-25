@@ -2112,6 +2112,7 @@ input:focus {
   font-weight: 600;
   margin: 0;
   letter-spacing: 0;
+  color: var(--q2-text-strong);
 }
 .modular-features .feature-content p {
   color: var(--q2-text-muted);

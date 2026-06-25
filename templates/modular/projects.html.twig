@@ -13,8 +13,8 @@
                     </div>
                     <div class="feature-content">
                         {% if project.text %}<p>{{ project.text }}</p>{% endif %}
-                        {% if project.role %}<strong>Role:</strong> {{ project.role }} {% endif %}
                         <br>
+                        {% if project.role %}<p><strong>Role:</strong> {{ project.role }}</p>{% endif %}
                         {% for tag in project.tags %}
                             <div class="chip">
                                 {{ page.media[tag.image].html('', '', 'avatar avatar-sm')|raw }}
