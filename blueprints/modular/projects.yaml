@@ -9,16 +9,6 @@ form:
           type: tab
           title: Projects
           fields:
-            header.class:
-              type: select
-              label: Layout
-              default: small
-              size: medium
-              options:
-                small: Small
-                standard: Standard
-                projects: Specific for project showcase
-
             header.projects:
               name: projects
               type: list
