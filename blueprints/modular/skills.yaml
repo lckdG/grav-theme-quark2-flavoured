@@ -1,0 +1,24 @@
+title: Skills
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        skills:
+          type: tab
+          title: Skills
+          fields:
+            header.skills:
+              name: skills
+              type: list
+              label: Skills
+
+              fields:
+                .image:
+                  type: filepicker
+                  label: Skill Icon
+                .header:
+                  type: text
+                  label: Header
+
