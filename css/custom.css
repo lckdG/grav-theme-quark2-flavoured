@@ -48,6 +48,6 @@
     transform: scale(0.75);
 }
 
-.modular-features .columns .projects {
+.modular-features .projects .columns {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
