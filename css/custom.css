@@ -48,6 +48,10 @@
     transform: scale(0.75);
 }
 
-.modular-features .projects .columns {
+.modular-features.projects .columns {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.modular-features.skills .columns {
+  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
 }
