@@ -17,15 +17,16 @@ form:
                 .startdate:
                   type: datetime
                   format: F Y
-                  label: Date
+                  label: Start Date
 
                 .enddate:
                   type: datetime
                   format: F Y
-                  label: Date
+                  label: End Date
 
                 .present:
                   type: toggle
+                  label: To Present?
                   options:
                     1: Yes
                     0: No
