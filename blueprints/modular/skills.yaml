@@ -9,6 +9,10 @@ form:
           type: tab
           title: Skills
           fields:
+            header.section_class:
+              type: text
+              label: Section Class
+
             header.skills:
               name: skills
               type: list

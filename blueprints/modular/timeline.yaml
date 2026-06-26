@@ -9,6 +9,10 @@ form:
           type: tab
           title: Timeline
           fields:
+            header.section_class:
+              type: text
+              label: Section Class
+
             header.timeline:
               type: list
               label: Timeline Items

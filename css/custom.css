@@ -94,7 +94,7 @@
     top: 0;
     width: 4px;
     height: 100%;
-    background: var(--q2-bg-elev);
+    background: var(--q2-text);
   }
 
   .timeline-container {
@@ -110,13 +110,14 @@
       border-radius: 50%;
       text-align: center;
       font-size: 2rem;
-      background: var(--q2-bg-elev);
+      background: var(--q2-text);
 
       i {
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+        color: var(--q2-bg-muted);
       }
 
       img {
@@ -165,5 +166,13 @@
       }
     }
   }
+}
+
+:root[data-theme="dark"] .background-raised {
+  background-color: lch(from var(--q2-bg) calc(l + 2.5) c h);
+}
+
+:root[data-theme="light"] .background-raised {
+  background-color: lch(from var(--q2-bg) calc(l - 2.5) c h);
 }
 

@@ -9,6 +9,10 @@ form:
           type: tab
           title: Projects
           fields:
+            header.section_class:
+              type: text
+              label: Section Class
+
             header.projects:
               name: projects
               type: list
