@@ -50,7 +50,6 @@
 
 .modular-features.projects .columns {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  place-items: center;
 }
 
 .modular-features.projects .column {
@@ -71,7 +70,6 @@
 
 .modular-features.skills .columns {
   grid-template-columns: repeat(auto-fit, minmax(100px, 128px));
-  place-items: center;
 }
 
 .modular-features.skills .columns h6 {
@@ -83,10 +81,85 @@
   margin-bottom: 0;
 }
 
-/* NOTE: Added from blades.css, should be removed when Quark 2 officially support it */
-dl.timeline dd, .has-timeline > dl dd {
-    margin-block: 0;
-    padding: 0.25rem 0 0.75rem 1rem;
-    border-inline-start: 0.25rem solid var(--q2-bg-elev);
+.timeline {
+  position: relative;
+  padding-left: 4rem;
+  margin: 0 0 0 30px;
+  color: white;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--q2-bg-elev);
   }
+
+  .timeline-container {
+    position: relative;
+    margin-bottom: 2.5rem;
+
+    .timeline-icon {
+      position: absolute;
+      left: -88px;
+      top: 4px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 2rem;
+      background: var(--q2-bg-inverse);
+
+      i {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
+
+    .timeline-body {
+      background: var(--q2-bg-elev);
+      border-radius: 1rem;
+      padding: 20px 20px 15px;
+      box-shadow: var(--q2-shadow-card);
+
+      &:before {
+        content: '';
+        background: inherit;
+        width: 20px;
+        height: 20px;
+        display: block;
+        position: absolute;
+        left: -10px;
+        transform: rotate(45deg);
+        border-radius: 0 0 0 2px;
+      }
+
+      .timeline-title {
+        margin-bottom: 1.4rem;
+      }
+
+      .timeline-subtitle {
+        margin-bottom: 1.4rem;
+        color: lch(from var(--q2-accent) calc(l - 20) c h);
+      }
+
+      .timeline-right {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: var(--q2-text-muted);
+      }
+    }
+  }
+}
 

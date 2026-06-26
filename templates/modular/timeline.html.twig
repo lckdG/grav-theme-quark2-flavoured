@@ -1,13 +1,25 @@
-<section class="section has-timeline">
+<section class="section">
     <div class="container">
         {{ content|raw }}
-        <dl>
+
+        <div class="timeline">
         {% for item in page.header.timeline %}
-            <dt>{{ item.startdate }}{% if item.present %} - Present{% else %} - {{ item.enddate }}{% endif %}</dt>
-            <dd><h4>{{ item.header }}</h4></dd>
-            {% if item.subheader %}<dd><h5>{{ item.subheader }}</h5></dd>{% endif %}
-            {% if item.description %}<dd><p>{{ item.description }}</p></dd>{% endif %}
+            <div class="timeline-container">
+                <div class="timeline-icon">
+                    <i class="fa-regular fa-circle-dot"></i>
+                </div>
+                <div class="timeline-body">
+                    <span class="timeline-right">{{ item.startdate }}{% if item.present %} - Present{% else %} - {{ item.enddate }}{% endif %}</span>
+                    <h4 class="timeline-title">{{ item.header }}</h4>
+                    {% if item.subheader %}
+                        <h5 class="timeline-subtitle">{{ item.subheader }}</h5>
+                    {% endif %}
+                    {% if item.description %}
+                        <p>{{ item.description }}</p>
+                    {% endif %}
+                </div>
+            </div>
         {% endfor %}
-        </dl>
+        </div>
     </div>
 </section>
