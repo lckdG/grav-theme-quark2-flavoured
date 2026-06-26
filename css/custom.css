@@ -145,7 +145,7 @@
       }
 
       .timeline-title {
-        margin-bottom: 1.4rem;
+        margin-bottom: 0.5rem;
       }
 
       .timeline-subtitle {
@@ -157,6 +157,10 @@
         position: absolute;
         top: 20px;
         right: 20px;
+        color: var(--q2-text-muted);
+      }
+
+      p {
         color: var(--q2-text-muted);
       }
     }
