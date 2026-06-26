@@ -83,3 +83,10 @@
   margin-bottom: 0;
 }
 
+/* NOTE: Added from blades.css, should be removed when Quark 2 officially support it */
+dl.timeline dd, .has-timeline > dl dd {
+    margin-block: 0;
+    padding: 0.25rem 0 0.75rem 1rem;
+    border-inline-start: 0.25rem solid var(--q2-bg-elev);
+  }
+

@@ -1,0 +1,44 @@
+title: Timeline
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        timeline:
+          type: tab
+          title: Timeline
+          fields:
+            header.timeline:
+              type: list
+              label: Timeline Items
+
+              fields:
+                .startdate:
+                  type: datetime
+                  format: F Y
+                  label: Date
+
+                .enddate:
+                  type: datetime
+                  format: F Y
+                  label: Date
+
+                .present:
+                  type: toggle
+                  options:
+                    1: Yes
+                    0: No
+
+                .header:
+                  type: text
+                  label: Header
+
+                .subheader:
+                  type: text
+                  label: Subheader
+
+                .description:
+                  type: text
+                  label: Description
+

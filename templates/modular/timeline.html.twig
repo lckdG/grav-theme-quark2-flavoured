@@ -1,0 +1,12 @@
+<section class="section has-timeline">
+    <div class="container">
+        <dl>
+        {% for item in page.header.timeline %}
+            <dt>{{ item.startdate }}{% if item.present %}- Present{% else %}- {{ item.enddate }}{% endif %}</dt>
+            <dd><h4>{{ item.header }}<h4></dd>
+            {% if item.subheader %}<dd><h5>{{ item.subheader }}<h5></dd>{% endif %}
+            {% if item.description %}<dd><p>{{ item.description }}</p></dd>{% endif %}
+        {% endfor %}
+        </dl>
+    </div>
+</section>
