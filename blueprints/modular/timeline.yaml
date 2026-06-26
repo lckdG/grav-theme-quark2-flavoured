@@ -20,12 +20,12 @@ form:
               fields:
                 .startdate:
                   type: datetime
-                  format: F Y
+                  format: M Y
                   label: Start Date
 
                 .enddate:
                   type: datetime
-                  format: F Y
+                  format: M Y
                   label: End Date
 
                 .present:
