@@ -61,6 +61,13 @@
   margin-top: auto;
 }
 
+.modular-features .content-footer p {
+  color: var(--q2-text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
 .modular-features.skills .columns {
   grid-template-columns: repeat(auto-fit, minmax(100px, 128px));
 }
