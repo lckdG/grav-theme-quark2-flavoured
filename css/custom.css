@@ -50,6 +50,7 @@
 
 .modular-features.projects .columns {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  place-items: center;
 }
 
 .modular-features.projects .column {
@@ -70,4 +71,15 @@
 
 .modular-features.skills .columns {
   grid-template-columns: repeat(auto-fit, minmax(100px, 128px));
+  place-items: center;
 }
+
+.modular-features.skills .columns h6 {
+  font-size: 11px;
+  text-align: center;
+}
+
+.modular-features.skills .feature-icon {
+  margin-bottom: 0;
+}
+
