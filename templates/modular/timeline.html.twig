@@ -1,5 +1,6 @@
 <section class="section has-timeline">
     <div class="container">
+        {{ content|raw }}
         <dl>
         {% for item in page.header.timeline %}
             <dt>{{ item.startdate }}{% if item.present %}- Present{% else %}- {{ item.enddate }}{% endif %}</dt>
