@@ -14,6 +14,8 @@
                     <div class="feature-content">
                         {% if project.text %}<p>{{ project.text }}</p>{% endif %}
                         <br>
+                    </div>
+                    <div class="content-footer">
                         {% if project.role %}<p><strong>Role:</strong> {{ project.role }}</p>{% endif %}
                         {% for tag in project.tags %}
                             <div class="chip">
