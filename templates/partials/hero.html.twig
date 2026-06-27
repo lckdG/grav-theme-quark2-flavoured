@@ -10,7 +10,7 @@
     {% if page.header.contacts %}
         <div class="contact-box">
             {% for contact in page.header.contacts %}
-                <a href="{{ contact.link }}">
+                <a href="{{ contact.link }}" target="_blank">
                     {{ page.media[contact.icon].html('', '', 'avatar avatar-md')|raw }}
                 </a>
             {% endfor %}
