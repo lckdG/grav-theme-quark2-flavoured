@@ -11,14 +11,14 @@
         <div class="contact-box">
             {% for contact in page.header.contacts %}
                 <a href="{{ contact.link }}">
-                    {{ page.media[contact.image].html('', '', 'avatar avatar-md')|raw }}
+                    {{ page.media[contact.icon].html('', '', 'avatar avatar-md')|raw }}
                 </a>
             {% endfor %}
         </div>
     {% endif %}
     {% if page.header.catch_phrase %}
         <div class="container" style="text-align: {{ page.header.hero_align|default('center') }}">
-            {{ page.header.catch_phrase }}
+            <p>{{ page.header.catch_phrase }}</p>
         </div>
     {% endif %}
     <i id="to-start" class="pulse fa-solid fa-angle-down" aria-hidden="true"></i>
