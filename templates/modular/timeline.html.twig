@@ -6,7 +6,6 @@
         {% for item in page.header.timeline %}
             <div class="timeline-container">
                 <div class="timeline-icon">
-                    <i class="fa-regular fa-circle"></i>
                 </div>
                 <div class="timeline-body">
                     <span class="timeline-right">{{ item.startdate }}{% if item.present %} - Present{% else %} - {{ item.enddate }}{% endif %}</span>
