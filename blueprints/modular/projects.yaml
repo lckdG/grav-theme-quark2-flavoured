@@ -28,6 +28,13 @@ form:
                 .header:
                   type: text
                   label: Header
+                .genres:
+                  type: list
+                  label: Genres
+                  fields:
+                    .text:
+                      type: text
+                      label: Genre
                 .text:
                   type: text
                   label: Description

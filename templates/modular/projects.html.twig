@@ -10,6 +10,15 @@
                     <div class="feature-icon">
                         {% if project.image %} {{ page.media[project.image]|raw}} {% endif %}
                         {% if project.header %}<h6>{{ project.header }}</h6>{% endif %}
+                        {% if project.genres %}
+                            <div class="genres">
+                                {% for tag in project.genres %}
+                                    <div class="chip">
+                                        {{ tag.text }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="feature-content">
                         {% if project.text %}<p>{{ project.text }}</p>{% endif %}

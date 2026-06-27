@@ -57,6 +57,11 @@
   flex-direction: column;
 }
 
+.modular-features.projects .genres {
+    display: inline-flex;
+    gap: 0.25rem;
+}
+
 .modular-features.projects .content-footer {
   margin-top: auto;
 }
@@ -71,7 +76,7 @@
 .modular-features.skills .categories {
   display: grid;
   gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100% / 2, 384px), 1fr));
   margin-top: 2.5rem;
 }
 
