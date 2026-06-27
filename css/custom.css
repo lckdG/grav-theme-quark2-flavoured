@@ -4,10 +4,37 @@
  * This file is safe to edit. It is loaded last so anything here overrides
  * theme.css without having to mark rules !important.
  */
+
+.contact-box {
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1100px;
+    gap: 0.5rem;
+
+    a {
+        background: var(--q2-bg-elev);
+        border-radius: 100%;
+    }
+
+    a:hover {
+      background: lch(from var(--q2-accent) calc(l - 5) c h);
+      transform: translateY(-2px);
+      transition: all 0.3s ease;
+    }
+}
+
 .avatar.avatar-sm {
   font-size: 0.6rem;
   height: 1.6rem;
   width: 1.6rem;
+}
+
+.avatar.avatar-md {
+  font-size: 0.6rem;
+  height: 3rem;
+  width: 3rem;
 }
 
 .chip {

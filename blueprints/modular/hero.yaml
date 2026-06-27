@@ -19,3 +19,16 @@ form:
               label: Hero Image
               preview_images: true
               description: 'If not specified, defaults to the first image found in the page''s folder'
+            header.contacts:
+              type: list
+              label: Contacts
+              fields:
+                .icon:
+                  type: filepicker
+                  label: Icon
+                .link:
+                  type: text
+                  label: Link
+            header.catch_phrase:
+              type: text
+              label: Catch Phrase
