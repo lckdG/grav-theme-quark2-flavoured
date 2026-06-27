@@ -110,7 +110,7 @@
 .modular-features.skills .category {
   border-radius: var(--q2-radius-md);
   box-shadow: var(--q2-shadow-raised);
-  padding: 1.25rem 1.25rem 2.25rem 1.25rem;
+  padding: 1.25rem 1.25rem 2.5rem 1.25rem;
 
   h4 {
     text-align: center;
