@@ -70,7 +70,7 @@
   color: var(--q2-text-muted);
   font-size: 0.9375rem;
   line-height: 1.55;
-  margin: 0;
+  margin: 0 0 0.5rem 0;
 }
 
 .modular-features.skills .categories {
@@ -83,7 +83,7 @@
 .modular-features.skills .category {
   border-radius: var(--q2-radius-md);
   box-shadow: var(--q2-shadow-raised);
-  padding: 1.25rem;
+  padding: 1.25rem 1.25rem 2.25rem 1.25rem;
 
   h4 {
     text-align: center;
@@ -109,7 +109,7 @@
 .timeline {
   position: relative;
   padding-left: 4rem;
-  margin: 0 0 0 30px;
+  margin: 2.5rem 0 0 30px;
   color: white;
 
   &:before {
