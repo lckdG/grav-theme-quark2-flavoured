@@ -13,16 +13,26 @@ form:
               type: text
               label: Section Class
 
-            header.skills:
-              name: skills
+            header.categories:
+              name: categories
               type: list
-              label: Skills
+              label: Categories
 
-              fields:
-                .image:
-                  type: filepicker
-                  label: Skill Icon
-                .header:
-                  type: text
-                  label: Header
+              .title:
+                name: cat_title
+                type: text
+                label: Title
+
+              .skills:
+                name: skills
+                type: list
+                label: Skills
+
+                fields:
+                  .image:
+                    type: filepicker
+                    label: Skill Icon
+                  .header:
+                    type: text
+                    label: Header
 

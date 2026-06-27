@@ -3,14 +3,21 @@
         <div class="frame-box">
             {{ content|raw }}
 
-            <div class="columns">
-            {% for skill in page.header.skills %}
-                <div class="column">
-                    <div class="feature-icon">
-                        {% if skill.image %}{{ page.media[skill.image] | raw }}{% endif %}
-                        {% if skill.header %}<h6>{{ skill.header }}</h6>{% endif %}
+            <div class="categories">
+            {% for category in page.header.categories %}
+              <div class="category">
+                <h4>{{ category.title }}</h4>
+                <div class="columns">
+                {% for skill in category.skills %}
+                    <div class="column">
+                        <div class="feature-icon">
+                            {% if skill.image %}{{ page.media[skill.image] | raw }}{% endif %}
+                            {% if skill.header %}<h6>{{ skill.header }}</h6>{% endif %}
+                        </div>
                     </div>
+                {% endfor %}
                 </div>
+              </div>
             {% endfor %}
             </div>
         </div>

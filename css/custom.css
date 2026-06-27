@@ -68,8 +68,28 @@
   margin: 0;
 }
 
+.modular-features.skills .categories {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  margin-top: 2.5rem;
+}
+
+.modular-features.skills .category {
+  border-radius: var(--q2-radius-md);
+  box-shadow: var(--q2-shadow-raised);
+  padding: 1.25rem;
+
+  h4 {
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--q2-accent);
+  }
+}
+
 .modular-features.skills .columns {
   grid-template-columns: repeat(auto-fit, minmax(100px, 128px));
+  justify-content: center;
 }
 
 .modular-features.skills .columns h6 {
