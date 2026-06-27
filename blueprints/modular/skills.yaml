@@ -18,21 +18,22 @@ form:
               type: list
               label: Categories
 
-              .title:
-                name: cat_title
-                type: text
-                label: Title
+              fields:
+                .title:
+                  name: cat_title
+                  type: text
+                  label: Title
 
-              .skills:
-                name: skills
-                type: list
-                label: Skills
+                .skills:
+                  name: skills
+                  type: list
+                  label: Skills
 
-                fields:
-                  .image:
-                    type: filepicker
-                    label: Skill Icon
-                  .header:
-                    type: text
-                    label: Header
+                  fields:
+                    .image:
+                      type: filepicker
+                      label: Skill Icon
+                    .header:
+                      type: text
+                      label: Header
 
