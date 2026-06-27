@@ -14,16 +14,25 @@
     gap: 0.5rem;
 
     a {
-        background: var(--q2-bg-elev);
+        background: var(--q2-bg-inverse);
         border-radius: 100%;
     }
 
     a:hover {
-      background: lch(from var(--q2-accent) calc(l - 5) c h);
+      box-shadow: var(--q2-shadow-raised);
       transform: translateY(-2px);
       transition: all 0.3s ease;
     }
+
+    :root[data-theme="light"] a > img {
+      filter: invert(100%);
+    }
+
+    :root[data-theme="dark"] a > img {
+      filter: none;
+    }
 }
+
 
 .avatar.avatar-sm {
   font-size: 0.6rem;
