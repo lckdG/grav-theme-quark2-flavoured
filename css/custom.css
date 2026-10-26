@@ -271,7 +271,8 @@
 
     .timeline-body {
       position: relative;
-      background: var(--q2-bg-elev);
+      background: var(--q2-glass);
+      backdrop-filter: var(--q2-glass-blur);
       border-radius: var(--q2-radius-xs);
       padding: 20px 20px 15px;
       box-shadow: var(--q2-shadow-card);
@@ -326,12 +327,33 @@
   }
 }
 
-:root[data-theme="dark"] .background-raised {
-  background-color: lch(from var(--q2-bg) calc(l + 2.5) c h);
+/* ---------- glassy site background ---------- */
+
+/* soft accent glows behind everything; cards frost over them */
+:root {
+  --q2-glass: color-mix(in oklab, var(--q2-bg-elev) 65%, transparent);
+  --q2-glass-blur: blur(16px) saturate(140%);
 }
 
-:root[data-theme="light"] .background-raised {
-  background-color: lch(from var(--q2-bg) calc(l - 2.5) c h);
+html {
+  background:
+    radial-gradient(60vmax 45vmax at 8% 0%, color-mix(in oklab, var(--q2-accent) 16%, transparent), transparent 70%),
+    radial-gradient(50vmax 40vmax at 100% 40%, color-mix(in oklab, var(--q2-accent-2) 14%, transparent), transparent 70%),
+    radial-gradient(55vmax 45vmax at 25% 100%, color-mix(in oklab, var(--q2-accent-3) 10%, transparent), transparent 70%),
+    var(--q2-bg);
+  background-attachment: fixed;
+}
+
+body,
+#body-wrapper,
+.modular-features {
+  background: transparent;
+}
+
+.modular-features .column,
+#body-wrapper > .container > .content-item {
+  background: var(--q2-glass);
+  backdrop-filter: var(--q2-glass-blur);
 }
 
 /* ---------- shared card highlight ---------- */
