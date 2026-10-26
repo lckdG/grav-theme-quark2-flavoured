@@ -103,13 +103,13 @@
 
 :root,
 :root[data-theme="light"] {
-  --q2-bg: #ebdfc6;
+  --q2-bg: #f4ecdc;
   --q2-bg-elev: #fbf6ec;
   --q2-bg-muted: #e8dcc5;
-  --q2-bg-inverse: #160f1d;
+  --q2-bg-inverse: #140f1c;
 
   --q2-text: #241a2e;
-  --q2-text-strong: #160f1d;
+  --q2-text-strong: #140f1c;
   --q2-text-muted: #6b5f73;
   --q2-text-inverse: #fbf6ec;
 
@@ -117,11 +117,22 @@
   --q2-border-strong: rgba(36, 26, 46, 0.14);
   --q2-divider: rgba(36, 26, 46, 0.08);
 
-  --q2-nav-bg: rgba(235, 223, 198, 0.78);
+  --q2-nav-bg: rgba(244, 236, 220, 0.78);
   --q2-nav-border: rgba(36, 26, 46, 0.08);
 
-  --q2-accent-2: #23704f;
-  --q2-accent-3: #a33a4a;
+  --q2-accent-2: #0b6e85;
+  --q2-accent-3: #85600a;
+
+  --q2-rarity-common: #6b5f73;
+  --q2-rarity-uncommon: #2a7336;
+  --q2-rarity-rare: #1f5fb5;
+  --q2-rarity-epic: #7a3bb0;
+  --q2-rarity-legendary: #a8460b;
+  --q2-rarity-mythic: #85600a;
+  --q2-rarity-cursed: #b51d36;
+
+  --q2-glow-light: rgba(255, 255, 255, 0.55);
+  --q2-glow-shade: rgba(217, 199, 164, 0.55);
 
   --q2-shadow-card:
     rgba(36, 26, 46, 0.14) 0 0 0 1px,
@@ -131,30 +142,62 @@
 }
 
 :root[data-theme="dark"] {
-  --q2-bg: #140f1c;
-  --q2-bg-elev: #1f1829;
-  --q2-bg-muted: #2c2238;
-  --q2-bg-inverse: #efe6d6;
+  --q2-bg: #12151a;
+  --q2-bg-elev: #1b1f26;
+  --q2-bg-muted: #272c35;
+  --q2-bg-inverse: #e4e7eb;
 
-  --q2-text: #efe6d6;
-  --q2-text-strong: #fff8ea;
-  --q2-text-muted: #a99fb3;
-  --q2-text-inverse: #140f1c;
+  --q2-text: #e4e7eb;
+  --q2-text-strong: #ffffff;
+  --q2-text-muted: #97a1ae;
+  --q2-text-inverse: #12151a;
 
-  --q2-border-ring: rgba(239, 230, 214, 0.14);
-  --q2-border-strong: rgba(239, 230, 214, 0.2);
-  --q2-divider: rgba(239, 230, 214, 0.1);
+  --q2-border-ring: rgba(228, 231, 235, 0.14);
+  --q2-border-strong: rgba(228, 231, 235, 0.2);
+  --q2-divider: rgba(228, 231, 235, 0.1);
 
-  --q2-nav-bg: rgba(20, 15, 28, 0.78);
-  --q2-nav-border: rgba(239, 230, 214, 0.06);
+  --q2-nav-bg: rgba(18, 21, 26, 0.78);
+  --q2-nav-border: rgba(228, 231, 235, 0.06);
 
-  --q2-accent-2: #6fd3a6;
-  --q2-accent-3: #e8828c;
+  --q2-accent-2: #5cd0e6;
+  --q2-accent-3: #f2c44e;
+
+  --q2-rarity-common: #b4b9c0;
+  --q2-rarity-uncommon: #6fd67f;
+  --q2-rarity-rare: #5ea2ff;
+  --q2-rarity-epic: #b884f5;
+  --q2-rarity-legendary: #ff9548;
+  --q2-rarity-mythic: #f2c44e;
+  --q2-rarity-cursed: #f0566e;
+
+  --q2-glow-light: rgba(58, 68, 82, 0.45);
+  --q2-glow-shade: rgba(6, 8, 11, 0.6);
 }
 
 :root,
 :root[data-theme="dark"] {
   --q2-accent-contrast: lch(from var(--q2-accent) calc((l - 60) * -100) 0 h);
+}
+
+.markdown-alert-tip,
+:root[data-theme="dark"] .markdown-alert-tip {
+  --alert-accent: var(--q2-rarity-uncommon);
+}
+.markdown-alert-note,
+:root[data-theme="dark"] .markdown-alert-note {
+  --alert-accent: var(--q2-rarity-rare);
+}
+.markdown-alert-important,
+:root[data-theme="dark"] .markdown-alert-important {
+  --alert-accent: var(--q2-rarity-epic);
+}
+.markdown-alert-warning,
+:root[data-theme="dark"] .markdown-alert-warning {
+  --alert-accent: var(--q2-rarity-legendary);
+}
+.markdown-alert-caution,
+:root[data-theme="dark"] .markdown-alert-caution {
+  --alert-accent: var(--q2-rarity-cursed);
 }
 
 .contact-box {
@@ -226,8 +269,8 @@
 }
 
 .chip.active {
-  background: #3085EE;
-  color: #fff;
+  background: var(--q2-accent);
+  color: var(--q2-accent-contrast);
 }
 
 .chip .avatar {
@@ -440,9 +483,9 @@
 
 html {
   background:
-    radial-gradient(60vmax 45vmax at 8% 0%, color-mix(in oklab, var(--q2-accent) 16%, transparent), transparent 70%),
-    radial-gradient(50vmax 40vmax at 100% 40%, color-mix(in oklab, var(--q2-accent-2) 14%, transparent), transparent 70%),
-    radial-gradient(55vmax 45vmax at 25% 100%, color-mix(in oklab, var(--q2-accent-3) 10%, transparent), transparent 70%),
+    radial-gradient(60vmax 45vmax at 8% 0%, color-mix(in oklab, var(--q2-accent) 12%, transparent), transparent 70%),
+    radial-gradient(50vmax 40vmax at 100% 40%, var(--q2-glow-light), transparent 70%),
+    radial-gradient(55vmax 45vmax at 25% 100%, var(--q2-glow-shade), transparent 70%),
     var(--q2-bg);
   background-attachment: fixed;
 }
