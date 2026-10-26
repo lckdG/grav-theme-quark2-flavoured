@@ -47,12 +47,21 @@
 
   --q2-nav-bg: rgba(255, 255, 255, 0.78);
   --q2-nav-border: rgba(34, 42, 53, 0.08);
+  /* Header row height. Override this and `header-transparent` keeps lining the
+   * hero up with it, since the overlay offset is derived from the same value. */
+  --q2-header-height: 72px;
 
   /* Pico overrides */
   --pico-font-family-sans-serif:
     "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --pico-font-family-display:
     "Cal Sans", "Inter", sans-serif;
+
+  /* Forum Pro headings. Without this the forum falls back to the body font for
+   * its own headings while the unclassed ones under them keep Cal Sans, so a
+   * page title ends up lighter than the subheadings beneath it. Hand it the
+   * display face and forum headings speak the same voice as the rest of Quark. */
+  --forum-font-display: var(--pico-font-family-display);
   --pico-font-family-monospace:
     ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   --pico-font-size: 16px;
@@ -595,6 +604,21 @@ body.header-transparent #header {
   -webkit-backdrop-filter: none;
   border-bottom-color: transparent;
 }
+
+/* Clearing the background is not enough on its own: the sticky header still
+ * occupies a row in normal flow, so what showed through was the page
+ * background rather than the hero. Take it out of flow entirely, which is
+ * where Quark 1 got the overlay from. Doing this with a negative margin
+ * instead leaves the header's 1px border sitting above the hero, and shifts
+ * the page by 12px when `header-animated` shrinks the navbar on scroll.
+ * Guarded by :has() so pages with no hero keep their content clear of it. */
+body.header-transparent:has(.hero, #blog-hero) #header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
 body.header-transparent.scrolled #header {
   background: var(--q2-nav-bg);
   backdrop-filter: saturate(180%) blur(12px);
@@ -602,11 +626,50 @@ body.header-transparent.scrolled #header {
   border-bottom-color: var(--q2-nav-border);
 }
 
+/* header-dark / header-light: pick the header's text colour while it is
+ * transparent over a hero, where the theme's own text colour has nothing to
+ * do with the imagery behind it. Restores the Quark 1 body classes. */
+/* Only the bare top-level items: `> ul > li > a` deliberately leaves dropdown
+ * submenu links alone, since those sit on their own panel background rather
+ * than on the hero. */
+body.header-dark:not(.scrolled) #header,
+body.header-dark:not(.scrolled) #header .navbar-brand,
+body.header-dark:not(.scrolled) #header .theme-toggle,
+body.header-dark:not(.scrolled) #header .login-status-wrapper,
+body.header-dark:not(.scrolled) #header .dropmenu > ul > li > a {
+  color: #ffffff;
+}
+body.header-dark:not(.scrolled) #header .navbar-brand svg path {
+  fill: #ffffff;
+}
+body.header-light:not(.scrolled) #header,
+body.header-light:not(.scrolled) #header .navbar-brand,
+body.header-light:not(.scrolled) #header .theme-toggle,
+body.header-light:not(.scrolled) #header .login-status-wrapper,
+body.header-light:not(.scrolled) #header .dropmenu > ul > li > a {
+  color: #111111;
+}
+body.header-light:not(.scrolled) #header .navbar-brand svg path {
+  fill: #111111;
+}
+
+/* The active pill and the hover chip draw their own background, so they keep
+ * the theme's paired text colour instead of the over-hero one. Without this
+ * the active item is white-on-white in dark mode, where the pill is light. */
+body.header-dark:not(.scrolled) #header .dropmenu > ul > li > a.active,
+body.header-light:not(.scrolled) #header .dropmenu > ul > li > a.active {
+  color: var(--q2-text-inverse);
+}
+body.header-dark:not(.scrolled) #header .dropmenu > ul > li > a:hover:not(.active),
+body.header-light:not(.scrolled) #header .dropmenu > ul > li > a:hover:not(.active) {
+  color: var(--q2-text-strong);
+}
+
 #header .navbar {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  min-height: 72px;
+  min-height: var(--q2-header-height);
   transition: min-height 0.2s ease;
 }
 .header-animated.scrolled #header .navbar {
@@ -730,7 +793,7 @@ body.header-transparent.scrolled #header {
 .dropmenu li > ul {
   position: absolute;
   top: calc(100% + 8px);
-  left: 0;
+  inset-inline-start: 0;
   min-width: 280px;
   max-width: 340px;
   margin: 0;
@@ -767,17 +830,20 @@ body.header-transparent.scrolled #header {
 .dropmenu li > ul::before {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
+  inset-inline: 0;
   top: -10px;
   height: 10px;
 }
 .dropmenu li li > ul::before {
   top: 0;
-  left: -10px;
-  right: auto;
+  inset-inline-start: -10px;
+  inset-inline-end: auto;
   width: 10px;
   height: 100%;
+}
+.dropmenu li li.flip-x > ul::before {
+  inset-inline-start: auto;
+  inset-inline-end: -10px;
 }
 
 .dropmenu li > ul > li {
@@ -802,7 +868,18 @@ body.header-transparent.scrolled #header {
 /* Nested (third-level) dropdown opens to the side */
 .dropmenu li li > ul {
   top: 0;
-  left: calc(100% + 6px);
+  inset-inline-start: calc(100% + 6px);
+}
+
+/* Edge flip. site.js adds `.flip-x` to any item whose panel would run past the
+ * viewport edge, so the panel anchors to the opposite side instead. */
+.dropmenu li.flip-x > ul {
+  inset-inline-start: auto;
+  inset-inline-end: 0;
+}
+.dropmenu li li.flip-x > ul {
+  inset-inline-start: auto;
+  inset-inline-end: calc(100% + 6px);
 }
 
 /* Belt-and-suspenders: anywhere `nav ul ul` inside dropmenu must be column */
@@ -828,6 +905,10 @@ nav .dropmenu li > ul {
 .dropmenu li li.has-children > a::after {
   transform: rotate(-45deg);
   margin-left: auto;
+}
+/* A flipped nested item opens the other way, so its caret points that way too. */
+.dropmenu li li.has-children.flip-x > a::after {
+  transform: rotate(135deg);
 }
 
 /* Theme toggle button — override Pico's button chrome entirely */
@@ -880,13 +961,15 @@ button.theme-toggle:hover {
   display: block;
 }
 
-/* Mobile hamburger */
+/* Mobile hamburger. It is fixed rather than in the navbar, so `top` has to
+ * centre the 44px button on the mobile navbar row by hand: (64 - 44) / 2. */
 .mobile-menu {
   display: none;
   position: fixed;
-  top: 14px;
+  top: 10px;
   right: 14px;
   z-index: 70;
+  transition: top 0.2s ease;
 }
 button.button_container,
 .button_container {
@@ -1026,6 +1109,10 @@ button.button_container:focus-visible {
   #header .navbar {
     min-height: 64px;
   }
+  /* header-animated shrinks the navbar to 60px: (60 - 44) / 2 */
+  .header-animated.scrolled .mobile-menu {
+    top: 8px;
+  }
   .navbar-section.actions {
     display: none;
   }
@@ -1085,6 +1172,84 @@ body.overlay-open {
 .hero[style*="background-image"] h3,
 .hero[style*="background-image"] p {
   color: #ffffff;
+}
+
+/* Hero modifier classes (hero_classes) — parity with Quark 1 (#18) */
+
+/* Height presets */
+.hero.hero-fullscreen {
+  min-height: 100dvh;
+}
+.hero.hero-large {
+  min-height: clamp(30rem, 60vh, 34rem);
+}
+.hero.hero-medium {
+  min-height: clamp(24rem, 48vh, 27rem);
+}
+.hero.hero-small {
+  min-height: 7rem;
+}
+.hero.hero-tiny {
+  min-height: 5rem;
+}
+
+/* Foreground presets (theme-independent — for text over imagery) */
+.hero.text-light h1,
+.hero.text-light h2,
+.hero.text-light h3 {
+  color: #ffffff;
+}
+.hero.text-light p,
+.hero.text-light .lead {
+  color: color-mix(in oklab, #ffffff 78%, transparent);
+}
+.hero.text-dark h1,
+.hero.text-dark h2,
+.hero.text-dark h3 {
+  color: var(--q2-text-strong, #111111);
+}
+.hero.text-dark p,
+.hero.text-dark .lead {
+  color: color-mix(in oklab, #242424 72%, transparent);
+}
+
+/* Close h1/h2 title pairing */
+.title-h1h2 h1 {
+  font-weight: 100;
+  margin-bottom: 0;
+  line-height: 1.1;
+}
+.title-h1h2 h1 strong,
+.title-h1h2 h1 b {
+  font-weight: 400;
+}
+.title-h1h2 h1 + h2 {
+  margin-top: 0;
+  margin-bottom: 3rem;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+/* Image-overlay tints — only meaningful on heroes with a background image */
+.hero[style*="background-image"].overlay-light .image-overlay {
+  background: color-mix(in oklab, #ffffff 40%, transparent);
+}
+.hero[style*="background-image"].overlay-light-gradient .image-overlay {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, #ffffff 50%, transparent),
+    color-mix(in oklab, #ffffff 20%, transparent)
+  );
+}
+.hero[style*="background-image"].overlay-dark .image-overlay {
+  background: color-mix(in oklab, #000000 40%, transparent);
+}
+.hero[style*="background-image"].overlay-dark-gradient .image-overlay {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, #000000 50%, transparent),
+    color-mix(in oklab, #000000 20%, transparent)
+  );
 }
 
 .hero .container {
@@ -1429,6 +1594,27 @@ input:focus {
   color: #d12c2c;
   font-size: 0.8125rem;
   margin-top: 0.25rem;
+}
+
+/* ---------- Login plugin (grav-plugin-login) ---------- */
+
+/* login ships its own css/login.css that hardcodes a light panel (#fcfcfc bg,
+ * #eee border, white delimiter fades) and, being a plugin asset, loads AFTER
+ * theme.css. In dark mode that left the panel white while the fields/text inside
+ * used the theme's dark tokens: unreadable. Scope the override to dark so it
+ * out-specifies the plugin's plain #grav-login and leaves light mode (already
+ * correct) alone. (quark2#14) */
+:root[data-theme="dark"] #grav-login {
+  background: var(--q2-bg-elev);
+  border-color: var(--q2-border-ring);
+  box-shadow: var(--q2-shadow-card);
+  color: var(--q2-text);
+}
+:root[data-theme="dark"] #grav-login .delimiter::before {
+  background-image: linear-gradient(to right, var(--q2-text-muted), var(--q2-bg-elev));
+}
+:root[data-theme="dark"] #grav-login .delimiter::after {
+  background-image: linear-gradient(to left, var(--q2-text-muted), var(--q2-bg-elev));
 }
 
 /* ---------- Form plugin fields ---------- */
@@ -2078,11 +2264,36 @@ input:focus {
   max-width: 1100px;
   margin-inline: auto;
 }
+/* Column counts follow the `Layout` option in blueprints/modular/features.yaml:
+ * small = 4 / 3 / 2 and standard = 3 / 2 / 1 across desktop / tablet / phone.
+ * Fixed counts rather than auto-fit, so the chosen layout holds at every width
+ * instead of the track minimum silently deciding it. */
 .modular-features .columns {
   display: grid;
   gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 2.5rem;
+}
+.modular-features[data-layout="standard"] .columns {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 640px) {
+  .modular-features .columns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .modular-features[data-layout="standard"] .columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .modular-features .columns {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .modular-features[data-layout="standard"] .columns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 .modular-features .column {
   background: var(--q2-bg-elev);

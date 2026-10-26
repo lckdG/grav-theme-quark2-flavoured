@@ -111,6 +111,8 @@ Alternatively, you can use the drag-n-drop **Custom Logo** field in the Quark 2 
 
 SVG logos are inlined and inherit `currentColor`, so they automatically adapt to light/dark mode when you set `fill="currentColor"` on their paths.
 
+Your logo lives inside the theme folder, and it is left alone when you update Quark 2. If you keep your whole Grav site in git and you installed Quark 2 before v1.1.10, delete the leftover `user/themes/quark2/.gitignore` file once. Older versions shipped a rule that kept `images/logo/` out of your repository.
+
 ## Page Overrides
 
 Quark 2 has the ability to allow pages to override some of the default options by letting the user set `body_classes` for any page. The theme will merge the combination of the defaults with any `body_classes` set. For example:

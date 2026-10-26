@@ -11,6 +11,43 @@
     if (li.querySelector(':scope > ul')) li.classList.add('has-children');
   });
 
+  // Keep dropdown panels inside the viewport. Panels are laid out even while
+  // hidden, so their position can be measured up front and re-checked on
+  // resize; nothing runs while the visitor is hovering. querySelectorAll
+  // returns document order, so a parent panel is flipped before the nested
+  // panels hanging off it are measured.
+  var EDGE_GAP = 8;
+  var panels = document.querySelectorAll('.dropmenu li > ul');
+
+  function fitPanels() {
+    if (!panels.length) return;
+    var vw = document.documentElement.clientWidth;
+    panels.forEach(function (ul) { ul.parentNode.classList.remove('flip-x'); });
+    panels.forEach(function (ul) {
+      var li = ul.parentNode;
+      var rtl = getComputedStyle(ul).direction === 'rtl';
+      var rect = ul.getBoundingClientRect();
+      if (!(rtl ? rect.left < EDGE_GAP : rect.right > vw - EDGE_GAP)) return;
+      li.classList.add('flip-x');
+      // Never trade one clipped edge for the other. On a wrapped nav the last
+      // item can sit at the far start, where flipping would push it off the
+      // opposite side.
+      var flipped = ul.getBoundingClientRect();
+      if (rtl ? flipped.right > vw - EDGE_GAP : flipped.left < EDGE_GAP) {
+        li.classList.remove('flip-x');
+      }
+    });
+  }
+
+  var fitTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(fitTimer);
+    fitTimer = setTimeout(fitPanels, 100);
+  });
+  fitPanels();
+  // Web fonts can land after first paint and change the panel widths
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitPanels);
+
   // Click-to-open on touch devices (hover is flaky on iOS)
   var isTouch = matchMedia('(hover: none)').matches;
   if (isTouch) {
@@ -51,6 +88,21 @@
     });
   }
 
+  // Background parallax for hero sections tagged `.parallax`.
+  // Vanilla port of Quark 1's parallaxBackground(); rAF-throttled and
+  // disabled when the visitor prefers reduced motion. Driven off the same
+  // scroll listener as the scroll-state below so there's only one handler.
+  var parallaxNodes = document.querySelectorAll('.hero.parallax');
+  var parallaxOn = parallaxNodes.length && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var parallaxTicking = false;
+  function applyParallax() {
+    var offset = window.scrollY * 0.3;
+    parallaxNodes.forEach(function (el) {
+      el.style.backgroundPositionY = offset + 'px';
+    });
+    parallaxTicking = false;
+  }
+
   // Scroll state (for sticky header shadow + animated shrink)
   // Hysteresis: the navbar shrinks by 12px when `.scrolled` is on, which
   // shifts layout and can flip scrollY back over a single threshold. The
@@ -65,6 +117,10 @@
     if (scrolled !== lastScrolled) {
       body.classList.toggle('scrolled', scrolled);
       lastScrolled = scrolled;
+    }
+    if (parallaxOn && !parallaxTicking) {
+      window.requestAnimationFrame(applyParallax);
+      parallaxTicking = true;
     }
   }
   window.addEventListener('scroll', onScroll, { passive: true });

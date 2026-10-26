@@ -1,3 +1,116 @@
+# v1.1.18
+## 10/22/2026
+
+1. [](#new)
+    * The blog sidebar shows a TNTSearch search box when that plugin is enabled, the same way it does for SimpleSearch [trilbymedia/grav-plugin-tntsearch#149](https://github.com/trilbymedia/grav-plugin-tntsearch/issues/149)
+1. [](#bugfix)
+    * The archives sidebar now lists posts by year when the Archives plugin's date format is set to `Y`, instead of showing every entry as 1970 [getgrav/grav-plugin-archives#39](https://github.com/getgrav/grav-plugin-archives/issues/39)
+
+# v1.1.17
+## 10/09/2026
+
+1. [](#bugfix)
+    * On phones the menu button now lines up with the logo, at the top of the page and once the header shrinks on scroll [#28](https://github.com/getgrav/grav-theme-quark2/issues/28)
+
+# v1.1.16
+## 10/01/2026
+
+1. [](#bugfix)
+    * The 404 and other error pages now sit in the same white content card as regular pages. Thanks @Mikanoshi and @Jah-yee [#26](https://github.com/getgrav/grav-theme-quark2/issues/26)
+    * The "Back home" button on error pages can now be translated instead of always showing English. Thanks @Mikanoshi [#26](https://github.com/getgrav/grav-theme-quark2/issues/26)
+
+# v1.1.15
+## 09/28/2026
+
+1. [](#new)
+    * You can now upload your own favicon (PNG, SVG or ICO) in the theme settings, next to the custom logos. Thanks @abesnier [#25](https://github.com/getgrav/grav-theme-quark2/pull/25)
+
+# v1.1.14
+## 09/15/2026
+
+1. [](#new)
+    * Spanish is now available as a site language. Thanks @pmoreno-rodriguez [#24](https://github.com/getgrav/grav-theme-quark2/pull/24)
+
+# v1.1.13
+## 09/11/2026
+
+1. [](#bugfix)
+    * Meta tag content was escaped twice, so a description containing `&` or a space showed up as `&amp;amp;` and `&#x20;` in the page source. The theme's copy of the metadata partial is gone and Grav core's is used instead, which also adds the `<link rel="alternate" type="text/markdown">` tag for Grav 2.1's Markdown output
+1. [](#improved)
+    * The theme now requires Grav 2.1.0 or later
+    * The sidebar's feed links use Grav 2.1's format-aware page URLs, so a blog at the site root links to `/index.rss` and `/index.atom` instead of working around the home route by hand
+
+# v1.1.12
+## 09/09/2026
+
+1. [](#bugfix)
+    * Icons chosen in the admin now render. The icon picker saves a value with the `fa-` prefix already on it, and the templates added a second one, so a changed icon silently disappeared while the ones shipped with a skeleton kept working. Feature, menu and page icons all accept whatever form the value arrives in. Thanks to @UnixxSH [getgrav/grav-skeleton-onepage-site#20](https://github.com/getgrav/grav-skeleton-onepage-site/issues/20)
+
+# v1.1.11
+## 08/13/2026
+
+1. [](#bugfix)
+    * The appearance toggle's tooltip and screen-reader label are now translatable, instead of always appearing in English ([#23](https://github.com/getgrav/grav-theme-quark2/issues/23))
+    * Every other screen-reader label in the theme, covering the menus, breadcrumbs, pagination and post navigation, is now translatable too
+
+# v1.1.10
+## 08/04/2026
+
+1. [](#bugfix)
+    * Dropdown menus near the right edge of the window no longer run off-screen, and nested sub-menus now open toward whichever side has room ([#22](https://github.com/getgrav/grav-theme-quark2/issues/22))
+    * Removed the stray horizontal scrollbar that off-screen dropdown panels were adding to every page
+    * The theme no longer ships a rule that kept custom logos out of your site's git repository ([#21](https://github.com/getgrav/grav-theme-quark2/issues/21))
+
+# v1.1.9
+## 08/02/2026
+
+1. [](#bugfix)
+    * The active menu item is no longer white-on-white in dark mode while the header sits over a hero
+    * Removed a hairline of page background that showed above the hero in light mode before scrolling
+
+# v1.1.8
+## 08/02/2026
+
+1. [](#new)
+    * Restored the `header-dark` and `header-light` body classes from the original Quark theme, so you can pick a readable header colour when it sits over a hero image
+2. [](#bugfix)
+    * The `header-transparent` option now actually lets the hero show through the header, instead of only clearing the header's own background ([#21](https://github.com/getgrav/grav-theme-quark2/issues/21))
+    * The Features module's `Layout` option now controls the column count as its description says, giving 4 / 3 / 2 columns for Small and 3 / 2 / 1 for Standard ([#20](https://github.com/getgrav/grav-theme-quark2/pull/20))
+
+# v1.1.7
+## 07/30/2026
+
+1. [](#improved)
+    * Forum Pro's own headings now use Cal Sans along with the rest of the theme. The forum falls back to the body font when a theme hands it no display face, which left a forum page title looking lighter than the headings sitting under it
+
+# v1.1.6
+## 07/20/2026
+
+1. [](#new)
+    * Restored the full set of hero classes from the original Quark theme, so `hero-fullscreen`, the hero size options, `text-light`/`text-dark`, `title-h1h2`, and the image overlays all work again ([#18](https://github.com/getgrav/grav-theme-quark2/issues/18)).
+2. [](#bugfix)
+    * The hero background parallax effect now works again; it was lost when the theme was rebuilt for Grav 2.0 ([#17](https://github.com/getgrav/grav-theme-quark2/issues/17)).
+
+# v1.1.5
+## 07/17/2026
+
+1. [](#new)
+    * Tag lists now respect an optional `filterend` limit so you can cap how many tags are shown ([#219](https://github.com/getgrav/grav-theme-quark/issues/219))
+2. [](#bugfix)
+    * The `image_align: left` option on modular text sections now moves the image to the left instead of leaving it on the right ([#16](https://github.com/getgrav/grav-theme-quark2/issues/16))
+
+# v1.1.4
+## 07/14/2026
+
+1. [](#bugfix)
+    * The login plugin's admin-style panels now follow dark mode instead of staying light, so the login, forgot, and reset forms match the rest of the theme in dark mode ([#14](https://github.com/getgrav/grav-theme-quark2/issues/14))
+
+# v1.1.3
+## 07/09/2026
+
+1. [](#bugfix)
+    * Custom SVG logos are now inlined so they follow light and dark mode like the built-in logo, instead of staying a fixed color
+
 # v1.1.2
 ## 06/24/2026
 

@@ -1,5 +1,5 @@
 {% if breadcrumbs.get() %}
-<nav aria-label="Breadcrumb">
+<nav aria-label="{{ 'THEME_QUARK2.ARIA.BREADCRUMB'|t|e('html_attr') }}">
     <ol class="breadcrumbs">
         {% for crumb in breadcrumbs.get() %}
             {% if loop.last %}

@@ -1,4 +1,4 @@
-<section class="section modular-features {{ page.header.class }}">
+<section class="section modular-features" data-layout="{{ page.header.class|default('small') }}">
     <div class="container">
         <div class="frame-box">
             {{ content|raw }}
@@ -8,7 +8,7 @@
                 <div class="column">
                     {% if feature.url %}<a href="{{ feature.url }}" style="text-decoration:none;color:inherit;display:block;">{% endif %}
                     <div class="feature-icon">
-                        {% if feature.icon %}<i class="fa-solid fa-{{ feature.icon }}" aria-hidden="true"></i>{% endif %}
+                        {% if feature.icon %}<i class="{{ feature.icon|fa_icon }}" aria-hidden="true"></i>{% endif %}
                         {% if feature.header %}<h6>{{ feature.header }}</h6>{% endif %}
                     </div>
                     <div class="feature-content">
