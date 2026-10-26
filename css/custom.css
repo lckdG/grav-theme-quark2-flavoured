@@ -9,7 +9,7 @@
 
 :root,
 :root[data-theme="light"] {
-  --q2-bg: #f4ecdc; /* parchment */
+  --q2-bg: #ebdfc6;
   --q2-bg-elev: #fbf6ec;
   --q2-bg-muted: #e8dcc5;
   --q2-bg-inverse: #160f1d;
@@ -23,18 +23,21 @@
   --q2-border-strong: rgba(36, 26, 46, 0.14);
   --q2-divider: rgba(36, 26, 46, 0.08);
 
-  --q2-nav-bg: rgba(244, 236, 220, 0.78);
+  --q2-nav-bg: rgba(235, 223, 198, 0.78);
   --q2-nav-border: rgba(36, 26, 46, 0.08);
 
-  --q2-accent-2: #23704f; /* emerald */
-  --q2-accent-3: #a33a4a; /* crimson */
+  --q2-accent-2: #23704f;
+  --q2-accent-3: #a33a4a;
 
-  /* light accents (e.g. gold) are unreadable as text on parchment */
+  --q2-shadow-card:
+    rgba(36, 26, 46, 0.14) 0 0 0 1px,
+    rgba(70, 45, 20, 0.12) 0 6px 18px -6px;
+
   --q2-link: color-mix(in oklab, var(--q2-accent) 55%, black);
 }
 
 :root[data-theme="dark"] {
-  --q2-bg: #140f1c; /* plum ink */
+  --q2-bg: #140f1c;
   --q2-bg-elev: #1f1829;
   --q2-bg-muted: #2c2238;
   --q2-bg-inverse: #efe6d6;
@@ -55,7 +58,6 @@
   --q2-accent-3: #e8828c;
 }
 
-/* black text on light accents, white on dark ones */
 :root,
 :root[data-theme="dark"] {
   --q2-accent-contrast: lch(from var(--q2-accent) calc((l - 60) * -100) 0 h);
@@ -203,8 +205,16 @@
   h4 {
     text-align: center;
     margin-top: 1rem;
-    color: var(--q2-accent);
+    color: var(--q2-link);
   }
+}
+
+:root:not([data-theme="dark"]) .modular-features.skills .category {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: var(--q2-glass-blur);
+  box-shadow:
+    rgba(36, 26, 46, 0.18) 0 0 0 1px,
+    rgba(70, 45, 20, 0.14) 0 10px 24px -10px;
 }
 
 .modular-features.skills .columns {
@@ -227,7 +237,6 @@
   padding-left: 4rem;
   margin: 2.5rem 0 0 30px;
 
-  /* rail fades in/out at the ends */
   &:before {
     content: '';
     position: absolute;
@@ -242,7 +251,6 @@
     position: relative;
     margin-bottom: 2.5rem;
 
-    /* dashed connector from gem to card */
     &:before {
       content: '';
       position: absolute;
@@ -252,7 +260,6 @@
       border-top: 2px dashed color-mix(in oklab, var(--q2-accent-2) 60%, transparent);
     }
 
-    /* waypoint gem centred on the rail */
     .timeline-icon {
       position: absolute;
       left: calc(-4rem + 1px - var(--gem) / 2);
@@ -277,7 +284,6 @@
       padding: 20px 20px 15px;
       box-shadow: var(--q2-shadow-card);
 
-      /* gold corner brackets */
       &:before,
       &:after {
         content: '';
@@ -329,10 +335,13 @@
 
 /* ---------- glassy site background ---------- */
 
-/* soft accent glows behind everything; cards frost over them */
 :root {
-  --q2-glass: color-mix(in oklab, var(--q2-bg-elev) 65%, transparent);
+  --q2-glass: rgba(255, 255, 255, 0.72);
   --q2-glass-blur: blur(16px) saturate(140%);
+}
+
+:root[data-theme="dark"] {
+  --q2-glass: color-mix(in oklab, var(--q2-bg-elev) 65%, transparent);
 }
 
 html {
@@ -359,7 +368,6 @@ body,
 /* ---------- shared card highlight ---------- */
 
 :root {
-  /* gold glow washes out on parchment: darker ring + warm lift instead */
   --q2-hover-bg: #ffffff;
   --q2-hover-shadow:
     0 0 0 1.5px var(--q2-link),
@@ -383,7 +391,6 @@ body,
     transform 0.2s ease;
 }
 
-/* kept last so it beats the per-section card rules above */
 .modular-features.projects .column:is(:hover, :focus-within),
 .modular-features.skills .column:is(:hover, :focus-within),
 .timeline .timeline-body:is(:hover, :focus-within) {
