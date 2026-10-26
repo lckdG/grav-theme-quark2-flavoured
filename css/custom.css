@@ -5,6 +5,62 @@
  * theme.css without having to mark rules !important.
  */
 
+/* ---------- Fantasy RPG palette ---------- */
+
+:root,
+:root[data-theme="light"] {
+  --q2-bg: #f4ecdc; /* parchment */
+  --q2-bg-elev: #fbf6ec;
+  --q2-bg-muted: #e8dcc5;
+  --q2-bg-inverse: #160f1d;
+
+  --q2-text: #241a2e;
+  --q2-text-strong: #160f1d;
+  --q2-text-muted: #6b5f73;
+  --q2-text-inverse: #fbf6ec;
+
+  --q2-border-ring: rgba(36, 26, 46, 0.08);
+  --q2-border-strong: rgba(36, 26, 46, 0.14);
+  --q2-divider: rgba(36, 26, 46, 0.08);
+
+  --q2-nav-bg: rgba(244, 236, 220, 0.78);
+  --q2-nav-border: rgba(36, 26, 46, 0.08);
+
+  --q2-accent-2: #23704f; /* emerald */
+  --q2-accent-3: #a33a4a; /* crimson */
+
+  /* light accents (e.g. gold) are unreadable as text on parchment */
+  --q2-link: color-mix(in oklab, var(--q2-accent) 55%, black);
+}
+
+:root[data-theme="dark"] {
+  --q2-bg: #140f1c; /* plum ink */
+  --q2-bg-elev: #1f1829;
+  --q2-bg-muted: #2c2238;
+  --q2-bg-inverse: #efe6d6;
+
+  --q2-text: #efe6d6;
+  --q2-text-strong: #fff8ea;
+  --q2-text-muted: #a99fb3;
+  --q2-text-inverse: #140f1c;
+
+  --q2-border-ring: rgba(239, 230, 214, 0.14);
+  --q2-border-strong: rgba(239, 230, 214, 0.2);
+  --q2-divider: rgba(239, 230, 214, 0.1);
+
+  --q2-nav-bg: rgba(20, 15, 28, 0.78);
+  --q2-nav-border: rgba(239, 230, 214, 0.06);
+
+  --q2-accent-2: #6fd3a6;
+  --q2-accent-3: #e8828c;
+}
+
+/* black text on light accents, white on dark ones */
+:root,
+:root[data-theme="dark"] {
+  --q2-accent-contrast: lch(from var(--q2-accent) calc((l - 60) * -100) 0 h);
+}
+
 .contact-box {
     display: flex;
     place-items: center;
@@ -102,8 +158,22 @@
     gap: 0.25rem;
 }
 
+.modular-features.projects .genres .chip {
+  background: color-mix(in oklab, var(--q2-accent-2) 14%, transparent);
+  border-color: transparent;
+  color: var(--q2-accent-2);
+}
+
 .modular-features.projects .content-footer {
   margin-top: auto;
+
+  .chip {
+    border-color: color-mix(in oklab, var(--q2-accent) 55%, transparent);
+  }
+
+  strong {
+    color: var(--q2-accent-3);
+  }
 }
 
 .modular-features .content-footer p {
@@ -147,53 +217,82 @@
 }
 
 .timeline {
+  --gem: 16px;
   position: relative;
   padding-left: 4rem;
   margin: 2.5rem 0 0 30px;
-  color: white;
 
+  /* rail fades in/out at the ends */
   &:before {
     content: '';
     position: absolute;
     left: 0;
     top: 0;
-    width: 4px;
+    width: 2px;
     height: 100%;
-    background: var(--q2-text);
+    background: linear-gradient(transparent, var(--q2-accent-2) 2rem, var(--q2-accent-2) calc(100% - 2rem), transparent);
   }
 
   .timeline-container {
     position: relative;
     margin-bottom: 2.5rem;
 
+    /* dashed connector from gem to card */
+    &:before {
+      content: '';
+      position: absolute;
+      left: calc(-4rem + 1px);
+      width: 4rem;
+      top: 24px;
+      border-top: 2px dashed color-mix(in oklab, var(--q2-accent-2) 60%, transparent);
+    }
+
+    /* waypoint gem centred on the rail */
     .timeline-icon {
       position: absolute;
-      left: -75px;
-      top: 16px;
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      text-align: center;
-      font-size: 2rem;
-      background: var(--q2-text);
+      left: calc(-4rem + 1px - var(--gem) / 2);
+      top: calc(25px - var(--gem) / 2);
+      width: var(--gem);
+      height: var(--gem);
+      transform: rotate(45deg);
+      background: var(--q2-accent);
+      border: 3px solid var(--q2-bg);
+      outline: 1px solid var(--q2-accent);
+    }
+
+    &:first-child .timeline-icon {
+      box-shadow: 0 0 14px color-mix(in oklab, var(--q2-accent) 60%, transparent);
     }
 
     .timeline-body {
+      position: relative;
       background: var(--q2-bg-elev);
-      border-radius: 1rem;
+      border-radius: var(--q2-radius-xs);
       padding: 20px 20px 15px;
       box-shadow: var(--q2-shadow-card);
 
-      &:before {
+      /* gold corner brackets */
+      &:before,
+      &:after {
         content: '';
-        background: inherit;
-        width: 20px;
-        height: 20px;
-        display: block;
         position: absolute;
-        left: -10px;
-        transform: rotate(45deg);
-        border-radius: 0 0 0 2px;
+        width: 14px;
+        height: 14px;
+        border: 0 solid var(--q2-accent);
+      }
+
+      &:before {
+        top: -1px;
+        left: -1px;
+        border-top-width: 2px;
+        border-left-width: 2px;
+      }
+
+      &:after {
+        bottom: -1px;
+        right: -1px;
+        border-bottom-width: 2px;
+        border-right-width: 2px;
       }
 
       .timeline-title {
@@ -202,7 +301,7 @@
 
       .timeline-subtitle {
         margin-bottom: 1.4rem;
-        color: lch(from var(--q2-accent) calc(l - 20) c h);
+        color: var(--q2-link);
       }
 
       .timeline-right {
