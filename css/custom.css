@@ -206,9 +206,12 @@
       }
 
       .timeline-right {
-        position: absolute;
-        top: 20px;
-        right: 20px;
+        @media (min-width: 768px) {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+        }
+
         color: var(--q2-text-muted);
       }
 

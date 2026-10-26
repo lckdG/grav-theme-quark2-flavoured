@@ -8,8 +8,8 @@
                 <div class="timeline-icon">
                 </div>
                 <div class="timeline-body">
-                    <span class="timeline-right">{{ item.startdate }}{% if item.present %} - Present{% else %} - {{ item.enddate }}{% endif %}</span>
                     <h4 class="timeline-title">{{ item.header }}</h4>
+                    <span class="timeline-right">{{ item.startdate }}{% if item.present %} - Present{% else %} - {{ item.enddate }}{% endif %}</span>
                     {% if item.subheader %}
                         <h5 class="timeline-subtitle">{{ item.subheader }}</h5>
                     {% endif %}
