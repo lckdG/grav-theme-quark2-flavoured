@@ -171,6 +171,11 @@
     border-color: color-mix(in oklab, var(--q2-accent) 55%, transparent);
   }
 
+  p {
+    color: var(--q2-text);
+    font-weight: 500;
+  }
+
   strong {
     color: var(--q2-accent-3);
   }
