@@ -1,8 +1,15 @@
-{% set logo = theme_var(mobile ? 'custom_logo_mobile' : 'custom_logo') %}
+{% set logo_key = mobile ? 'custom_logo_mobile' : 'custom_logo' %}
+{% set logo = theme_var(logo_key) %}
 {% set logo_first = (logo is iterable and logo|length > 0) ? logo|first : null %}
 {% set logo_file = logo_first.name|default(null) %}
+{% set logo_dark = theme_var(logo_key ~ '_dark') %}
+{% set logo_dark_first = (logo_dark is iterable and logo_dark|length > 0) ? logo_dark|first : null %}
+{% set logo_dark_file = logo_dark_first.name|default(null) %}
 <a href="{{ home_url }}" class="navbar-brand" aria-label="{{ site.title }}" title="{{ site.title }}">
-{% if logo_file %}
+{% if logo_file and logo_dark_file %}
+    <img class="logo-light" src="{{ url('theme://images/logo/' ~ logo_file) }}" alt="{{ site.title }}" />
+    <img class="logo-dark" src="{{ url('theme://images/logo/' ~ logo_dark_file) }}" alt="{{ site.title }}" />
+{% elseif logo_file %}
     {% if logo_file|lower ends with '.svg' %}
         {{ svg_image('theme://images/logo/' ~ logo_file)|raw }}
     {% else %}

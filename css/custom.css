@@ -530,3 +530,8 @@ body,
   box-shadow: var(--q2-hover-shadow);
   transform: translateY(-2px);
 }
+
+:root[data-theme="dark"] .navbar-brand .logo-light,
+:root:not([data-theme="dark"]) .navbar-brand .logo-dark {
+  display: none;
+}
