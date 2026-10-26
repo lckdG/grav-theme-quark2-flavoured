@@ -27,8 +27,10 @@
     <link rel="canonical" href="{{ page.url(true, true) }}" />
 
     {# Preload the critical latin subsets so headings + body text render in-font on first paint #}
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ url('theme://fonts/cal-sans/cal-sans-latin.woff2') }}" />
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ url('theme://fonts/inter/inter-latin.woff2') }}" />
+    <!-- <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ url('theme://fonts/cal-sans/cal-sans-latin.woff2') }}" /> -->
+    <!-- <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ url('theme://fonts/inter/inter-latin.woff2') }}" /> -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ url('theme://fonts/vollkorn/vollkorn-latin.woff2') }}" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ url('theme://fonts/jetbrains-mono/jetbrains-mono-latin.woff2') }}" />
 
     {% if accent_is_hex %}
     {# User-configured accent: tint links, focus ring, and filled UI accents with the chosen hex #}
