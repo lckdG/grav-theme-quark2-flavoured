@@ -18,7 +18,7 @@
             var line = lines[i];
             line.classList.add('is-shown');
             if (line.classList.contains('term-out')) {
-                await wait(100);
+                await wait(300);
                 continue;
             }
             var text = line.lastChild;
