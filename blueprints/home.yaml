@@ -48,19 +48,19 @@ form:
                 asc: Ascending
                 desc: Descending
 
-          character:
-            type: section
-            title: Character Card
-            underline: true
+            character:
+              type: section
+              title: Character Card
+              underline: true
 
-          import@1:
-            type: partials/character
-            context: theme://blueprints
+            import@1:
+              type: partials/character
+              context: theme://blueprints
 
-          terminal:
-            type: section
-            title: Terminal Card
+            terminal:
+              type: section
+              title: Terminal Card
 
-          import@2:
-            type: partials/terminal
-            context: theme://blueprints
+            import@2:
+              type: partials/terminal
+              context: theme://blueprints
