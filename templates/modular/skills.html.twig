@@ -1,9 +1,8 @@
 <section class="section skills {{ page.header.section_class }}">
     <div class="container">
         <header class="section-head">
-            <h2 class="section-title">{{ page.title }}</h2>
+            <div class="section-intro">{{ content|raw }}</div>
         </header>
-        {{ content|raw }}
 
         {% if page.header.categories %}
             <div class="skill-groups">

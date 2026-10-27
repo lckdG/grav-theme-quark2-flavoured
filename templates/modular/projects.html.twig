@@ -34,10 +34,9 @@
 <section class="section projects {{ page.header.section_class }}">
     <div class="container">
         <header class="section-head">
-            <h2 class="section-title">{{ page.title }}</h2>
+            <div class="section-intro">{{ content|raw }}</div>
             {% if featured|length %}<span class="section-hint">{{ 'THEME_QUARK2.PROJECTS.HINT'|t }}</span>{% endif %}
         </header>
-        {{ content|raw }}
 
         {% if featured|length %}
             <div class="project-grid{{ featured|length == 1 ? ' is-single' }}" style="--count: {{ min(featured|length, 3) }}">
