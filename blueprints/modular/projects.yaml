@@ -28,6 +28,29 @@ form:
                 .header:
                   type: text
                   label: Header
+                .featured:
+                  type: toggle
+                  label: Featured
+                  description: Featured projects get a big card. The rest go into the More projects carousel.
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+                  validate:
+                    type: bool
+                .rarity:
+                  type: select
+                  label: Rarity
+                  default: common
+                  options:
+                    common: Common
+                    uncommon: Uncommon
+                    rare: Rare
+                    epic: Epic
+                    legendary: Legendary
+                    mythic: Mythic
+                    cursed: Cursed
                 .genres:
                   type: list
                   label: Genres

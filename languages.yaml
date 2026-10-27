@@ -23,6 +23,13 @@ en:
       EQUIPPED: "Equipped"
     INTRO:
       CV: "Download CV"
+    PROJECTS:
+      HINT: "click a card for details"
+      MORE: "More projects"
+      DETAILS: "details"
+    CAROUSEL:
+      PREV: "Previous"
+      NEXT: "Next"
     LOOT:
       TITLE: "Latest loot"
       ALL_POSTS: "all posts"
@@ -72,6 +79,13 @@ es:
       EQUIPPED: "Equipado"
     INTRO:
       CV: "Descargar CV"
+    PROJECTS:
+      HINT: "haz clic en una tarjeta para ver detalles"
+      MORE: "Más proyectos"
+      DETAILS: "detalles"
+    CAROUSEL:
+      PREV: "Anterior"
+      NEXT: "Siguiente"
     LOOT:
       TITLE: "Último botín"
       ALL_POSTS: "todas las entradas"

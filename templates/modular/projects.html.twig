@@ -1,42 +1,70 @@
-<section class="section modular-features projects {{ page.header.section_class }}">
-    <div class="container">
-        <div class="frame-box">
-            {{ content|raw }}
+{% import _self as cards %}
+{% set featured = page.header.projects|default([])|filter(p => p.featured) %}
+{% set more = page.header.projects|default([])|filter(p => not p.featured) %}
 
-            <div class="columns">
-            {% for project in page.header.projects %}
-                <div class="column">
-                    {% if project.url %}<a href="{{ project.url }}" style="text-decoration:none;color:inherit;display:block;">{% endif %}
-                    <div class="feature-icon">
-                        {% if project.image %} {{ page.media[project.image]|raw}} {% endif %}
-                        {% if project.header %}<h6>{{ project.header }}</h6>{% endif %}
-                        {% if project.genres %}
-                            <div class="genres">
-                                {% for tag in project.genres %}
-                                    <div class="chip">
-                                        {{ tag.text }}
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </div>
-                    <div class="feature-content">
-                        {% if project.text %}<p>{{ project.text }}</p>{% endif %}
-                        <br>
-                    </div>
-                    <div class="content-footer">
-                        {% if project.role %}<p><strong>Role:</strong> {{ project.role }}</p>{% endif %}
+{% macro card(page, project, size) %}
+    {% import 'macros/macros.html.twig' as macros %}
+    {% set image = project.image ? page.media[project.image] : null %}
+    {% set rarity = project.rarity|default('common') %}
+    <article class="glass-card project-card is-{{ size }} rarity-{{ rarity }}">
+        {% if image %}
+            <div class="project-thumb">{{ (size == 'compact' ? image.cropZoom(352, 216) : image.cropZoom(692, 390)).html(project.header, project.header)|raw }}</div>
+        {% endif %}
+        <div class="project-body">
+            <span class="project-rarity">{{ rarity|upper }}</span>
+            <h3 class="project-title">{{ project.header }}</h3>
+            {% if project.text %}<p class="project-text">{{ project.text }}</p>{% endif %}
+            <footer class="project-foot">
+                {% if project.tags %}
+                    <ul class="icon-row">
                         {% for tag in project.tags %}
-                            <div class="chip">
-                                {{ page.media[tag.image].html('', '', 'avatar avatar-sm')|raw }}
-                                {{ tag.title|raw }}
-                            </div>
+                            {{ macros.icon_tile(page, tag) }}
                         {% endfor %}
-                    </div>
-                    {% if projects.url %}</a>{% endif %}
-                </div>
-            {% endfor %}
-            </div>
+                    </ul>
+                {% endif %}
+                {% if project.url %}
+                    <a class="project-details" href="{{ project.url }}">{{ 'THEME_QUARK2.PROJECTS.DETAILS'|t }} →</a>
+                {% endif %}
+            </footer>
         </div>
+    </article>
+{% endmacro %}
+
+<section class="section projects {{ page.header.section_class }}">
+    <div class="container">
+        <header class="section-head">
+            <h2 class="section-title">{{ page.title }}</h2>
+            {% if featured|length %}<span class="section-hint">{{ 'THEME_QUARK2.PROJECTS.HINT'|t }}</span>{% endif %}
+        </header>
+        {{ content|raw }}
+
+        {% if featured|length %}
+            <div class="project-grid">
+                {% for project in featured %}
+                    {{ cards.card(page, project, 'full') }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if more|length %}
+            <div class="carousel" data-carousel>
+                <header class="section-head is-sub">
+                    <h3 class="section-title">{{ 'THEME_QUARK2.PROJECTS.MORE'|t }}</h3>
+                    <div class="carousel-arrows">
+                        <button type="button" class="carousel-arrow" data-carousel-prev aria-label="{{ 'THEME_QUARK2.CAROUSEL.PREV'|t }}">←</button>
+                        <button type="button" class="carousel-arrow" data-carousel-next aria-label="{{ 'THEME_QUARK2.CAROUSEL.NEXT'|t }}">→</button>
+                    </div>
+                </header>
+                <div class="carousel-track" data-carousel-track>
+                    {% for project in more %}
+                        {{ cards.card(page, project, 'compact') }}
+                    {% endfor %}
+                </div>
+                <div class="carousel-dots" aria-hidden="true">
+                    {% for project in more %}<span class="carousel-dot"></span>{% endfor %}
+                </div>
+            </div>
+            {% do assets.addJs('theme://js/carousel.js', {group: 'bottom', loading: 'defer'}) %}
+        {% endif %}
     </div>
 </section>

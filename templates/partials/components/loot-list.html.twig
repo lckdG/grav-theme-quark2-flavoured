@@ -4,9 +4,9 @@
 
 {% if posts|length %}
 <section class="loot">
-    <header class="loot-head">
-        <h2 class="loot-title">{{ 'THEME_QUARK2.LOOT.TITLE'|t }}</h2>
-        {% if blog %}<a class="loot-all" href="{{ blog.url }}">{{ 'THEME_QUARK2.LOOT.ALL_POSTS'|t }} →</a>{% endif %}
+    <header class="section-head">
+        <h2 class="section-title">{{ 'THEME_QUARK2.LOOT.TITLE'|t }}</h2>
+        {% if blog %}<a class="section-link" href="{{ blog.url }}">{{ 'THEME_QUARK2.LOOT.ALL_POSTS'|t }} →</a>{% endif %}
     </header>
     <ul class="loot-list glass-card">
         {% for post in posts %}

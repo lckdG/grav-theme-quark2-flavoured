@@ -1,0 +1,334 @@
+@use '../breakpoints' as *;
+
+.project {
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+
+    @media (max-width: $phone) {
+      gap: 16px;
+    }
+  }
+
+  &-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:is(:hover, :focus-within) {
+      transform: translateY(-2px);
+      box-shadow: var(--q2-hover-shadow);
+    }
+
+    &.is-compact {
+      flex-direction: row;
+      gap: 20px;
+      border-radius: 14px;
+
+      @media (max-width: $phone) {
+        gap: 14px;
+        padding: 12px;
+      }
+    }
+  }
+
+  &-thumb {
+    overflow: hidden;
+    border-radius: 12px;
+    aspect-ratio: 346 / 195;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .is-compact & {
+      flex: 0 0 176px;
+      aspect-ratio: 176 / 108;
+      border-radius: 10px;
+
+      @media (max-width: $phone) {
+        flex-basis: 112px;
+        aspect-ratio: 112 / 84;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  &-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+    padding: 20px 8px 8px;
+
+    @media (max-width: $phone) {
+      padding: 16px 0 0;
+    }
+
+    .is-compact & {
+      padding: 0;
+    }
+  }
+
+  &-rarity {
+    font-family: var(--pico-font-family-monospace);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    line-height: 1.2;
+    color: var(--rarity);
+
+    &::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 4px;
+      margin-bottom: 8px;
+      border-radius: 2px;
+      background: var(--rarity);
+    }
+
+    .is-compact & {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 1.2px;
+
+      &::before {
+        width: 8px;
+        height: 8px;
+        margin: 0;
+      }
+
+      @media (max-width: $phone) {
+        gap: 6px;
+        font-size: 0.625rem;
+      }
+    }
+  }
+
+  &-title {
+    margin: 6px 0 7px;
+    font-family: var(--pico-font-family-display);
+    font-size: 1.625rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--q2-text-strong);
+
+    &::before {
+      display: none;
+    }
+
+    @media (max-width: $phone) {
+      margin: 4px 0 6px;
+      font-size: 1.4375rem;
+    }
+
+    .is-compact & {
+      margin: 5px 0 6px;
+      font-size: 1.25rem;
+
+      @media (max-width: $phone) {
+        margin: 4px 0 2px;
+        font-size: 1.125rem;
+      }
+    }
+  }
+
+  &-text {
+    margin: 0 0 7px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--q2-text-muted);
+
+    @media (max-width: $phone) {
+      font-size: 0.9375rem;
+    }
+
+    .is-compact & {
+      overflow: hidden;
+      margin: 0 0 10px;
+      font-size: 0.9375rem;
+      line-height: 1.2;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      @media (max-width: $phone) {
+        margin-bottom: 4px;
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  &-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: auto;
+
+    .icon-row {
+      gap: 8px;
+    }
+
+    .icon-tile {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .is-compact & .icon-tile {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+
+      img {
+        width: 18px;
+        height: 18px;
+      }
+
+      @media (max-width: $phone) {
+        width: 22px;
+        height: 22px;
+        border-radius: 6px;
+
+        img {
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+
+    .is-compact & .icon-row {
+      @media (max-width: $phone) {
+        gap: 6px;
+      }
+    }
+  }
+
+  &-details {
+    margin-left: auto;
+    font-family: var(--pico-font-family-display);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--q2-accent);
+    text-decoration: none;
+    white-space: nowrap;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+    }
+
+    .is-compact & {
+      font-size: 0.875rem;
+
+      @media (max-width: $phone) {
+        display: none;
+      }
+    }
+  }
+}
+
+.carousel {
+  &-arrows {
+    display: flex;
+    gap: 8px;
+
+    @media (max-width: $phone) {
+      display: none;
+    }
+  }
+
+  &-arrow {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--q2-arrow-border);
+    border-radius: 50%;
+    background: var(--q2-arrow-bg);
+    font-family: var(--pico-font-family-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--q2-text-strong);
+    cursor: pointer;
+
+    &:disabled {
+      color: color-mix(in oklab, var(--q2-text-strong) 40%, transparent);
+      cursor: default;
+    }
+  }
+
+  &-track {
+    display: grid;
+    grid-auto-columns: 480px;
+    grid-auto-flow: column;
+    column-gap: 24px;
+    overflow-x: auto;
+    margin-bottom: -20px;
+    padding-block: 10px 30px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    mask-image: linear-gradient(to right, #000 calc(100% - 120px), transparent);
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    > * {
+      scroll-snap-align: start;
+    }
+
+    .at-end & {
+      mask-image: none;
+    }
+
+    @media (max-width: $phone) {
+      grid-auto-columns: 304px;
+      column-gap: 12px;
+      margin-bottom: -22px;
+      padding-block: 8px 30px;
+      mask-image: none;
+    }
+  }
+
+  &-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+
+    @media (max-width: $phone) {
+      margin-top: 8px;
+    }
+  }
+
+  &-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--q2-dot);
+    transition: width 0.2s ease, background 0.2s ease;
+
+    &.is-active {
+      width: 24px;
+      background: var(--q2-accent);
+    }
+  }
+}

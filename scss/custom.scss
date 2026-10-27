@@ -3,7 +3,6 @@
 @use 'base/_alerts';
 @use 'base/_contact-box';
 @use 'base/_chip';
-@use 'modules/_projects';
 @use 'modules/_skills';
 @use 'modules/_timeline';
 @use 'base/_background';
@@ -19,5 +18,7 @@
 @use 'components/_home';
 @use 'components/_footer';
 @use 'components/_terminal';
-@use 'components/_loot';
 @use 'components/_intro';
+@use 'components/_section-head';
+@use 'components/_loot';
+@use 'components/_projects';
