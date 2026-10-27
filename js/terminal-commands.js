@@ -1,8 +1,6 @@
 (function () {
-    var allowed = { portfolio: 't-green', blog: 't-blue' };
-
     function visible(shell) {
-        return Object.keys(allowed).filter(function (slug) { return Object.hasOwn(shell.pages, slug); });
+        return Object.keys(shell.allowed).filter(function (slug) { return Object.hasOwn(shell.pages, slug); });
     }
 
     window.Quark2TerminalCommands = {
@@ -18,7 +16,7 @@
             shell.print('term-out', function (line) {
                 visible(shell).forEach(function (slug) {
                     var span = document.createElement('span');
-                    span.className = allowed[slug];
+                    span.className = shell.allowed[slug];
                     span.textContent = slug + '/  ';
                     line.appendChild(span);
                 });

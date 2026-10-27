@@ -31,6 +31,41 @@ form:
       label: whoami Name
       placeholder: guest
 
+    header.terminal.commands:
+      type: select
+      multiple: true
+      label: Commands
+      description: Commands visitors can type. Leave empty to enable every command.
+      options:
+        whoami: whoami
+        help: help
+        ls: ls
+        cd: cd
+
+    header.terminal.pages:
+      name: pages
+      type: list
+      label: Pages
+      description: Pages listed by `ls` and reachable with `cd`.
+
+      fields:
+        .slug:
+          type: text
+          label: Slug
+        .color:
+          type: select
+          label: Color
+          default: t-green
+          options:
+            t-red: Red
+            t-green: Green
+            t-yellow: Yellow
+            t-blue: Blue
+            t-purple: Purple
+            t-aqua: Aqua
+            t-orange: Orange
+            t-gray: Gray
+
     header.terminal.history:
       name: history
       type: list

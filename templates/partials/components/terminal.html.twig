@@ -2,7 +2,11 @@
 {% for item in pages.children.visible %}
     {% set term_pages = term_pages|merge({(item.slug): item.url}) %}
 {% endfor %}
-<div class="terminal" data-pages="{{ term_pages|json_encode|e('html_attr') }}" data-not-found="{{ 'THEME_QUARK2.TERMINAL.NOT_FOUND'|t|e('html_attr') }}" data-no-page="{{ 'THEME_QUARK2.TERMINAL.NO_PAGE'|t|e('html_attr') }}" data-whoami="{{ terminal.whoami|e('html_attr') }}">
+{% set term_allowed = {} %}
+{% for item in terminal.pages|default([{slug: 'portfolio', color: 't-green'}, {slug: 'blog', color: 't-blue'}]) %}
+    {% set term_allowed = term_allowed|merge({(item.slug): item.color}) %}
+{% endfor %}
+<div class="terminal" data-pages="{{ term_pages|json_encode|e('html_attr') }}" data-not-found="{{ 'THEME_QUARK2.TERMINAL.NOT_FOUND'|t|e('html_attr') }}" data-no-page="{{ 'THEME_QUARK2.TERMINAL.NO_PAGE'|t|e('html_attr') }}" data-whoami="{{ terminal.whoami|e('html_attr') }}" data-allowed="{{ term_allowed|json_encode|e('html_attr') }}"{% if terminal.commands %} data-commands="{{ terminal.commands|json_encode|e('html_attr') }}"{% endif %}>
     <div class="term-bar" aria-hidden="true">
         <span class="seg seg-profile"><b>◆</b> {{ terminal.profile|default('default') }}</span>
         {% if terminal.cwd %}<span class="seg seg-cwd"><b>▸</b> {{ terminal.cwd }}</span>{% endif %}

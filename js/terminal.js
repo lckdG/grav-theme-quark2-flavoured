@@ -62,7 +62,13 @@
         }
 
         var commands = window.Quark2TerminalCommands || {};
-        var shell = { term: term, pages: pages, outputs: outputs, commands: commands, print: print, text: text };
+        if (term.dataset.commands) {
+            commands = Object.fromEntries(JSON.parse(term.dataset.commands).filter(function (name) {
+                return Object.hasOwn(commands, name);
+            }).map(function (name) { return [name, commands[name]]; }));
+        }
+        var allowed = JSON.parse(term.dataset.allowed || '{}');
+        var shell = { term: term, pages: pages, allowed: allowed, outputs: outputs, commands: commands, print: print, text: text };
 
         function run(input) {
             var parts = input.trim().split(/\s+/);
