@@ -1,0 +1,18 @@
+.chip.chip-status {
+  gap: 0.375rem;
+  height: 26px;
+  padding: 0 0.75rem;
+  background: color-mix(in oklab, var(--q2-rarity-uncommon) 14%, transparent);
+  border: 0;
+  font-family: var(--pico-font-family-monospace);
+  font-size: 0.75rem;
+  color: var(--q2-rarity-uncommon);
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+}

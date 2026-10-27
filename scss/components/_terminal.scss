@@ -1,0 +1,255 @@
+@use '../breakpoints' as *;
+
+$gb-bg0-hard: #1d2021;
+$gb-bg0: #282828;
+$gb-bg1: #3c3836;
+$gb-bg2: #504945;
+$gb-bg4: #7c6f64;
+$gb-gray: #928374;
+$gb-fg4: #a89984;
+$gb-fg2: #d5c4a1;
+$gb-fg1: #ebdbb2;
+$gb-fg0: #fbf1c7;
+$gb-red: #fb4934;
+$gb-green: #b8bb26;
+$gb-yellow: #fabd2f;
+$gb-blue: #83a598;
+$gb-purple: #d3869b;
+$gb-aqua: #8ec07c;
+$gb-orange: #fe8019;
+$gb-green-dim: #98971a;
+$gb-yellow-dim: #d79921;
+$gb-red-dim: #cc241d;
+
+.terminal {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 14px;
+  background: $gb-bg0-hard;
+  box-shadow: 0 10px 30px rgba(36, 26, 46, 0.08);
+  font-family: var(--pico-font-family-monospace);
+  color: $gb-fg1;
+
+  @media (max-width: $phone) {
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(36, 26, 46, 0.08);
+  }
+
+  :root[data-theme="dark"] & {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+}
+
+.term {
+  &-bar {
+    display: flex;
+    height: 22px;
+    background: $gb-bg0;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    line-height: 22px;
+    white-space: nowrap;
+
+    b {
+      font-weight: inherit;
+      color: $gb-yellow-dim;
+    }
+
+    i {
+      font-style: normal;
+    }
+  }
+
+  &-tabs {
+    display: flex;
+    gap: 7px;
+    margin-left: 20px;
+  }
+
+  &-tab {
+    padding: 0 7px;
+    background: $gb-bg1;
+    color: $gb-gray;
+
+    &.is-active {
+      background: $gb-fg1;
+      color: $gb-bg0;
+    }
+  }
+
+  &-body {
+    flex: 1;
+    padding: 28px 24px 24px;
+    font-size: 0.9375rem;
+    line-height: 29px;
+
+    @media (max-width: $phone) {
+      padding: 24px 16px 13px;
+      font-size: 0.8125rem;
+      line-height: 20px;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &-out {
+    margin-bottom: 29px;
+    white-space: pre-wrap;
+
+    &:has(+ .term-input) {
+      margin-bottom: 6px;
+    }
+
+    &,
+    &:has(+ .term-input) {
+      @media (max-width: $phone) {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &-prompt {
+    color: $gb-yellow;
+  }
+
+  &-input {
+    margin: 0 -16px;
+    padding: 0 16px;
+    border-radius: 4px;
+    background: $gb-bg1;
+    line-height: 28px;
+
+    @media (max-width: $phone) {
+      margin: 0 -8px;
+      padding: 0 8px;
+      line-height: 24px;
+    }
+  }
+
+  &-cursor {
+    animation: term-blink 1s steps(1) infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+}
+
+@keyframes term-blink {
+  50% { opacity: 0; }
+}
+
+.seg {
+  position: relative;
+  padding: 0 7px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 7px;
+    height: 100%;
+  }
+
+  &-profile {
+    --sep-to: #{$gb-bg0};
+    margin-right: 7px;
+    background: $gb-bg4;
+    color: $gb-fg0;
+
+    &::after {
+      left: 100%;
+      background: linear-gradient(to top right, $gb-bg4 50%, var(--sep-to) 50%);
+    }
+
+    &:has(+ .seg-cwd) {
+      --sep-to: #{$gb-bg2};
+
+      @media (max-width: $phone) {
+        --sep-to: #{$gb-bg0};
+      }
+    }
+  }
+
+  &-cwd {
+    margin-right: 7px;
+    padding-left: 14px;
+    background: $gb-bg2;
+    color: $gb-fg2;
+
+    &::after {
+      left: 100%;
+      background: linear-gradient(to top right, $gb-bg2 50%, $gb-bg0 50%);
+    }
+  }
+
+  &-git {
+    margin-left: auto;
+    background: $gb-bg0-hard;
+    color: $gb-fg4;
+
+    b {
+      color: $gb-orange;
+    }
+
+    &::after {
+      right: 100%;
+      background: linear-gradient(to bottom right, $gb-bg0 50%, $gb-bg0-hard 50%);
+    }
+  }
+
+  &-cwd,
+  &-git {
+    @media (max-width: $phone) {
+      display: none;
+    }
+  }
+
+  &-clock {
+    --sep-from: #{$gb-bg0};
+    margin-left: auto;
+    padding-right: 14px;
+    background: $gb-bg4;
+    color: $gb-fg0;
+
+    &::after {
+      right: 100%;
+      background: linear-gradient(to bottom right, var(--sep-from) 50%, $gb-bg4 50%);
+    }
+
+    .seg-git + & {
+      --sep-from: #{$gb-bg0-hard};
+      margin-left: 14px;
+
+      @media (max-width: $phone) {
+        --sep-from: #{$gb-bg0};
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+.t-git {
+  &-add { color: $gb-green-dim; }
+  &-mod { color: $gb-yellow-dim; }
+  &-del { color: $gb-red-dim; }
+}
+
+$term-colors: (
+  "red": $gb-red,
+  "green": $gb-green,
+  "yellow": $gb-yellow,
+  "blue": $gb-blue,
+  "purple": $gb-purple,
+  "aqua": $gb-aqua,
+  "orange": $gb-orange,
+  "gray": $gb-fg4,
+);
+
+@each $name, $color in $term-colors {
+  .t-#{$name} { color: $color; }
+}

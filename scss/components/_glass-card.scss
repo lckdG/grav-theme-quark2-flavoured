@@ -1,0 +1,7 @@
+.glass-card {
+  background: var(--q2-card-bg);
+  border: 1px solid var(--q2-card-border);
+  border-radius: 18px;
+  box-shadow: var(--q2-card-shadow);
+  backdrop-filter: var(--q2-glass-blur);
+}

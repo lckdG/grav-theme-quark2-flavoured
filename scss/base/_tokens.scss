@@ -1,0 +1,99 @@
+:root,
+:root[data-theme="light"] {
+  --q2-bg: #f4ecdc;
+  --q2-bg-elev: #fbf6ec;
+  --q2-bg-muted: #e8dcc5;
+  --q2-bg-inverse: #140f1c;
+
+  --q2-text: #241a2e;
+  --q2-text-strong: #140f1c;
+  --q2-text-muted: #6b5f73;
+  --q2-text-inverse: #fbf6ec;
+
+  --q2-border-ring: rgba(36, 26, 46, 0.08);
+  --q2-border-strong: rgba(36, 26, 46, 0.14);
+  --q2-divider: rgba(36, 26, 46, 0.08);
+
+  --q2-nav-bg: rgba(244, 236, 220, 0.78);
+  --q2-nav-border: rgba(36, 26, 46, 0.08);
+
+  --q2-accent-2: #0b6e85;
+  --q2-accent-3: #85600a;
+
+  --q2-rarity-common: #6b5f73;
+  --q2-rarity-uncommon: #2a7336;
+  --q2-rarity-rare: #1f5fb5;
+  --q2-rarity-epic: #7a3bb0;
+  --q2-rarity-legendary: #a8460b;
+  --q2-rarity-mythic: #85600a;
+  --q2-rarity-cursed: #b51d36;
+
+  --q2-glow-light: rgba(255, 255, 255, 0.55);
+  --q2-glow-shade: rgba(217, 199, 164, 0.55);
+
+  --q2-shadow-card:
+    rgba(36, 26, 46, 0.14) 0 0 0 1px,
+    rgba(70, 45, 20, 0.12) 0 6px 18px -6px;
+
+  --q2-link: color-mix(in oklab, var(--q2-accent) 55%, black);
+
+  --q2-card-bg: rgba(251, 246, 236, 0.62);
+  --q2-card-border: rgba(255, 255, 255, 0.75);
+  --q2-card-shadow: 0 6px 18px rgba(36, 26, 46, 0.08);
+  --q2-card-divider: rgba(36, 26, 46, 0.12);
+  --q2-track: rgba(217, 199, 164, 0.5);
+  --q2-tile-bg: rgba(255, 255, 255, 0.85);
+  --q2-tile-border: rgba(36, 26, 46, 0.08);
+
+  --q2-footer-bg: #140f1c;
+  --q2-footer-text: #c9bfd2;
+}
+
+:root[data-theme="dark"] {
+  --q2-bg: #12151a;
+  --q2-bg-elev: #1b1f26;
+  --q2-bg-muted: #272c35;
+  --q2-bg-inverse: #e4e7eb;
+
+  --q2-text: #e4e7eb;
+  --q2-text-strong: #ffffff;
+  --q2-text-muted: #97a1ae;
+  --q2-text-inverse: #12151a;
+
+  --q2-border-ring: rgba(228, 231, 235, 0.14);
+  --q2-border-strong: rgba(228, 231, 235, 0.2);
+  --q2-divider: rgba(228, 231, 235, 0.1);
+
+  --q2-nav-bg: rgba(18, 21, 26, 0.78);
+  --q2-nav-border: rgba(228, 231, 235, 0.06);
+
+  --q2-accent-2: #5cd0e6;
+  --q2-accent-3: #f2c44e;
+
+  --q2-rarity-common: #b4b9c0;
+  --q2-rarity-uncommon: #6fd67f;
+  --q2-rarity-rare: #5ea2ff;
+  --q2-rarity-epic: #b884f5;
+  --q2-rarity-legendary: #ff9548;
+  --q2-rarity-mythic: #f2c44e;
+  --q2-rarity-cursed: #f0566e;
+
+  --q2-glow-light: rgba(58, 68, 82, 0.45);
+  --q2-glow-shade: rgba(6, 8, 11, 0.6);
+
+  --q2-card-bg: rgba(27, 31, 38, 0.6);
+  --q2-card-border: rgba(255, 255, 255, 0.07);
+  --q2-card-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  --q2-card-divider: rgba(228, 231, 235, 0.12);
+  --q2-track: #272c35;
+  --q2-tile-bg: rgba(228, 231, 235, 0.92);
+  --q2-tile-border: transparent;
+
+  --q2-footer-bg: #0b0d10;
+  --q2-footer-text: #97a1ae;
+}
+
+:root,
+:root[data-theme="dark"] {
+  --q2-accent-contrast: lch(from var(--q2-accent) calc((l - 60) * -100) 0 h);
+}

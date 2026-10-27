@@ -1,0 +1,15 @@
+@use '../breakpoints' as *;
+
+.home-hero {
+  display: grid;
+  gap: 24px;
+  margin: 3rem 0;
+
+  @media (min-width: $desktop) {
+    grid-template-columns: minmax(0, 1fr) 480px;
+
+    > .character-card {
+      grid-column: 2;
+    }
+  }
+}

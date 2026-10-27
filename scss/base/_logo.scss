@@ -1,0 +1,6 @@
+.navbar-brand {
+  :root[data-theme="dark"] & .logo-light,
+  :root:not([data-theme="dark"]) & .logo-dark {
+    display: none;
+  }
+}

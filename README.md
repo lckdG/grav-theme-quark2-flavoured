@@ -188,7 +188,7 @@ When `show_sidebar` is true but no sidebar plugins are enabled, the sidebar grac
 
 ### Custom CSS
 
-The theme loads `css/custom.css` last. Any rules placed there win over the theme's own styles without needing `!important`. This is the safest place to add site-specific tweaks without modifying the theme itself (so you can still pull in theme updates).
+The theme loads `css/custom.css` last. Any rules placed there win over the theme's own styles without needing `!important`. This is the safest place to add site-specific tweaks without modifying the theme itself (so you can still pull in theme updates). In this theme `css/custom.css` is generated from the Sass sources in `scss/` (entry point `scss/custom.scss`), so edit those and run `npm run build:scss`, or `npm run watch:scss` while working.
 
 ### Design tokens
 
@@ -220,13 +220,13 @@ If your replacement face is not a system font, load it first (a `@font-face` blo
 The base CSS comes from [Blades CSS](https://github.com/anyblades/blades) and ships pre-built as `css/blades.min.css`. The version is pinned in `package.json`. To rebuild it:
 
     npm install      # installs the pinned Blades release + the minifier
-    npm run build    # writes css/blades.min.css
+    npm run build    # writes css/blades.min.css and css/custom.css
 
 To move to a newer Blades release:
 
     npm update @anyblades/blades && npm run build
 
-`node_modules` is git-ignored and only the built `css/blades.min.css` is committed, so sites installing the theme need no Node toolchain.
+`node_modules` is git-ignored and only the built `css/blades.min.css` and `css/custom.css` are committed, so sites installing the theme need no Node toolchain.
 
 ## Disqus / JSComments dark-mode workaround
 

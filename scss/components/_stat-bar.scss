@@ -1,0 +1,44 @@
+.stat {
+  &-bars {
+    display: grid;
+    gap: 13px;
+    margin: 0 0 1rem;
+  }
+
+  &-bar {
+    display: grid;
+    grid-template-columns: 84px 1fr 5rem;
+    align-items: center;
+    font-family: var(--pico-font-family-monospace);
+    font-size: 0.75rem;
+    line-height: 1.2;
+    color: var(--q2-text-muted);
+
+    dt {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    dd {
+      margin: 0;
+    }
+  }
+
+  &-track {
+    height: 8px;
+    border-radius: 4px;
+    background: var(--q2-track);
+    overflow: hidden;
+
+    span {
+      display: block;
+      height: 100%;
+      border-radius: 4px;
+      background: var(--rarity);
+    }
+  }
+
+  &-value {
+    text-align: right;
+  }
+}

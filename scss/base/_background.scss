@@ -1,0 +1,29 @@
+:root {
+  --q2-glass: rgba(255, 255, 255, 0.72);
+  --q2-glass-blur: blur(16px) saturate(140%);
+}
+
+:root[data-theme="dark"] {
+  --q2-glass: color-mix(in oklab, var(--q2-bg-elev) 65%, transparent);
+}
+
+html {
+  background:
+    radial-gradient(60vmax 45vmax at 8% 0%, color-mix(in oklab, var(--q2-accent) 12%, transparent), transparent 70%),
+    radial-gradient(50vmax 40vmax at 100% 40%, var(--q2-glow-light), transparent 70%),
+    radial-gradient(55vmax 45vmax at 25% 100%, var(--q2-glow-shade), transparent 70%),
+    var(--q2-bg);
+  background-attachment: fixed;
+}
+
+body,
+#body-wrapper,
+.modular-features {
+  background: transparent;
+}
+
+.modular-features .column,
+#body-wrapper > .container > .content-item {
+  background: var(--q2-glass);
+  backdrop-filter: var(--q2-glass-blur);
+}

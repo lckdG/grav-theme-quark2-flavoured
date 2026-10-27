@@ -1,0 +1,3 @@
+@each $tier in common, uncommon, rare, epic, legendary, mythic, cursed {
+  .rarity-#{$tier} { --rarity: var(--q2-rarity-#{$tier}); }
+}

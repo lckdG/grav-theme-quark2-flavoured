@@ -6,12 +6,15 @@
   "license": "MIT",
   "scripts": {
     "build:css": "cleancss -o css/blades.min.css node_modules/@anyblades/blades/css/blades.css",
-    "build": "npm run build:css"
+    "build:scss": "sass --no-source-map scss/custom.scss css/custom.css",
+    "watch:scss": "sass --no-source-map --watch scss/custom.scss css/custom.css",
+    "build": "npm run build:css && npm run build:scss"
   },
   "dependencies": {
     "@anyblades/blades": "^2.3.0"
   },
   "devDependencies": {
-    "clean-css-cli": "^5.6.3"
+    "clean-css-cli": "^5.6.3",
+    "sass": "^1.106.1"
   }
 }

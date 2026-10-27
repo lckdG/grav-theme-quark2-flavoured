@@ -1,0 +1,29 @@
+:root {
+  --q2-hover-bg: #ffffff;
+  --q2-hover-shadow:
+    0 0 0 1.5px var(--q2-link),
+    0 14px 30px -12px color-mix(in oklab, var(--q2-link) 45%, transparent);
+}
+
+:root[data-theme="dark"] {
+  --q2-hover-bg: var(--q2-bg-elev);
+  --q2-hover-shadow:
+    var(--q2-shadow-raised),
+    0 0 0 1px var(--q2-accent),
+    0 0 24px color-mix(in oklab, var(--q2-accent) 25%, transparent);
+}
+
+.modular-features.projects .column,
+.modular-features.skills .column,
+.timeline .timeline-body {
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+
+  &:is(:hover, :focus-within) {
+    background: var(--q2-hover-bg);
+    box-shadow: var(--q2-hover-shadow);
+    transform: translateY(-2px);
+  }
+}

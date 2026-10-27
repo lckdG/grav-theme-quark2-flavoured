@@ -1,0 +1,14 @@
+$alert-tiers: (
+  tip: uncommon,
+  note: rare,
+  important: epic,
+  warning: legendary,
+  caution: cursed,
+);
+
+@each $alert, $tier in $alert-tiers {
+  .markdown-alert-#{$alert},
+  :root[data-theme="dark"] .markdown-alert-#{$alert} {
+    --alert-accent: var(--q2-rarity-#{$tier});
+  }
+}

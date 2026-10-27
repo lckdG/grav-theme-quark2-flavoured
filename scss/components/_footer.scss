@@ -1,0 +1,39 @@
+@use '../breakpoints' as *;
+
+#footer {
+  padding-block: 27px;
+  border-top: 0;
+  background: var(--q2-footer-bg);
+  color: var(--q2-footer-text);
+  font-size: 0.9375rem;
+  text-align: left;
+
+  @media (max-width: $tablet) {
+    padding-block: 24px;
+    font-size: 0.8125rem;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem 2rem;
+
+    @media (max-width: $tablet) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  a {
+    color: inherit;
+    font-weight: 400;
+  }
+
+  .footer-flavour {
+    @media (max-width: $tablet) {
+      display: none;
+    }
+  }
+}
