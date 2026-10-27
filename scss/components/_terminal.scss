@@ -40,6 +40,10 @@ $gb-red-dim: #cc241d;
   :root[data-theme="dark"] & {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.08);
   }
+
+  &.is-typing :is(.term-cmd, .term-out):not(.is-shown) {
+    visibility: hidden;
+  }
 }
 
 .term {
