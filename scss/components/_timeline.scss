@@ -67,6 +67,7 @@
   }
 
   &-badge {
+    position: relative;
     display: inline-flex;
     align-items: center;
     height: 24px;
@@ -79,6 +80,20 @@
     letter-spacing: 0.5px;
     text-transform: uppercase;
     color: var(--q2-rarity-mythic);
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      animation: q2-ripple 5s var(--q2-ease-out) infinite;
+      pointer-events: none;
+    }
+
+    &::after {
+      animation-delay: 0.3s;
+    }
   }
 
   &-date {

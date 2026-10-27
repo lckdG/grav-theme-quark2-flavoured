@@ -57,3 +57,14 @@
     transform: scale(0.6);
   }
 }
+
+@keyframes q2-ripple {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--q2-rarity-mythic) 70%, transparent);
+  }
+
+  40%,
+  100% {
+    box-shadow: 0 0 0 12px transparent;
+  }
+}

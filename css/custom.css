@@ -236,6 +236,14 @@
     transform: scale(0.6);
   }
 }
+@keyframes q2-ripple {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--q2-rarity-mythic) 70%, transparent);
+  }
+  40%, 100% {
+    box-shadow: 0 0 0 12px transparent;
+  }
+}
 @keyframes q2-reveal {
   from {
     opacity: 0;
@@ -2248,6 +2256,7 @@ dialog.project-panel[open] > article {
   margin-bottom: 8px;
 }
 .timeline-badge {
+  position: relative;
   display: inline-flex;
   align-items: center;
   height: 24px;
@@ -2260,6 +2269,17 @@ dialog.project-panel[open] > article {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   color: var(--q2-rarity-mythic);
+}
+.timeline-badge::before, .timeline-badge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  animation: q2-ripple 5s var(--q2-ease-out) infinite;
+  pointer-events: none;
+}
+.timeline-badge::after {
+  animation-delay: 0.3s;
 }
 .timeline-date {
   font-family: var(--pico-font-family-monospace);
