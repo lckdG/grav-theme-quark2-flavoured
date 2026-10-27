@@ -93,8 +93,11 @@ $gb-red-dim: #cc241d;
       line-height: 20px;
     }
 
-    p {
+    :where(p) {
       margin: 0;
+      font-size: inherit;
+      line-height: inherit;
+      color: inherit;
     }
   }
 

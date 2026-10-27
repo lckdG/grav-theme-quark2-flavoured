@@ -80,6 +80,12 @@
       padding: 16px 0;
     }
 
+    &:not(:has(.loot-icon)) .loot-name {
+      @media (max-width: $phone) {
+        grid-column: 1 / -1;
+      }
+    }
+
     &:hover .loot-name {
       color: var(--q2-accent);
     }

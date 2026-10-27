@@ -70,7 +70,8 @@
   src: url("../fonts/jetbrains-mono/jetbrains-mono-latin.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-:root {
+:root,
+:root[data-theme=light] {
   --pico-font-family-sans-serif: "Vollkorn", Georgia, "Times New Roman", serif;
   --pico-font-family-display: "Vollkorn", Georgia, serif;
   --pico-font-family-monospace:
@@ -715,6 +716,11 @@ body,
     align-items: flex-start;
   }
 }
+#footer p {
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
 #footer a {
   color: inherit;
   font-weight: 400;
@@ -791,8 +797,11 @@ body,
     line-height: 20px;
   }
 }
-.term-body p {
+.term-body :where(p) {
   margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
 }
 .term-out {
   margin-bottom: 29px;
@@ -1030,6 +1039,11 @@ body,
     grid-template-areas: "tag tag date" "icon name name";
     row-gap: 8px;
     padding: 16px 0;
+  }
+}
+@media (max-width: 600px) {
+  .loot-row:not(:has(.loot-icon)) .loot-name {
+    grid-column: 1/-1;
   }
 }
 .loot-row:hover .loot-name {
