@@ -817,13 +817,13 @@ body,
   color: #fabd2f;
 }
 .term-input {
-  position: relative;
   flex-shrink: 0;
   margin: auto -16px 0;
   padding: 0 16px;
   border-radius: 4px;
   background: #3c3836;
   line-height: 28px;
+  white-space: nowrap;
 }
 @media (max-width: 600px) {
   .term-input {
@@ -832,23 +832,30 @@ body,
     line-height: 24px;
   }
 }
-.term-input:focus-within {
-  outline: 2px solid var(--q2-focus-ring);
-}
-.term-field {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.term-input .term-field {
+  width: 2px;
+  max-width: calc(100% - 3ch);
+  height: auto;
   margin: 0;
   padding: 0;
   border: 0;
-  opacity: 0;
-  font-size: 16px;
-  cursor: text;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+  opacity: 1;
+  color: inherit;
+  -webkit-text-fill-color: currentColor;
+  caret-color: #fabd2f;
+  font: inherit;
+  line-height: inherit;
+  vertical-align: top;
 }
-.term-field:disabled {
-  cursor: default;
+.term-input .term-field:disabled {
+  opacity: 1;
+}
+.term-input .term-field:focus + .term-cursor {
+  display: none;
 }
 .term-cursor {
   animation: term-blink 1s steps(1) infinite;

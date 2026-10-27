@@ -8,11 +8,16 @@
         return new Promise(function (resolve) { setTimeout(resolve, ms); });
     }
 
+    function fill(field, value) {
+        field.value = value;
+        field.style.width = 'calc(' + value.length + 'ch + 2px)';
+    }
+
     async function play(term) {
-        var typed = term.querySelector('.term-typed');
+        var field = term.querySelector('.term-field');
         var lines = term.querySelectorAll('.term-cmd, .term-out');
 
-        await wait(800);
+        await wait(2000);
         for (var i = 0; i < lines.length; i++) {
             var line = lines[i];
             if (line.classList.contains('term-out')) {
@@ -22,11 +27,11 @@
             }
             var command = line.lastChild.textContent.trim();
             for (var c = 0; c < command.length; c++) {
-                typed.textContent += command[c];
+                fill(field, field.value + command[c]);
                 await wait(30 + Math.random() * 40);
             }
             await wait(100);
-            typed.textContent = '';
+            fill(field, '');
             line.classList.add('is-shown');
         }
     }
@@ -34,7 +39,6 @@
     function interactive(term) {
         var body = term.querySelector('.term-body');
         var inputLine = term.querySelector('.term-input');
-        var typed = term.querySelector('.term-typed');
         var field = term.querySelector('.term-field');
         var pages = JSON.parse(term.dataset.pages || '{}');
         var past = [];
@@ -73,7 +77,7 @@
         }
 
         field.addEventListener('input', function () {
-            typed.textContent = field.value;
+            fill(field, field.value);
         });
 
         field.addEventListener('keydown', function (event) {
@@ -82,12 +86,12 @@
                 if (field.value.trim()) past.push(field.value);
                 cursor = past.length;
                 run(field.value);
-                field.value = typed.textContent = '';
+                fill(field, '');
                 body.scrollTop = body.scrollHeight;
             } else if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
                 event.preventDefault();
                 cursor = Math.max(0, Math.min(past.length, cursor + (event.key === 'ArrowUp' ? -1 : 1)));
-                field.value = typed.textContent = past[cursor] || '';
+                fill(field, past[cursor] || '');
             }
         });
 
