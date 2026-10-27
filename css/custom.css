@@ -1113,10 +1113,12 @@ body,
   border: 1px solid var(--q2-icon-btn-border);
   border-radius: 8px;
   background: var(--q2-icon-btn-bg);
-  transition: border-color 0.15s;
+  transition: border-color var(--q2-dur-fast) var(--q2-ease-out), box-shadow var(--q2-dur-fast) var(--q2-ease-out), translate var(--q2-dur-fast) var(--q2-ease-out);
 }
-.icon-btn:hover {
+.icon-btn:hover, .icon-btn:focus-visible {
   border-color: var(--q2-accent);
+  box-shadow: 0 6px 18px color-mix(in oklab, var(--q2-accent) 35%, transparent);
+  translate: 0 -3px;
 }
 .icon-btn img {
   width: 24px;
@@ -2144,10 +2146,16 @@ dialog.project-panel[open] > article {
     width: 56px;
   }
 }
+.skill:hover .icon-tile {
+  border-color: var(--q2-accent);
+  box-shadow: 0 6px 18px color-mix(in oklab, var(--q2-accent) 35%, transparent);
+  translate: 0 -3px;
+}
 .skill .icon-tile {
   width: 52px;
   height: 52px;
   border-radius: 14px;
+  transition: border-color var(--q2-dur-fast) var(--q2-ease-out), box-shadow var(--q2-dur-fast) var(--q2-ease-out), translate var(--q2-dur-fast) var(--q2-ease-out);
 }
 .skill .icon-tile img {
   width: 34px;

@@ -77,10 +77,20 @@
       width: 56px;
     }
 
+    &:hover .icon-tile {
+      border-color: var(--q2-accent);
+      box-shadow: 0 6px 18px color-mix(in oklab, var(--q2-accent) 35%, transparent);
+      translate: 0 -3px;
+    }
+
     .icon-tile {
       width: 52px;
       height: 52px;
       border-radius: 14px;
+      transition:
+        border-color var(--q2-dur-fast) var(--q2-ease-out),
+        box-shadow var(--q2-dur-fast) var(--q2-ease-out),
+        translate var(--q2-dur-fast) var(--q2-ease-out);
 
       img {
         width: 34px;
