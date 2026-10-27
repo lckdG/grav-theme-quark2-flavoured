@@ -3,9 +3,27 @@
 .character {
   &-card {
     padding: 24px;
+    animation: q2-slide-in var(--q2-dur-slow) var(--q2-ease-out) both;
+
+    .stat-track span {
+      transform-origin: left;
+      animation: q2-fill var(--q2-dur) var(--q2-ease-out) both;
+      animation-delay: calc(var(--q2-dur) * (var(--i, 0) + 1));
+    }
 
     .icon-row {
       margin-bottom: 10px;
+
+      .icon-tile {
+        animation: q2-pop var(--q2-dur) var(--q2-ease-out) both;
+        animation-delay: var(--q2-dur-slow);
+
+        @for $n from 2 through 8 {
+          &:nth-child(#{$n}) {
+            animation-delay: calc(var(--q2-dur-slow) + #{($n - 1) * 60}ms);
+          }
+        }
+      }
     }
 
     &.is-round {
