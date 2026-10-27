@@ -21,6 +21,9 @@ en:
     CHARACTER:
       STATS: "Stats"
       EQUIPPED: "Equipped"
+    LOOT:
+      TITLE: "Latest loot"
+      ALL_POSTS: "all posts"
     THEME_TOGGLE:
       LABEL: "Appearance"
       AUTO: "Auto"
@@ -65,6 +68,9 @@ es:
     CHARACTER:
       STATS: "Estadísticas"
       EQUIPPED: "Equipado"
+    LOOT:
+      TITLE: "Último botín"
+      ALL_POSTS: "todas las entradas"
     THEME_TOGGLE:
       LABEL: "Apariencia"
       AUTO: "Automático"

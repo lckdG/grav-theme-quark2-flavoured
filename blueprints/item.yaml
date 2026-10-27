@@ -11,6 +11,29 @@ form:
 
           fields:
 
+            loot_options:
+              type: section
+              title: Loot
+              underline: true
+
+            header.rarity:
+              type: select
+              label: Rarity
+              default: common
+              options:
+                common: Common
+                uncommon: Uncommon
+                rare: Rare
+                epic: Epic
+                legendary: Legendary
+                mythic: Mythic
+                cursed: Cursed
+
+            header.icon:
+              type: filepicker
+              label: Topic Icon
+              preview_images: true
+
             header_options:
               type: section
               title: Header Options

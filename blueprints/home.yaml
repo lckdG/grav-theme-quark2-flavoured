@@ -9,6 +9,45 @@ form:
           type: tab
           title: Home
 
+          fields:
+            loot:
+              type: section
+              title: Latest Loot
+
+            header.content.items:
+              type: textarea
+              yaml: true
+              label: Items
+              default: "'@page.children': '/blog'"
+              validate:
+                type: yaml
+
+            header.content.limit:
+              type: text
+              label: Max Item Count
+              default: 5
+              validate:
+                type: int
+                min: 1
+
+            header.content.order.by:
+              type: select
+              label: Order By
+              default: date
+              options:
+                folder: Folder
+                title: Title
+                date: Date
+                default: Default
+
+            header.content.order.dir:
+              type: select
+              label: Order
+              default: desc
+              options:
+                asc: Ascending
+                desc: Descending
+
           character:
             type: section
             title: Character Card

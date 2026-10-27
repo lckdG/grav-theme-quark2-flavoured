@@ -1,0 +1,27 @@
+{% import 'macros/macros.html.twig' as macros %}
+{% set posts = page.collection() %}
+{% set blog = page.find(theme_var('blog-page')) %}
+
+{% if posts|length %}
+<section class="loot">
+    <header class="loot-head">
+        <h2 class="loot-title">{{ 'THEME_QUARK2.LOOT.TITLE'|t }}</h2>
+        {% if blog %}<a class="loot-all" href="{{ blog.url }}">{{ 'THEME_QUARK2.LOOT.ALL_POSTS'|t }} →</a>{% endif %}
+    </header>
+    <ul class="loot-list glass-card">
+        {% for post in posts %}
+            {% set rarity = post.header.rarity|default('common') %}
+            <li>
+                <a class="loot-row rarity-{{ rarity }}" href="{{ post.url }}">
+                    <span class="loot-tag">{{ rarity|upper }}</span>
+                    {% if post.header.icon %}
+                        <ul class="loot-icon">{{ macros.icon_tile(post, { image: post.header.icon, title: post.title }) }}</ul>
+                    {% endif %}
+                    <span class="loot-name">{{ post.title }}</span>
+                    <time class="loot-date" datetime="{{ post.date|date('c') }}">{{ post.date|date('M j') }}</time>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endif %}
