@@ -8,6 +8,7 @@ form:
         home:
           type: tab
           title: Home
-          fields:
-            import@:
-              type: partials/character
+
+          import@:
+            type: partials/character
+            context: theme://blueprints
