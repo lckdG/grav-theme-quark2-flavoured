@@ -14,7 +14,7 @@ form:
             title: Character Card
             underline: true
 
-          import@:
+          import@1:
             type: partials/character
             context: theme://blueprints
 
@@ -22,6 +22,6 @@ form:
             type: section
             title: Terminal Card
 
-          import@:
+          import@2:
             type: partials/terminal
             context: theme://blueprints
