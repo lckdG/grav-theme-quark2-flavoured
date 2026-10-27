@@ -15,6 +15,11 @@
         <div class="project-body">
             <span class="project-rarity">{{ rarity|upper }}</span>
             <h3 class="project-title">{{ project.header }}</h3>
+            {% if project.genres %}
+                <ul class="project-tags">
+                    {% for genre in project.genres %}<li class="chip">{{ genre.text }}</li>{% endfor %}
+                </ul>
+            {% endif %}
             {% set text = size == 'compact' ? project.summary : project.text %}
             {% if text %}<p class="project-text">{{ text }}</p>{% endif %}
             <footer class="project-foot">

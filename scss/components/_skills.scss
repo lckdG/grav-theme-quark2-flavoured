@@ -14,6 +14,7 @@
 
   &-group {
     padding: 20px 24px 16px;
+    border-color: color-mix(in oklab, var(--rarity) 40%, var(--q2-card-border));
     border-radius: 14px;
 
     @media (max-width: $phone) {
@@ -31,23 +32,9 @@
     text-transform: uppercase;
     color: var(--rarity);
 
-    &::before {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 4px;
-      margin-bottom: 10px;
-      border-radius: 2px;
-      background: var(--rarity);
-    }
-
     @media (max-width: $phone) {
       margin-bottom: 10px;
       font-size: 0.6875rem;
-
-      &::before {
-        margin-bottom: 8px;
-      }
     }
   }
 

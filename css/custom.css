@@ -112,6 +112,7 @@
   --q2-card-bg: rgba(251, 246, 236, 0.62);
   --q2-card-border: rgba(255, 255, 255, 0.75);
   --q2-card-shadow: 0 6px 18px rgba(36, 26, 46, 0.08);
+  --q2-shadow-raised: 0 12px 28px -8px rgba(70, 45, 20, 0.18);
   --q2-card-divider: rgba(36, 26, 46, 0.12);
   --q2-track: rgba(217, 199, 164, 0.5);
   --q2-tile-bg: #ffffff;
@@ -159,6 +160,7 @@
   --q2-card-bg: rgba(27, 31, 38, 0.6);
   --q2-card-border: rgba(255, 255, 255, 0.07);
   --q2-card-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  --q2-shadow-raised: 0 12px 28px -8px rgba(0, 0, 0, 0.6);
   --q2-card-divider: rgba(228, 231, 235, 0.12);
   --q2-track: #272c35;
   --q2-tile-bg: #eef0f3;
@@ -1405,11 +1407,13 @@ body,
   display: flex;
   flex-direction: column;
   padding: 16px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-color: color-mix(in oklab, var(--rarity) 40%, var(--q2-card-border));
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 .project-card:is(:hover, :has(.project-details:focus-visible)) {
   transform: translateY(-2px);
-  box-shadow: var(--q2-hover-shadow);
+  border-color: var(--rarity);
+  box-shadow: 0 14px 30px -12px color-mix(in oklab, var(--rarity) 45%, transparent);
 }
 .project-card.is-compact {
   flex-direction: row;
@@ -1461,64 +1465,83 @@ body,
   padding: 0;
 }
 .project-rarity {
-  font-family: var(--pico-font-family-monospace);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  line-height: 1.2;
-  color: var(--rarity);
-}
-.project-rarity::before {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 4px;
-  margin-bottom: 8px;
-  border-radius: 2px;
-  background: var(--rarity);
-}
-.is-compact .project-rarity {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  letter-spacing: 1.2px;
-}
-.is-compact .project-rarity::before {
-  width: 8px;
-  height: 8px;
-  margin: 0;
-}
-@media (max-width: 600px) {
-  .is-compact .project-rarity {
-    gap: 6px;
-    font-size: 0.625rem;
-  }
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 .project-title {
-  margin: 6px 0 7px;
+  margin: 6px 0 4px;
   font-family: var(--pico-font-family-display);
   font-size: 1.625rem;
   font-weight: 700;
   line-height: 1.2;
-  color: var(--q2-text-strong);
+  color: var(--rarity);
 }
 .project-title::before {
   display: none;
 }
 @media (max-width: 600px) {
   .project-title {
-    margin: 4px 0 6px;
+    margin: 4px 0;
     font-size: 1.4375rem;
   }
 }
 .is-compact .project-title {
-  margin: 5px 0 6px;
+  margin: 0 0 4px;
   font-size: 1.25rem;
 }
 @media (max-width: 600px) {
   .is-compact .project-title {
-    margin: 4px 0 2px;
+    margin: 0 0 2px;
     font-size: 1.125rem;
+  }
+}
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 7px;
+  padding: 0;
+  list-style: none;
+}
+@media (max-width: 600px) {
+  .project-tags {
+    margin-bottom: 6px;
+  }
+}
+.project-tags .chip {
+  height: 22px;
+  margin: 0;
+  padding: 0 8px;
+  border: 0;
+  background: color-mix(in oklab, var(--rarity) 14%, transparent);
+  font-family: var(--pico-font-family-monospace);
+  font-size: 0.6875rem;
+  line-height: 22px;
+  color: var(--q2-text-muted);
+}
+.is-compact .project-tags {
+  flex-wrap: nowrap;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+.is-compact .project-tags .chip {
+  height: 18px;
+  padding: 0 7px;
+  font-size: 0.625rem;
+  line-height: 18px;
+}
+@media (max-width: 600px) {
+  .is-compact .project-tags {
+    margin-bottom: 4px;
+  }
+  .is-compact .project-tags .chip {
+    height: 16px;
+    padding: 0 6px;
+    line-height: 16px;
   }
 }
 .project-text {
@@ -1774,7 +1797,7 @@ dialog.project-panel > article {
   margin: 0;
   padding: 24px 24px 0;
   overflow: hidden;
-  border: 1px solid var(--q2-panel-border);
+  border: 1px solid color-mix(in oklab, var(--rarity) 40%, var(--q2-panel-border));
   border-radius: 20px;
   background: var(--q2-panel-bg);
   box-shadow: 0 24px 64px rgba(20, 15, 28, 0.35);
@@ -1897,21 +1920,13 @@ dialog.project-panel[open] > article {
     padding: 0;
   }
 }
-.panel-info .project-rarity {
-  font-size: 0.75rem;
-}
-@media (max-width: 600px) {
-  .panel-info .project-rarity {
-    font-size: 0.6875rem;
-  }
-}
 .panel-title {
   margin: 4px 0 10px;
   font-family: var(--pico-font-family-display);
   font-size: 1.875rem;
   font-weight: 700;
   line-height: 1.2;
-  color: var(--q2-text-strong);
+  color: var(--rarity);
 }
 .panel-title::before {
   display: none;
@@ -1935,7 +1950,7 @@ dialog.project-panel[open] > article {
   margin: 0;
   padding: 0 10px;
   border: 0;
-  background: color-mix(in oklab, var(--q2-text-muted) 14%, transparent);
+  background: color-mix(in oklab, var(--rarity) 14%, transparent);
   font-family: var(--pico-font-family-monospace);
   font-size: 0.75rem;
   line-height: 24px;
@@ -2127,6 +2142,7 @@ dialog.project-panel[open] > article {
 }
 .skill-group {
   padding: 20px 24px 16px;
+  border-color: color-mix(in oklab, var(--rarity) 40%, var(--q2-card-border));
   border-radius: 14px;
 }
 @media (max-width: 600px) {
@@ -2144,22 +2160,10 @@ dialog.project-panel[open] > article {
   text-transform: uppercase;
   color: var(--rarity);
 }
-.skill-group-title::before {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 4px;
-  margin-bottom: 10px;
-  border-radius: 2px;
-  background: var(--rarity);
-}
 @media (max-width: 600px) {
   .skill-group-title {
     margin-bottom: 10px;
     font-size: 0.6875rem;
-  }
-  .skill-group-title::before {
-    margin-bottom: 8px;
   }
 }
 .skill-list {

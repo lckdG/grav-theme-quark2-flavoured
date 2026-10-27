@@ -36,11 +36,13 @@
     display: flex;
     flex-direction: column;
     padding: 16px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-color: color-mix(in oklab, var(--rarity) 40%, var(--q2-card-border));
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 
     &:is(:hover, :has(.project-details:focus-visible)) {
       transform: translateY(-2px);
-      box-shadow: var(--q2-hover-shadow);
+      border-color: var(--rarity);
+      box-shadow: 0 14px 30px -12px color-mix(in oklab, var(--rarity) 45%, transparent);
     }
 
     &.is-compact {
@@ -97,66 +99,86 @@
   }
 
   &-rarity {
-    font-family: var(--pico-font-family-monospace);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    line-height: 1.2;
-    color: var(--rarity);
-
-    &::before {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 4px;
-      margin-bottom: 8px;
-      border-radius: 2px;
-      background: var(--rarity);
-    }
-
-    .is-compact & {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      letter-spacing: 1.2px;
-
-      &::before {
-        width: 8px;
-        height: 8px;
-        margin: 0;
-      }
-
-      @media (max-width: $phone) {
-        gap: 6px;
-        font-size: 0.625rem;
-      }
-    }
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 
   &-title {
-    margin: 6px 0 7px;
+    margin: 6px 0 4px;
     font-family: var(--pico-font-family-display);
     font-size: 1.625rem;
     font-weight: 700;
     line-height: 1.2;
-    color: var(--q2-text-strong);
+    color: var(--rarity);
 
     &::before {
       display: none;
     }
 
     @media (max-width: $phone) {
-      margin: 4px 0 6px;
+      margin: 4px 0;
       font-size: 1.4375rem;
     }
 
     .is-compact & {
-      margin: 5px 0 6px;
+      margin: 0 0 4px;
       font-size: 1.25rem;
 
       @media (max-width: $phone) {
-        margin: 4px 0 2px;
+        margin: 0 0 2px;
         font-size: 1.125rem;
+      }
+    }
+  }
+
+  &-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0 0 7px;
+    padding: 0;
+    list-style: none;
+
+    @media (max-width: $phone) {
+      margin-bottom: 6px;
+    }
+
+    .chip {
+      height: 22px;
+      margin: 0;
+      padding: 0 8px;
+      border: 0;
+      background: color-mix(in oklab, var(--rarity) 14%, transparent);
+      font-family: var(--pico-font-family-monospace);
+      font-size: 0.6875rem;
+      line-height: 22px;
+      color: var(--q2-text-muted);
+    }
+
+    .is-compact & {
+      flex-wrap: nowrap;
+      overflow: hidden;
+      margin-bottom: 6px;
+
+      .chip {
+        height: 18px;
+        padding: 0 7px;
+        font-size: 0.625rem;
+        line-height: 18px;
+      }
+
+      @media (max-width: $phone) {
+        margin-bottom: 4px;
+
+        .chip {
+          height: 16px;
+          padding: 0 6px;
+          line-height: 16px;
+        }
       }
     }
   }

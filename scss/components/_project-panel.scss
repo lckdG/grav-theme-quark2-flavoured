@@ -39,7 +39,7 @@ dialog.project-panel {
     margin: 0;
     padding: 24px 24px 0;
     overflow: hidden;
-    border: 1px solid var(--q2-panel-border);
+    border: 1px solid color-mix(in oklab, var(--rarity) 40%, var(--q2-panel-border));
     border-radius: 20px;
     background: var(--q2-panel-bg);
     box-shadow: 0 24px 64px rgba(20, 15, 28, 0.35);
@@ -166,14 +166,6 @@ dialog.project-panel {
     @media (max-width: $tablet) {
       padding: 0;
     }
-
-    .project-rarity {
-      font-size: 0.75rem;
-
-      @media (max-width: $phone) {
-        font-size: 0.6875rem;
-      }
-    }
   }
 
   &-title {
@@ -182,7 +174,7 @@ dialog.project-panel {
     font-size: 1.875rem;
     font-weight: 700;
     line-height: 1.2;
-    color: var(--q2-text-strong);
+    color: var(--rarity);
 
     &::before {
       display: none;
@@ -207,7 +199,7 @@ dialog.project-panel {
       margin: 0;
       padding: 0 10px;
       border: 0;
-      background: color-mix(in oklab, var(--q2-text-muted) 14%, transparent);
+      background: color-mix(in oklab, var(--rarity) 14%, transparent);
       font-family: var(--pico-font-family-monospace);
       font-size: 0.75rem;
       line-height: 24px;
