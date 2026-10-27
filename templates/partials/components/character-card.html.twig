@@ -1,0 +1,43 @@
+{% import 'macros/macros.html.twig' as macros %}
+{% set avatar = character.avatar ? page.media[character.avatar] : null %}
+<aside class="glass-card character-card{{ character.avatar_round ? ' is-round' }}">
+    <header class="character-head">
+        {% if avatar %}
+            <div class="character-avatar">{{ avatar.html(character.name|striptags, character.name|striptags)|raw }}</div>
+        {% endif %}
+        <div>
+            <h2 class="character-name">{{ character.name|raw }}</h2>
+            {% if character.meta %}<p class="character-meta">{{ character.meta }}</p>{% endif %}
+            {% for line in character.lines %}
+                <p class="character-line">{{ line }}</p>
+            {% endfor %}
+            {% if character.status %}<span class="chip chip-status">{{ character.status }}</span>{% endif %}
+        </div>
+    </header>
+
+    {% if character.stats %}
+        <h3 class="kicker">{{ 'THEME_QUARK2.CHARACTER.STATS'|t }}</h3>
+        <dl class="stat-bars">
+            {% for stat in character.stats %}
+                <div class="stat-bar rarity-{{ stat.rarity|default('common') }}">
+                    <dt>{{ stat.label }}</dt>
+                    <dd class="stat-track"><span style="width: {{ stat.value }}%"></span></dd>
+                    <dd class="stat-value">{{ stat.value }}</dd>
+                </div>
+            {% endfor %}
+        </dl>
+    {% endif %}
+
+    {% if character.equipped %}
+        <h3 class="kicker">{{ 'THEME_QUARK2.CHARACTER.EQUIPPED'|t }}</h3>
+        <ul class="icon-row">
+            {% for item in character.equipped %}
+                {{ macros.icon_tile(page, item) }}
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if character.cta.url %}
+        <a class="btn character-cta" href="{{ character.cta.url }}">{{ character.cta.text }} →</a>
+    {% endif %}
+</aside>

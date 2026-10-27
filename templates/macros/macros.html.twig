@@ -16,3 +16,10 @@
     </li>
   {% endfor %}
 {% endmacro %}
+
+{% macro icon_tile(page, item) %}
+  {% set media = page.media[item.image] %}
+  <li class="icon-tile" title="{{ item.title }}">
+    {% if media %}{{ media.html(item.title, item.title)|raw }}{% endif %}
+  </li>
+{% endmacro %}

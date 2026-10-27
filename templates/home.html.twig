@@ -1,0 +1,9 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    <section class="home-hero">
+        {% if page.header.character %}
+            {% include 'partials/components/character-card.html.twig' with { character: page.header.character } %}
+        {% endif %}
+    </section>
+{% endblock %}

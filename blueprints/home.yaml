@@ -1,0 +1,13 @@
+title: Home
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        home:
+          type: tab
+          title: Home
+          fields:
+            import@:
+              type: partials/character

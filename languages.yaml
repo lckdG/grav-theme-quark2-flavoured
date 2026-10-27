@@ -18,6 +18,9 @@ en:
         HEADLINE: "Archives"
       SYNDICATE:
         HEADLINE: "Subscribe"
+    CHARACTER:
+      STATS: "Stats"
+      EQUIPPED: "Equipped"
     THEME_TOGGLE:
       LABEL: "Appearance"
       AUTO: "Auto"
@@ -59,6 +62,9 @@ es:
         HEADLINE: "Archivos"
       SYNDICATE:
         HEADLINE: "Suscribirse"
+    CHARACTER:
+      STATS: "Estadísticas"
+      EQUIPPED: "Equipado"
     THEME_TOGGLE:
       LABEL: "Apariencia"
       AUTO: "Automático"

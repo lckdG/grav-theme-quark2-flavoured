@@ -1,0 +1,91 @@
+form:
+  fields:
+
+    character_title:
+      type: spacer
+      title: Character Card
+
+    header.character.avatar:
+      type: filepicker
+      label: Avatar
+      preview_images: true
+
+    header.character.avatar_round:
+      type: toggle
+      label: Round Avatar
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.YES
+        0: PLUGIN_ADMIN.NO
+      validate:
+        type: bool
+
+    header.character.name:
+      type: text
+      label: Name
+      description: 'HTML allowed. Wrap part of the name in `<span>` to color it, e.g. `Jane <span>Doe</span>`'
+
+    header.character.meta:
+      type: text
+      label: Meta Line
+      placeholder: 'Lv 10 · Web Developer'
+
+    header.character.lines:
+      type: array
+      label: Lines
+      value_only: true
+
+    header.character.status:
+      type: text
+      label: Status Chip
+      placeholder: 'available for work'
+
+    header.character.stats:
+      name: stats
+      type: list
+      label: Stats
+
+      fields:
+        .label:
+          type: text
+          label: Label
+        .value:
+          type: number
+          label: Value
+          validate:
+            min: 0
+            max: 100
+        .rarity:
+          type: select
+          label: Rarity
+          default: common
+          options:
+            common: Common
+            uncommon: Uncommon
+            rare: Rare
+            epic: Epic
+            legendary: Legendary
+            mythic: Mythic
+            cursed: Cursed
+
+    header.character.equipped:
+      name: equipped
+      type: list
+      label: Equipped
+
+      fields:
+        .image:
+          type: filepicker
+          label: Icon
+        .title:
+          type: text
+          label: Title
+
+    header.character.cta.text:
+      type: text
+      label: Button Text
+
+    header.character.cta.url:
+      type: text
+      label: Button Link
