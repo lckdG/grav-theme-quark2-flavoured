@@ -9,14 +9,19 @@ form:
           type: tab
           title: Home
 
+          character:
+            type: section
+            title: Character Card
+            underline: true
+
           import@:
             type: partials/character
             context: theme://blueprints
 
-        terminal:
-          type: tab
-          title: Terminal
+          terminal:
+            type: section
+            title: Terminal Card
 
-          import@:
-            type: partials/terminal
-            context: theme://blueprints
+            import@:
+              type: partials/terminal
+              context: theme://blueprints
