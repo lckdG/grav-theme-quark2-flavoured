@@ -19,13 +19,11 @@ form:
 
               fields:
                 .startdate:
-                  type: datetime
-                  format: M Y
+                  type: text
                   label: Start Date
 
                 .enddate:
-                  type: datetime
-                  format: M Y
+                  type: text
                   label: End Date
 
                 .present:
@@ -70,13 +68,11 @@ form:
 
               fields:
                 .startdate:
-                  type: datetime
-                  format: Y
+                  type: text
                   label: Start
 
                 .enddate:
-                  type: datetime
-                  format: Y
+                  type: text
                   label: End
 
                 .header:
