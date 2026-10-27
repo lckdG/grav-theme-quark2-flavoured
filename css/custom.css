@@ -1365,7 +1365,7 @@ body,
   padding: 16px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.project-card:is(:hover, :focus-within) {
+.project-card:is(:hover, :has(.project-details:focus-visible)) {
   transform: translateY(-2px);
   box-shadow: var(--q2-hover-shadow);
 }
@@ -1553,6 +1553,8 @@ body,
   padding: 0;
   border: 0;
   background: none;
+  box-shadow: none;
+  outline: 0;
   line-height: 1.2;
   cursor: pointer;
   font-family: var(--pico-font-family-display);
@@ -1716,6 +1718,14 @@ dialog.project-panel > article {
     border-radius: 3px;
     background: var(--q2-panel-soft-strong);
   }
+}
+.panel-close, .panel-foot button {
+  box-shadow: none;
+  outline: 0;
+}
+.panel-close:focus-visible, .panel-foot button:focus-visible {
+  outline: 2px solid var(--q2-accent);
+  outline-offset: 2px;
 }
 .panel-close {
   position: absolute;

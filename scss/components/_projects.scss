@@ -38,7 +38,7 @@
     padding: 16px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-    &:is(:hover, :focus-within) {
+    &:is(:hover, :has(.project-details:focus-visible)) {
       transform: translateY(-2px);
       box-shadow: var(--q2-hover-shadow);
     }
@@ -242,6 +242,8 @@
     padding: 0;
     border: 0;
     background: none;
+    box-shadow: none;
+    outline: 0;
     line-height: 1.2;
     cursor: pointer;
     font-family: var(--pico-font-family-display);
