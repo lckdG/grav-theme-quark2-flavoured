@@ -1,0 +1,18 @@
+:root {
+  --q2-dur-fast: 300ms;
+  --q2-dur: 500ms;
+  --q2-dur-slow: 800ms;
+  --q2-ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --q2-ease-in: cubic-bezier(0.4, 0, 1, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
