@@ -22,7 +22,7 @@
                 <div class="stat-bar rarity-{{ stat.rarity|default('common') }}" style="--i: {{ loop.index0 }}">
                     <dt>{{ stat.label }}</dt>
                     <dd class="stat-track"><span style="width: {{ stat.value }}%"></span></dd>
-                    <dd class="stat-value">{{ stat.value }}</dd>
+                    <dd class="stat-value" style="--v: {{ stat.value }}">{{ stat.value }}</dd>
                 </div>
             {% endfor %}
         </dl>

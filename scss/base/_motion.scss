@@ -19,6 +19,18 @@
   }
 }
 
+@property --q2-count {
+  syntax: '<integer>';
+  inherits: false;
+  initial-value: 0;
+}
+
+@keyframes q2-count {
+  from {
+    --q2-count: 0;
+  }
+}
+
 @keyframes q2-slide-in {
   from {
     opacity: 0;

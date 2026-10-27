@@ -8,7 +8,20 @@
     .stat-track span {
       transform-origin: left;
       animation: q2-fill var(--q2-dur) var(--q2-ease-out) both;
-      animation-delay: calc(var(--q2-dur) * (var(--i, 0) + 1));
+      animation-delay: calc(var(--q2-dur-fast) * (var(--i, 0) + 1));
+    }
+
+    .stat-value {
+      --q2-count: var(--v);
+      counter-reset: stat var(--q2-count);
+      font-size: 0;
+      animation: q2-count var(--q2-dur) var(--q2-ease-out) both;
+      animation-delay: calc(var(--q2-dur-fast) * (var(--i, 0) + 1));
+
+      &::after {
+        content: counter(stat) / '';
+        font-size: 0.75rem;
+      }
     }
 
     .icon-row {
