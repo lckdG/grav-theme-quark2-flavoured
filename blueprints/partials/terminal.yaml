@@ -1,0 +1,41 @@
+form:
+  fields:
+
+    terminal_title:
+      type: spacer
+      title: Terminal
+
+    header.terminal.profile:
+      type: text
+      label: Profile
+      placeholder: default
+
+    header.terminal.cwd:
+      type: text
+      label: Working Directory
+      placeholder: '~/projects'
+
+    header.terminal.tabs:
+      type: array
+      label: Tabs
+      value_only: true
+      description: The first tab is shown as active.
+
+    header.terminal.branch:
+      type: text
+      label: Git Branch
+      placeholder: main
+
+    header.terminal.history:
+      name: history
+      type: list
+      label: History
+
+      fields:
+        .command:
+          type: text
+          label: Command
+        .output:
+          type: textarea
+          label: Output
+          description: 'HTML allowed. Color text with `<span class="t-red">`, also `t-green`, `t-yellow`, `t-blue`, `t-purple`, `t-aqua`, `t-orange`, `t-gray`.'

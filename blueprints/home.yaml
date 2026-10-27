@@ -12,3 +12,11 @@ form:
           import@:
             type: partials/character
             context: theme://blueprints
+
+        terminal:
+          type: tab
+          title: Terminal
+
+          import@:
+            type: partials/terminal
+            context: theme://blueprints

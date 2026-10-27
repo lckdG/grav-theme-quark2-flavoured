@@ -1,0 +1,23 @@
+<div class="terminal">
+    <div class="term-bar" aria-hidden="true">
+        <span class="seg seg-profile"><b>◆</b> {{ terminal.profile|default('default') }}</span>
+        {% if terminal.cwd %}<span class="seg seg-cwd"><b>▸</b> {{ terminal.cwd }}</span>{% endif %}
+        <span class="term-tabs">
+            {% for tab in terminal.tabs|default(['zsh']) %}
+                <span class="term-tab{{ loop.first ? ' is-active' }}">{{ loop.index }}: {{ tab }}</span>
+            {% endfor %}
+        </span>
+        {% if terminal.branch %}
+            <span class="seg seg-git"><b>⎇</b> {{ terminal.branch }} <i class="t-git-add">+0</i> <i class="t-git-mod">~0</i> <i class="t-git-del">-0</i></span>
+        {% endif %}
+        <span class="seg seg-clock">{{ "now"|date("H:i") }}</span>
+    </div>
+
+    <div class="term-body">
+        {% for entry in terminal.history %}
+            <p class="term-cmd"><span class="term-prompt">❯</span> {{ entry.command }}</p>
+            {% if entry.output %}<div class="term-out">{{ entry.output|trim|raw }}</div>{% endif %}
+        {% endfor %}
+        <p class="term-input"><span class="term-prompt">❯</span> <span class="term-cursor" aria-hidden="true">▍</span></p>
+    </div>
+</div>

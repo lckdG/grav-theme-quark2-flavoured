@@ -2,6 +2,9 @@
 
 {% block content %}
     <section class="home-hero">
+        {% if page.header.terminal %}
+            {% include 'partials/components/terminal.html.twig' with { terminal: page.header.terminal } %}
+        {% endif %}
         {% if page.header.character %}
             {% include 'partials/components/character-card.html.twig' with { character: page.header.character } %}
         {% endif %}
