@@ -114,8 +114,8 @@
   --q2-card-shadow: 0 6px 18px rgba(36, 26, 46, 0.08);
   --q2-card-divider: rgba(36, 26, 46, 0.12);
   --q2-track: rgba(217, 199, 164, 0.5);
-  --q2-tile-bg: rgba(255, 255, 255, 0.85);
-  --q2-tile-border: rgba(36, 26, 46, 0.08);
+  --q2-tile-bg: #ffffff;
+  --q2-tile-border: rgba(36, 26, 46, 0.16);
   --q2-icon-btn-bg: rgba(255, 255, 255, 0.35);
   --q2-icon-btn-border: rgba(36, 26, 46, 0.2);
   --q2-arrow-bg: rgba(255, 255, 255, 0.5);
@@ -161,7 +161,7 @@
   --q2-card-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
   --q2-card-divider: rgba(228, 231, 235, 0.12);
   --q2-track: #272c35;
-  --q2-tile-bg: rgba(228, 231, 235, 0.92);
+  --q2-tile-bg: #eef0f3;
   --q2-tile-border: transparent;
   --q2-icon-btn-bg: rgba(228, 231, 235, 0.92);
   --q2-icon-btn-border: transparent;
@@ -392,6 +392,7 @@ body,
   background: var(--q2-tile-bg);
   border: 1px solid var(--q2-tile-border);
   border-radius: 9px;
+  box-shadow: 0 1px 2px rgba(20, 15, 28, 0.12);
   list-style: none;
 }
 .icon-tile img {
