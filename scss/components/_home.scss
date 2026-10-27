@@ -13,3 +13,12 @@
     }
   }
 }
+
+#body-wrapper:has(.home-hero) {
+  margin-bottom: 0;
+  padding-block: 48px 30px;
+
+  @media (max-width: $phone) {
+    padding-block: 16px 24px;
+  }
+}

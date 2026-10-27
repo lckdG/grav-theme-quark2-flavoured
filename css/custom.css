@@ -689,6 +689,16 @@ body,
   }
 }
 
+#body-wrapper:has(.home-hero) {
+  margin-bottom: 0;
+  padding-block: 48px 30px;
+}
+@media (max-width: 600px) {
+  #body-wrapper:has(.home-hero) {
+    padding-block: 16px 24px;
+  }
+}
+
 #footer {
   padding-block: 27px;
   border-top: 0;
@@ -967,7 +977,7 @@ body,
 }
 
 .loot {
-  margin: 3rem 0;
+  margin: 3rem 0 0;
 }
 .loot-head {
   display: flex;
