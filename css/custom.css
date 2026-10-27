@@ -650,6 +650,9 @@ body,
   line-height: 1.2;
   color: var(--q2-text-strong);
 }
+.character-name::before {
+  display: none;
+}
 .character-name span {
   color: var(--q2-accent);
 }
@@ -774,6 +777,8 @@ body,
   color: #282828;
 }
 .term-body {
+  display: flex;
+  flex-direction: column;
   flex: 1;
   padding: 28px 24px 24px;
   font-size: 0.9375rem;
@@ -805,7 +810,7 @@ body,
   color: #fabd2f;
 }
 .term-input {
-  margin: 0 -16px;
+  margin: auto -16px 0;
   padding: 0 16px;
   border-radius: 4px;
   background: #3c3836;
@@ -813,7 +818,7 @@ body,
 }
 @media (max-width: 600px) {
   .term-input {
-    margin: 0 -8px;
+    margin: auto -8px 0;
     padding: 0 8px;
     line-height: 24px;
   }
@@ -901,7 +906,7 @@ body,
 }
 .seg-git + .seg-clock {
   --sep-from: #1d2021;
-  margin-left: 14px;
+  margin-left: 7px;
 }
 @media (max-width: 600px) {
   .seg-git + .seg-clock {

@@ -57,6 +57,10 @@
     line-height: 1.2;
     color: var(--q2-text-strong);
 
+    &::before {
+      display: none;
+    }
+
     span {
       color: var(--q2-accent);
     }
