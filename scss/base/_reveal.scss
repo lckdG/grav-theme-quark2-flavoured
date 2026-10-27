@@ -1,0 +1,27 @@
+@keyframes q2-reveal {
+  from {
+    opacity: 0;
+    translate: 0 24px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .section-head,
+    .project-card,
+    .carousel,
+    .skill-group,
+    .loot-row,
+    .timeline-item,
+    .timeline-aside-title,
+    .edu-card {
+      animation: q2-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 25%;
+    }
+
+    .carousel .project-card {
+      animation: none;
+    }
+  }
+}

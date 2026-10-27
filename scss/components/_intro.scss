@@ -7,6 +7,20 @@
     padding-block: 28px 0;
   }
 
+  &-copy,
+  &-tiles,
+  &-actions {
+    animation: q2-rise var(--q2-dur-slow) var(--q2-ease-out) both;
+  }
+
+  &-tiles {
+    animation-delay: calc(var(--q2-dur-fast) * 0.5);
+  }
+
+  &-actions {
+    animation-delay: var(--q2-dur-fast);
+  }
+
   &-grid {
     display: grid;
     align-items: start;

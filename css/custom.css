@@ -213,6 +213,12 @@
     --q2-count: 0;
   }
 }
+@keyframes q2-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
 @keyframes q2-slide-in {
   from {
     opacity: 0;
@@ -228,6 +234,31 @@
   from {
     opacity: 0;
     transform: scale(0.6);
+  }
+}
+@keyframes q2-reveal {
+  from {
+    opacity: 0;
+    translate: 0 24px;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .section-head,
+    .project-card,
+    .carousel,
+    .skill-group,
+    .loot-row,
+    .timeline-item,
+    .timeline-aside-title,
+    .edu-card {
+      animation: q2-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 25%;
+    }
+    .carousel .project-card {
+      animation: none;
+    }
   }
 }
 .markdown-alert-tip,
@@ -940,6 +971,15 @@ body,
   .intro {
     padding-block: 28px 0;
   }
+}
+.intro-copy, .intro-tiles, .intro-actions {
+  animation: q2-rise var(--q2-dur-slow) var(--q2-ease-out) both;
+}
+.intro-tiles {
+  animation-delay: calc(var(--q2-dur-fast) * 0.5);
+}
+.intro-actions {
+  animation-delay: var(--q2-dur-fast);
 }
 .intro-grid {
   display: grid;
