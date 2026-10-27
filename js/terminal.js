@@ -17,7 +17,7 @@
         var field = term.querySelector('.term-field');
         var lines = term.querySelectorAll('.term-cmd, .term-out');
 
-        await wait(2000);
+        await wait(1200);
         for (var i = 0; i < lines.length; i++) {
             var line = lines[i];
             if (line.classList.contains('term-out')) {
@@ -30,7 +30,7 @@
                 fill(field, field.value + command[c]);
                 await wait(30 + Math.random() * 40);
             }
-            await wait(100);
+            await wait(300);
             fill(field, '');
             line.classList.add('is-shown');
         }
