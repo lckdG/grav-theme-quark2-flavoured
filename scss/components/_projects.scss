@@ -3,12 +3,31 @@
 .project {
   &-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(var(--count, 3), minmax(0, 1fr));
     gap: 25px;
     margin-bottom: 40px;
 
+    @media (max-width: $tablet) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
     @media (max-width: $phone) {
       gap: 16px;
+    }
+
+    &.is-single .project-card {
+      @media (min-width: $tablet + 1) {
+        flex-direction: row;
+        gap: 32px;
+
+        .project-thumb {
+          flex: 0 0 55%;
+        }
+
+        .project-body {
+          padding: 8px 8px 8px 0;
+        }
+      }
     }
   }
 

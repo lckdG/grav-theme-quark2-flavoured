@@ -39,7 +39,7 @@
         {{ content|raw }}
 
         {% if featured|length %}
-            <div class="project-grid">
+            <div class="project-grid{{ featured|length == 1 ? ' is-single' }}" style="--count: {{ min(featured|length, 3) }}">
                 {% for project in featured %}
                     {{ cards.card(page, project, 'full') }}
                 {% endfor %}
@@ -60,9 +60,7 @@
                         {{ cards.card(page, project, 'compact') }}
                     {% endfor %}
                 </div>
-                <div class="carousel-dots" aria-hidden="true">
-                    {% for project in more %}<span class="carousel-dot"></span>{% endfor %}
-                </div>
+                <div class="carousel-dots" aria-hidden="true" data-carousel-dots></div>
             </div>
             {% do assets.addJs('theme://js/carousel.js', {group: 'bottom', loading: 'defer'}) %}
         {% endif %}
