@@ -55,6 +55,10 @@ en:
       # translatable so word order can differ from English.
       ARIA_LABEL: "Appearance: %s"
       TITLE: "Appearance: %s (click to cycle)"
+    TERMINAL:
+      INPUT: "Terminal input"
+      NOT_FOUND: "command not found"
+      NO_PAGE: "no such page"
     ARIA:
       PRIMARY_NAV: "Primary"
       MOBILE_NAV: "Mobile"
@@ -124,6 +128,10 @@ es:
       # es traducible para que el orden de las palabras pueda diferir del inglés.
       ARIA_LABEL: "Apariencia: %s"
       TITLE: "Apariencia: %s (clic para cambiar)"
+    TERMINAL:
+      INPUT: "Entrada de terminal"
+      NOT_FOUND: "comando no encontrado"
+      NO_PAGE: "no existe la página"
     ARIA:
       PRIMARY_NAV: "Principal"
       MOBILE_NAV: "Móvil"

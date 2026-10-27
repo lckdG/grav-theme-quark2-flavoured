@@ -1,4 +1,8 @@
-<div class="terminal">
+{% set term_pages = {} %}
+{% for item in pages.children.visible %}
+    {% set term_pages = term_pages|merge({(item.slug): item.url}) %}
+{% endfor %}
+<div class="terminal" data-pages="{{ term_pages|json_encode|e('html_attr') }}" data-not-found="{{ 'THEME_QUARK2.TERMINAL.NOT_FOUND'|t|e('html_attr') }}" data-no-page="{{ 'THEME_QUARK2.TERMINAL.NO_PAGE'|t|e('html_attr') }}">
     <div class="term-bar" aria-hidden="true">
         <span class="seg seg-profile"><b>◆</b> {{ terminal.profile|default('default') }}</span>
         {% if terminal.cwd %}<span class="seg seg-cwd"><b>▸</b> {{ terminal.cwd }}</span>{% endif %}
@@ -18,6 +22,6 @@
             <p class="term-cmd"><span class="term-prompt">❯</span> {{ entry.command }}</p>
             {% if entry.output %}<div class="term-out">{{ entry.output|trim|raw }}</div>{% endif %}
         {% endfor %}
-        <p class="term-input"><span class="term-prompt">❯</span> <span class="term-typed"></span><span class="term-cursor" aria-hidden="true">▍</span></p>
+        <p class="term-input"><span class="term-prompt">❯</span> <span class="term-typed"></span><span class="term-cursor" aria-hidden="true">▍</span><input class="term-field" type="text" aria-label="{{ 'THEME_QUARK2.TERMINAL.INPUT'|t|e('html_attr') }}" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="send" disabled></p>
     </div>
 </div>
