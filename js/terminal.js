@@ -12,7 +12,7 @@
         var typed = term.querySelector('.term-typed');
         var lines = term.querySelectorAll('.term-cmd, .term-out');
 
-        await wait(300);
+        await wait(800);
         for (var i = 0; i < lines.length; i++) {
             var line = lines[i];
             if (line.classList.contains('term-out')) {
