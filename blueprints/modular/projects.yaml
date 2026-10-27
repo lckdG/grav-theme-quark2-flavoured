@@ -61,6 +61,10 @@ form:
                 .text:
                   type: text
                   label: Description
+                .summary:
+                  type: text
+                  label: Short Description
+                  description: Shown on the small cards in the More projects carousel instead of the description.
                 .role:
                   type: text
                   label: Role

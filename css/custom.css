@@ -1595,8 +1595,9 @@ body,
   grid-auto-flow: column;
   column-gap: 24px;
   overflow-x: auto;
-  margin-bottom: -20px;
-  padding-block: 10px 30px;
+  margin: 0 -12px -20px;
+  padding: 12px 12px 30px;
+  scroll-padding-inline: 12px;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   mask-image: linear-gradient(to right, #000 calc(100% - 120px), transparent);
@@ -1614,8 +1615,9 @@ body,
   .carousel-track {
     grid-auto-columns: 304px;
     column-gap: 12px;
-    margin-bottom: -22px;
-    padding-block: 8px 30px;
+    margin: 0 -8px -22px;
+    padding: 8px 8px 30px;
+    scroll-padding-inline: 8px;
     mask-image: none;
   }
 }

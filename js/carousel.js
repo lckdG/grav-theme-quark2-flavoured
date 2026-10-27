@@ -32,8 +32,7 @@
 
         function update() {
             var max = track.scrollWidth - track.clientWidth;
-            var atEnd = track.scrollLeft >= max - 1;
-            var index = atEnd ? dots.length - 1 : Math.min(Math.round(track.scrollLeft / step()), dots.length - 2);
+            var index = max > 1 ? Math.round(track.scrollLeft / max * (dots.length - 1)) : 0;
             dots.forEach(function (dot, i) {
                 dot.classList.toggle('is-active', i === index);
             });

@@ -13,7 +13,8 @@
         <div class="project-body">
             <span class="project-rarity">{{ rarity|upper }}</span>
             <h3 class="project-title">{{ project.header }}</h3>
-            {% if project.text %}<p class="project-text">{{ project.text }}</p>{% endif %}
+            {% set text = size == 'compact' ? project.summary : project.text %}
+            {% if text %}<p class="project-text">{{ text }}</p>{% endif %}
             <footer class="project-foot">
                 {% if project.tags %}
                     <ul class="icon-row">
