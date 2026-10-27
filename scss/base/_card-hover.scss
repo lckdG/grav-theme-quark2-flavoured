@@ -12,16 +12,3 @@
     0 0 0 1px var(--q2-accent),
     0 0 24px color-mix(in oklab, var(--q2-accent) 25%, transparent);
 }
-
-.timeline .timeline-body {
-  transition:
-    background 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
-
-  &:is(:hover, :focus-within) {
-    background: var(--q2-hover-bg);
-    box-shadow: var(--q2-hover-shadow);
-    transform: translateY(-2px);
-  }
-}

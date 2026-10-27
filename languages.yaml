@@ -39,6 +39,10 @@ en:
     CAROUSEL:
       PREV: "Previous"
       NEXT: "Next"
+    TIMELINE:
+      LEVEL_UP: "Level up"
+      NOW: "now"
+      EDUCATION: "Education"
     LOOT:
       TITLE: "Latest loot"
       ALL_POSTS: "all posts"
@@ -104,6 +108,10 @@ es:
     CAROUSEL:
       PREV: "Anterior"
       NEXT: "Siguiente"
+    TIMELINE:
+      LEVEL_UP: "Subida de nivel"
+      NOW: "ahora"
+      EDUCATION: "Educación"
     LOOT:
       TITLE: "Último botín"
       ALL_POSTS: "todas las entradas"

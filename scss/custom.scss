@@ -3,7 +3,6 @@
 @use 'base/_alerts';
 @use 'base/_contact-box';
 @use 'base/_chip';
-@use 'modules/_timeline';
 @use 'base/_background';
 @use 'base/_card-hover';
 @use 'base/_logo';
@@ -21,5 +20,7 @@
 @use 'components/_section-head';
 @use 'components/_loot';
 @use 'components/_projects';
+@use 'components/_bullet-list';
 @use 'components/_project-panel';
 @use 'components/_skills';
+@use 'components/_timeline';

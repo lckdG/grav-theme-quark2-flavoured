@@ -1,24 +1,46 @@
-<section class="section {{ page.header.section_class }}">
-    <div class="container">
-        {{ content|raw }}
+{% set education = page.header.education %}
 
-        <div class="timeline">
-        {% for item in page.header.timeline %}
-            <div class="timeline-container">
-                <div class="timeline-icon">
-                </div>
-                <div class="timeline-body">
-                    <h4 class="timeline-title">{{ item.header }}</h4>
-                    <span class="timeline-right">{{ item.startdate }}{% if item.present %} - Present{% else %} - {{ item.enddate }}{% endif %}</span>
-                    {% if item.subheader %}
-                        <h5 class="timeline-subtitle">{{ item.subheader }}</h5>
-                    {% endif %}
-                    {% if item.description %}
-                        <p>{{ item.description }}</p>
-                    {% endif %}
-                </div>
-            </div>
-        {% endfor %}
+<section class="section timeline-section {{ page.header.section_class }}">
+    <div class="container timeline-grid{{ education ? ' has-aside' }}">
+        <div>
+            <header class="section-head">
+                <div class="section-intro">{{ content|raw }}</div>
+            </header>
+
+            {% if page.header.timeline %}
+                <ol class="timeline">
+                    {% for item in page.header.timeline %}
+                        <li class="timeline-item{{ item.level_up ? ' is-level-up' }}">
+                            <div class="timeline-meta">
+                                {% if item.level_up %}<span class="timeline-badge">▲ {{ 'THEME_QUARK2.TIMELINE.LEVEL_UP'|t }}</span>{% endif %}
+                                <span class="timeline-date">{{ item.startdate }} – {{ item.present ? 'THEME_QUARK2.TIMELINE.NOW'|t : item.enddate }}</span>
+                            </div>
+                            <h3 class="timeline-title">{{ item.header }}</h3>
+                            {% if item.subheader %}<p class="timeline-org">{{ item.subheader }}</p>{% endif %}
+                            {% if item.description %}<p class="timeline-text">{{ item.description }}</p>{% endif %}
+                            {% if item.highlights %}
+                                <ul class="timeline-list">
+                                    {% for line in item.highlights %}<li>{{ line }}</li>{% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ol>
+            {% endif %}
         </div>
+
+        {% if education %}
+            <aside class="timeline-aside">
+                <h3 class="timeline-aside-title">{{ 'THEME_QUARK2.TIMELINE.EDUCATION'|t }}</h3>
+                {% for school in education %}
+                    <div class="glass-card edu-card">
+                        <span class="timeline-date">{{ school.startdate }} – {{ school.enddate }}</span>
+                        <h4 class="edu-title">{{ school.header }}</h4>
+                        {% if school.subheader %}<p class="timeline-org">{{ school.subheader }}</p>{% endif %}
+                        {% if school.note %}<span class="chip edu-note">{{ school.note }}</span>{% endif %}
+                    </div>
+                {% endfor %}
+            </aside>
+        {% endif %}
     </div>
 </section>

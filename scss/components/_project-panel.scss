@@ -278,36 +278,6 @@ dialog.project-panel {
     }
   }
 
-  &-list {
-    display: grid;
-    gap: 11px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-
-    li {
-      position: relative;
-      margin: 0;
-      padding-left: 22px;
-      font-size: 1rem;
-      line-height: 1.45;
-      color: var(--q2-text);
-      list-style: none;
-
-      &::before {
-        content: '▸';
-        position: absolute;
-        left: 0;
-        font-size: 0.875rem;
-        color: var(--q2-accent);
-      }
-
-      @media (max-width: $phone) {
-        font-size: 0.9375rem;
-      }
-    }
-  }
-
   &-links {
     display: flex;
     flex-wrap: wrap;

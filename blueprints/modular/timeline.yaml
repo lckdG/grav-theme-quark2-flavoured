@@ -43,7 +43,52 @@ form:
                   type: text
                   label: Subheader
 
+                .level_up:
+                  type: toggle
+                  label: Level Up Badge
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+                  validate:
+                    type: bool
+
                 .description:
                   type: text
                   label: Description
+
+                .highlights:
+                  type: array
+                  label: Highlights
+                  value_only: true
+
+            header.education:
+              type: list
+              label: Education
+              description: Shown as cards beside the timeline.
+
+              fields:
+                .startdate:
+                  type: datetime
+                  format: Y
+                  label: Start
+
+                .enddate:
+                  type: datetime
+                  format: Y
+                  label: End
+
+                .header:
+                  type: text
+                  label: Degree
+
+                .subheader:
+                  type: text
+                  label: School
+
+                .note:
+                  type: text
+                  label: Note
+                  placeholder: honor program
 
