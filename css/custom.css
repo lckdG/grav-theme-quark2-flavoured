@@ -242,25 +242,13 @@
     translate: 0 24px;
   }
 }
-@media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) {
-    .section-head,
-    .project-card,
-    .carousel,
-    .skill-group,
-    .loot-row,
-    .timeline-item,
-    .timeline-aside-title,
-    .edu-card {
-      animation: q2-reveal linear both;
-      animation-timeline: view();
-      animation-range: entry 5% cover 25%;
-    }
-    .carousel .project-card {
-      animation: none;
-    }
-  }
+.reveal-ready :is(.section-head, .project-grid .project-card, .carousel, .skill-group, .loot-row, .timeline-item, .timeline-aside-title, .edu-card):not(.is-revealed) {
+  opacity: 0;
 }
+.reveal-ready :is(.section-head, .project-grid .project-card, .carousel, .skill-group, .loot-row, .timeline-item, .timeline-aside-title, .edu-card).is-revealed {
+  animation: q2-reveal var(--q2-dur-slow) var(--q2-ease-out) var(--reveal-delay, 0s) both;
+}
+
 .markdown-alert-tip,
 :root[data-theme=dark] .markdown-alert-tip {
   --alert-accent: var(--q2-rarity-uncommon);

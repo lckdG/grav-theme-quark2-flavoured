@@ -83,6 +83,7 @@
 {% block javascripts %}
     {% do assets.addJs('theme://js/theme-toggle.js', {group:'head', priority: 100}) %}
     {% do assets.addJs('theme://js/site.js', {group:'bottom', priority: 100}) %}
+    {% do assets.addJs('theme://js/reveal.js', {group:'bottom', priority: 90}) %}
 {% endblock %}
 
 {% block assets deferred %}
