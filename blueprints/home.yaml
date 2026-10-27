@@ -22,6 +22,6 @@ form:
             type: section
             title: Terminal Card
 
-            import@:
-              type: partials/terminal
-              context: theme://blueprints
+          import@:
+            type: partials/terminal
+            context: theme://blueprints
