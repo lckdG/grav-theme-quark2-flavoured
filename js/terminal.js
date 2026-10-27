@@ -9,29 +9,26 @@
     }
 
     async function play(term) {
-        var cursor = term.querySelector('.term-cursor');
-        var input = cursor.parentNode;
+        var typed = term.querySelector('.term-typed');
         var lines = term.querySelectorAll('.term-cmd, .term-out');
 
         await wait(300);
         for (var i = 0; i < lines.length; i++) {
             var line = lines[i];
-            line.classList.add('is-shown');
             if (line.classList.contains('term-out')) {
+                line.classList.add('is-shown');
                 await wait(300);
                 continue;
             }
-            var text = line.lastChild;
-            var command = text.textContent;
-            text.textContent = '';
-            line.appendChild(cursor);
+            var command = line.lastChild.textContent.trim();
             for (var c = 0; c < command.length; c++) {
-                text.textContent += command[c];
+                typed.textContent += command[c];
                 await wait(30 + Math.random() * 40);
             }
             await wait(100);
+            typed.textContent = '';
+            line.classList.add('is-shown');
         }
-        input.appendChild(cursor);
     }
 
     var observer = new IntersectionObserver(function (entries) {
