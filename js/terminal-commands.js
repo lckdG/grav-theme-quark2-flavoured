@@ -5,7 +5,12 @@
 
     window.Quark2TerminalCommands = {
         whoami: function (arg, shell) {
-            shell.text(shell.term.dataset.whoami || 'guest');
+            shell.print('term-out', function(line) {
+                var span = document.createElement('span');
+                span.className = 't-accent';
+                span.textContent = shell.term.dataset.whoami || 'guest';
+                line.appendChild(span);
+            });
         },
         help: function (arg, shell) {
             shell.text(Object.keys(shell.commands).concat(Object.keys(shell.outputs).filter(function (name) {

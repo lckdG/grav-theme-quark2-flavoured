@@ -293,3 +293,5 @@ $term-colors: (
 @each $name, $color in $term-colors {
   .t-#{$name} { color: $color; }
 }
+
+.t-accent { color: var(--q2-accent); }

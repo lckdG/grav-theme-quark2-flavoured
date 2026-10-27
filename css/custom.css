@@ -991,6 +991,10 @@ body,
   color: #a89984;
 }
 
+.t-accent {
+  color: var(--q2-accent);
+}
+
 .intro {
   padding-block: 48px 0;
 }
