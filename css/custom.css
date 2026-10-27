@@ -1247,7 +1247,7 @@ body,
   display: flex;
   flex-direction: column;
   gap: 4px;
-  height: 76px;
+  min-height: 76px;
   margin: 0;
   padding: 8px 16px;
   border-radius: 12px;
@@ -1271,7 +1271,7 @@ body,
 }
 @media (max-width: 600px) {
   .intro-tile {
-    height: 64px;
+    min-height: 64px;
     padding: 8px 12px;
     border-radius: 10px;
   }
