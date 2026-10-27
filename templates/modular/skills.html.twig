@@ -1,25 +1,27 @@
-<section class="section modular-features skills {{ page.header.section_class }}">
+<section class="section skills {{ page.header.section_class }}">
     <div class="container">
-        <div class="frame-box">
-            {{ content|raw }}
+        <header class="section-head">
+            <h2 class="section-title">{{ page.title }}</h2>
+        </header>
+        {{ content|raw }}
 
-            <div class="categories">
-            {% for category in page.header.categories %}
-              <div class="category">
-                <h4>{{ category.title }}</h4>
-                <div class="columns">
-                {% for skill in category.skills %}
-                    <div class="column">
-                        <div class="feature-icon">
-                            {% if skill.image %}{{ page.media[skill.image] | raw }}{% endif %}
-                            {% if skill.header %}<h6>{{ skill.header }}</h6>{% endif %}
-                        </div>
+        {% if page.header.categories %}
+            <div class="skill-groups">
+                {% for category in page.header.categories %}
+                    <div class="glass-card skill-group rarity-{{ category.rarity|default('common') }}">
+                        <h3 class="skill-group-title">{{ category.title }}</h3>
+                        <ul class="skill-list">
+                            {% for skill in category.skills %}
+                                {% set icon = skill.image ? page.media[skill.image] : null %}
+                                <li class="skill" title="{{ skill.header }}">
+                                    <span class="icon-tile">{% if icon %}{{ icon.html('', '')|raw }}{% endif %}</span>
+                                    <span class="skill-name">{{ skill.header }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 {% endfor %}
-                </div>
-              </div>
-            {% endfor %}
             </div>
-        </div>
+        {% endif %}
     </div>
 </section>

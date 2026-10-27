@@ -24,6 +24,20 @@ form:
                   type: text
                   label: Title
 
+                .rarity:
+                  type: select
+                  label: Rarity
+                  description: Colours the group's bar and title.
+                  default: common
+                  options:
+                    common: Common
+                    uncommon: Uncommon
+                    rare: Rare
+                    epic: Epic
+                    legendary: Legendary
+                    mythic: Mythic
+                    cursed: Cursed
+
                 .skills:
                   name: skills
                   type: list
