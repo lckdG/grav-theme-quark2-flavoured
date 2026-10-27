@@ -238,7 +238,12 @@
   }
 
   &-details {
-    margin-left: auto;
+    margin: 0 0 0 auto;
+    padding: 0;
+    border: 0;
+    background: none;
+    line-height: 1.2;
+    cursor: pointer;
     font-family: var(--pico-font-family-display);
     font-size: 0.9375rem;
     font-weight: 600;
@@ -256,7 +261,7 @@
       font-size: 0.875rem;
 
       @media (max-width: $phone) {
-        display: none;
+        font-size: 0;
       }
     }
   }

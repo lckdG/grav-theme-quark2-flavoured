@@ -1,0 +1,74 @@
+{% import 'macros/macros.html.twig' as macros %}
+{% set image = project.image ? page.media[project.image] : null %}
+{% set rarity = project.rarity|default('common') %}
+<dialog class="project-panel rarity-{{ rarity }}" id="{{ id }}" aria-labelledby="{{ id }}-title">
+    <article>
+        <span class="panel-handle" aria-hidden="true"></span>
+        <button type="button" class="panel-close" data-panel-close aria-label="{{ 'THEME_QUARK2.PROJECTS.CLOSE'|t }}">✕</button>
+
+        <div class="panel-body">
+            <div class="panel-top">
+                {% if image %}
+                    <div class="panel-thumb">{{ image.cropZoom(1040, 616).html(project.header, project.header)|raw }}</div>
+                {% endif %}
+                <div class="panel-info">
+                    <span class="project-rarity">{{ rarity|upper }}</span>
+                    <h2 class="panel-title" id="{{ id }}-title">{{ project.header }}</h2>
+                    {% if project.genres %}
+                        <ul class="panel-tags">
+                            {% for genre in project.genres %}<li class="chip">{{ genre.text }}</li>{% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% if project.text %}<p class="panel-text">{{ project.text }}</p>{% endif %}
+                    {% if project.role or project.engine or project.platforms %}
+                        <dl class="panel-facts">
+                            {% if project.role %}<dt>{{ 'THEME_QUARK2.PROJECTS.ROLE'|t }}</dt><dd>{{ project.role }}</dd>{% endif %}
+                            {% if project.engine %}<dt>{{ 'THEME_QUARK2.PROJECTS.ENGINE'|t }}</dt><dd>{{ project.engine }}</dd>{% endif %}
+                            {% if project.platforms %}<dt>{{ 'THEME_QUARK2.PROJECTS.PLATFORMS'|t }}</dt><dd>{{ project.platforms }}</dd>{% endif %}
+                        </dl>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if project.highlights or project.tags or project.links or project.url %}
+                <div class="panel-bottom">
+                    {% if project.highlights %}
+                        <div>
+                            <h3 class="kicker">{{ 'THEME_QUARK2.PROJECTS.BUILT'|t }}</h3>
+                            <ul class="panel-list">
+                                {% for line in project.highlights %}<li>{{ line }}</li>{% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    <div>
+                        {% if project.tags %}
+                            <h3 class="kicker">{{ 'THEME_QUARK2.PROJECTS.TECH'|t }}</h3>
+                            <ul class="icon-row">
+                                {% for tag in project.tags %}{{ macros.icon_tile(page, tag) }}{% endfor %}
+                            </ul>
+                        {% endif %}
+                        {% if project.links or project.url %}
+                            <h3 class="kicker">{{ 'THEME_QUARK2.PROJECTS.LINKS'|t }}</h3>
+                            <ul class="panel-links">
+                                {% if project.url %}<li><a href="{{ project.url }}">{{ 'THEME_QUARK2.PROJECTS.VISIT'|t }}</a></li>{% endif %}
+                                {% for link in project.links %}
+                                    <li>{% if link.url %}<a href="{{ link.url }}">{{ link.text }}</a>{% else %}<span>{{ link.text }}</span>{% endif %}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <footer class="panel-foot">
+            {% if total > 1 %}
+                <button type="button" class="panel-prev" data-panel-go="{{ prev.id }}">← {{ prev.title }}</button>
+            {% endif %}
+            <span class="panel-count">{{ position }} / {{ total }}<span class="panel-esc"> · {{ 'THEME_QUARK2.PROJECTS.ESC'|t }}</span></span>
+            {% if total > 1 %}
+                <button type="button" class="panel-next" data-panel-go="{{ next.id }}">{{ next.title }} →</button>
+            {% endif %}
+        </footer>
+    </article>
+</dialog>

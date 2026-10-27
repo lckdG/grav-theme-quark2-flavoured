@@ -1,8 +1,10 @@
 {% import _self as cards %}
 {% set featured = page.header.projects|default([])|filter(p => p.featured) %}
 {% set more = page.header.projects|default([])|filter(p => not p.featured) %}
+{% set ordered = featured|merge(more) %}
+{% set panel_id = 'project-panel-' ~ page.slug %}
 
-{% macro card(page, project, size) %}
+{% macro card(page, project, size, panel) %}
     {% import 'macros/macros.html.twig' as macros %}
     {% set image = project.image ? page.media[project.image] : null %}
     {% set rarity = project.rarity|default('common') %}
@@ -23,9 +25,7 @@
                         {% endfor %}
                     </ul>
                 {% endif %}
-                {% if project.url %}
-                    <a class="project-details" href="{{ project.url }}">{{ 'THEME_QUARK2.PROJECTS.DETAILS'|t }} →</a>
-                {% endif %}
+                <button type="button" class="project-details" data-panel-open="{{ panel }}">{{ 'THEME_QUARK2.PROJECTS.DETAILS'|t }} →</button>
             </footer>
         </div>
     </article>
@@ -42,7 +42,7 @@
         {% if featured|length %}
             <div class="project-grid{{ featured|length == 1 ? ' is-single' }}" style="--count: {{ min(featured|length, 3) }}">
                 {% for project in featured %}
-                    {{ cards.card(page, project, 'full') }}
+                    {{ cards.card(page, project, 'full', panel_id ~ '-' ~ loop.index0) }}
                 {% endfor %}
             </div>
         {% endif %}
@@ -58,7 +58,7 @@
                 </header>
                 <div class="carousel-track" data-carousel-track>
                     {% for project in more %}
-                        {{ cards.card(page, project, 'compact') }}
+                        {{ cards.card(page, project, 'compact', panel_id ~ '-' ~ (featured|length + loop.index0)) }}
                     {% endfor %}
                 </div>
                 <div class="carousel-dots" aria-hidden="true" data-carousel-dots></div>
@@ -66,4 +66,15 @@
             {% do assets.addJs('theme://js/carousel.js', {group: 'bottom', loading: 'defer'}) %}
         {% endif %}
     </div>
+
+    {% for project in ordered %}
+        {% include 'partials/components/project-panel.html.twig' with {
+            id: panel_id ~ '-' ~ loop.index0,
+            prev: { id: panel_id ~ '-' ~ ((loop.index0 - 1 + loop.length) % loop.length), title: ordered[(loop.index0 - 1 + loop.length) % loop.length].header },
+            next: { id: panel_id ~ '-' ~ ((loop.index0 + 1) % loop.length), title: ordered[(loop.index0 + 1) % loop.length].header },
+            position: loop.index,
+            total: loop.length
+        } %}
+    {% endfor %}
+    {% if ordered|length %}{% do assets.addJs('theme://js/project-panel.js', {group: 'bottom', loading: 'defer'}) %}{% endif %}
 </section>

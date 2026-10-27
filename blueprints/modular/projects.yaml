@@ -68,6 +68,30 @@ form:
                 .role:
                   type: text
                   label: Role
+                .engine:
+                  type: text
+                  label: Engine
+                  placeholder: Unity
+                .platforms:
+                  type: text
+                  label: Platforms
+                  placeholder: 'iOS · Android'
+                .highlights:
+                  type: array
+                  label: What I Built
+                  value_only: true
+                .links:
+                  type: list
+                  label: Links
+                  fields:
+                    .text:
+                      type: text
+                      label: Text
+                      placeholder: 'store page · soon'
+                    .url:
+                      type: text
+                      label: URL
+                      description: Leave blank to show the text as a plain label.
                 .tags:
                   type: list
                   label: Tag List
