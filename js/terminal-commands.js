@@ -6,6 +6,9 @@
     }
 
     window.Quark2TerminalCommands = {
+        whoami: function (arg, shell) {
+            shell.text(shell.term.dataset.whoami || 'guest');
+        },
         help: function (arg, shell) {
             shell.text(Object.keys(shell.commands).concat(Object.keys(shell.outputs).filter(function (name) {
                 return !Object.hasOwn(shell.commands, name);

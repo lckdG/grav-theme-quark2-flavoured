@@ -26,6 +26,11 @@ form:
       label: Git Branch
       placeholder: main
 
+    header.terminal.whoami:
+      type: text
+      label: whoami Name
+      placeholder: guest
+
     header.terminal.history:
       name: history
       type: list
