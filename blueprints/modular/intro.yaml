@@ -1,0 +1,70 @@
+title: Intro
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        intro:
+          type: tab
+          title: Intro
+
+          fields:
+            header.section_class:
+              type: text
+              label: Section Class
+
+            header.kicker:
+              type: text
+              label: Kicker
+              placeholder: Portfolio
+              description: 'The heading and hook line come from the page content, e.g. `# Hi, I''m <span>Jane</span>` followed by a paragraph.'
+
+            header.tiles:
+              name: tiles
+              type: list
+              label: Stat Tiles
+
+              fields:
+                .value:
+                  type: text
+                  label: Value
+                  placeholder: 5+
+                .label:
+                  type: text
+                  label: Label
+                  placeholder: years
+
+            header.cv.file:
+              type: filepicker
+              label: CV File
+              accept:
+                - .pdf
+
+            header.cv.text:
+              type: text
+              label: CV Button Text
+              placeholder: Download CV
+
+            header.links:
+              name: links
+              type: list
+              label: Icon Links
+
+              fields:
+                .image:
+                  type: filepicker
+                  label: Icon
+                  preview_images: true
+                .title:
+                  type: text
+                  label: Title
+                  placeholder: GitHub
+                .url:
+                  type: text
+                  label: URL
+                  placeholder: 'https://github.com/username'
+
+          import@:
+            type: partials/character
+            context: theme://blueprints

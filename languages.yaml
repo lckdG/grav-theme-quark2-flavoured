@@ -21,6 +21,8 @@ en:
     CHARACTER:
       STATS: "Stats"
       EQUIPPED: "Equipped"
+    INTRO:
+      CV: "Download CV"
     LOOT:
       TITLE: "Latest loot"
       ALL_POSTS: "all posts"
@@ -68,6 +70,8 @@ es:
     CHARACTER:
       STATS: "Estadísticas"
       EQUIPPED: "Equipado"
+    INTRO:
+      CV: "Descargar CV"
     LOOT:
       TITLE: "Último botín"
       ALL_POSTS: "todas las entradas"

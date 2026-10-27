@@ -1,0 +1,172 @@
+@use '../breakpoints' as *;
+
+.intro {
+  padding-block: 48px 0;
+
+  @media (max-width: $phone) {
+    padding-block: 28px 0;
+  }
+
+  &-grid {
+    display: grid;
+    align-items: start;
+    gap: 28px;
+
+    @media (min-width: $desktop) {
+      grid-template-columns: minmax(0, 1fr) 480px;
+      gap: 24px;
+    }
+  }
+
+  &-main {
+    padding-top: 16px;
+
+    @media (max-width: $phone) {
+      padding-top: 0;
+    }
+  }
+
+  &-kicker {
+    margin-bottom: 8px;
+    font-size: 0.8125rem;
+    color: var(--q2-accent-2);
+
+    @media (max-width: $phone) {
+      font-size: 0.6875rem;
+    }
+  }
+
+  &-copy {
+    h1 {
+      margin: 0 0 12px -4px;
+      font-family: var(--pico-font-family-display);
+      font-size: 4.5rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      color: var(--q2-text-strong);
+
+      span {
+        color: var(--q2-accent);
+      }
+
+      @media (max-width: $phone) {
+        margin: 0 0 10px -2px;
+        font-size: 2.875rem;
+        letter-spacing: -0.5px;
+      }
+    }
+
+    p {
+      margin: 0;
+      font-size: 1.3125rem;
+      line-height: 1.5;
+      color: var(--q2-text);
+
+      @media (max-width: $phone) {
+        font-size: 1.0625rem;
+      }
+    }
+  }
+
+  &-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 140px);
+    gap: 12px;
+    margin: 24px 0 30px;
+    padding: 0;
+    list-style: none;
+
+    @media (max-width: $phone) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin: 15px 0 20px;
+    }
+  }
+
+  &-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    height: 76px;
+    margin: 0;
+    padding: 8px 16px;
+    border-radius: 12px;
+    list-style: none;
+
+    strong {
+      font-family: var(--pico-font-family-display);
+      font-size: 1.875rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--q2-text-strong);
+    }
+
+    span {
+      font-family: var(--pico-font-family-monospace);
+      font-size: 0.625rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      line-height: 1.2;
+      text-transform: uppercase;
+      color: var(--q2-text-muted);
+    }
+
+    @media (max-width: $phone) {
+      height: 64px;
+      padding: 8px 12px;
+      border-radius: 10px;
+
+      strong {
+        font-size: 1.5rem;
+      }
+
+      span {
+        font-size: 0.5625rem;
+        letter-spacing: 1px;
+      }
+    }
+  }
+
+  &-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    @media (max-width: $phone) {
+      gap: 8px;
+    }
+  }
+
+  &-cv.btn {
+    height: 48px;
+    padding: 0 32px;
+    font-family: var(--pico-font-family-display);
+    font-size: 1.125rem;
+
+    @media (max-width: $phone) {
+      flex: 1;
+    }
+  }
+}
+
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--q2-icon-btn-border);
+  border-radius: 8px;
+  background: var(--q2-icon-btn-bg);
+  transition: border-color 0.15s;
+
+  &:hover {
+    border-color: var(--q2-accent);
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+}

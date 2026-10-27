@@ -1,0 +1,40 @@
+{% set header = page.header %}
+{% set cv = header.cv.file ? page.media[header.cv.file] : null %}
+
+<section class="section intro {{ header.section_class }}">
+    <div class="container intro-grid">
+        <div class="intro-main">
+            {% if header.kicker %}<p class="kicker intro-kicker">{{ header.kicker }}</p>{% endif %}
+            <div class="intro-copy">{{ content|raw }}</div>
+
+            {% if header.tiles %}
+                <ul class="intro-tiles">
+                    {% for tile in header.tiles %}
+                        <li class="glass-card intro-tile">
+                            <strong>{{ tile.value }}</strong>
+                            <span>{{ tile.label }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if cv or header.links %}
+                <div class="intro-actions">
+                    {% if cv %}
+                        <a class="btn intro-cv" href="{{ cv.url }}" download>{{ header.cv.text|default('THEME_QUARK2.INTRO.CV'|t) }}</a>
+                    {% endif %}
+                    {% for link in header.links %}
+                        {% set icon = link.image ? page.media[link.image] : null %}
+                        <a class="icon-btn" href="{{ link.url }}" title="{{ link.title }}" aria-label="{{ link.title }}">
+                            {% if icon %}{{ icon.html('', '')|raw }}{% endif %}
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        {% if header.character %}
+            {% include 'partials/components/character-card.html.twig' with { character: header.character } %}
+        {% endif %}
+    </div>
+</section>

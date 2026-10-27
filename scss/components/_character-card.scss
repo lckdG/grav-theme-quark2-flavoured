@@ -1,3 +1,5 @@
+@use '../breakpoints' as *;
+
 .character {
   &-card {
     padding: 24px;
@@ -23,6 +25,23 @@
 
       .character-name {
         font-size: 1.5625rem;
+      }
+
+      @media (max-width: $phone) {
+        padding: 16px;
+
+        .character-head {
+          grid-template-columns: 72px 1fr;
+          gap: 16px;
+        }
+
+        .character-avatar {
+          height: 72px;
+        }
+
+        .character-name {
+          font-size: 1.375rem;
+        }
       }
     }
   }
