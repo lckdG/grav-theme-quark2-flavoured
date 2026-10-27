@@ -32,15 +32,10 @@ form:
       placeholder: guest
 
     header.terminal.commands:
-      type: select
-      multiple: true
+      type: array
       label: Commands
-      description: Commands visitors can type. Leave empty to enable every command.
-      options:
-        whoami: whoami
-        help: help
-        ls: ls
-        cd: cd
+      value_only: true
+      description: Typed and run on load, in order, instead of History. Output comes from the terminal commands, e.g. `whoami`, `ls`, `help`.
 
     header.terminal.pages:
       name: pages

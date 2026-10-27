@@ -13,7 +13,20 @@
         field.style.width = 'calc(' + value.length + 'ch + 2px)';
     }
 
-    async function play(term) {
+    async function type(field, command) {
+        for (var c = 0; c < command.length; c++) {
+            fill(field, field.value + command[c]);
+            await wait(30 + Math.random() * 40);
+        }
+        await wait(300);
+        fill(field, '');
+    }
+
+    function queued(term) {
+        return JSON.parse(term.dataset.commands || '[]');
+    }
+
+    async function play(term, run) {
         var field = term.querySelector('.term-field');
         var lines = term.querySelectorAll('.term-cmd, .term-out');
 
@@ -25,14 +38,13 @@
                 await wait(300);
                 continue;
             }
-            var command = line.lastChild.textContent.trim();
-            for (var c = 0; c < command.length; c++) {
-                fill(field, field.value + command[c]);
-                await wait(30 + Math.random() * 40);
-            }
-            await wait(300);
-            fill(field, '');
+            await type(field, line.lastChild.textContent.trim());
             line.classList.add('is-shown');
+        }
+        for (var command of queued(term)) {
+            await type(field, command);
+            run(command);
+            await wait(300);
         }
     }
 
@@ -62,11 +74,6 @@
         }
 
         var commands = window.Quark2TerminalCommands || {};
-        if (term.dataset.commands) {
-            commands = Object.fromEntries(JSON.parse(term.dataset.commands).filter(function (name) {
-                return Object.hasOwn(commands, name);
-            }).map(function (name) { return [name, commands[name]]; }));
-        }
         var allowed = JSON.parse(term.dataset.allowed || '{}');
         var shell = { term: term, pages: pages, allowed: allowed, outputs: outputs, commands: commands, print: print, text: text };
 
@@ -105,11 +112,14 @@
             if (!field.disabled && !getSelection().toString()) field.focus();
         });
 
-        field.disabled = false;
+        return run;
     }
 
     if (!animate) {
-        terminals.forEach(interactive);
+        terminals.forEach(function (term) {
+            queued(term).forEach(interactive(term));
+            term.querySelector('.term-field').disabled = false;
+        });
         return;
     }
 
@@ -117,7 +127,9 @@
         entries.forEach(function (entry) {
             if (!entry.isIntersecting) return;
             observer.unobserve(entry.target);
-            play(entry.target).then(function () { interactive(entry.target); });
+            play(entry.target, interactive(entry.target)).then(function () {
+                entry.target.querySelector('.term-field').disabled = false;
+            });
         });
     }, { threshold: 0.3 });
 
