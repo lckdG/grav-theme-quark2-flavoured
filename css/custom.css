@@ -1822,9 +1822,11 @@ dialog.project-panel > article {
   box-shadow: 0 24px 64px rgba(20, 15, 28, 0.35);
   color: var(--q2-text);
   animation: none;
-  --panel-from: translateY(8px) scale(0.96);
+  --panel-from: translateX(64px);
+  --panel-fade: 0;
   transform: var(--panel-from);
-  transition: transform var(--q2-dur-fast) var(--q2-ease-in);
+  opacity: var(--panel-fade);
+  transition: transform var(--q2-dur-fast) var(--q2-ease-in), opacity var(--q2-dur-fast) var(--q2-ease-in);
 }
 @media (max-width: 600px) {
   dialog.project-panel > article {
@@ -1834,16 +1836,29 @@ dialog.project-panel > article {
     border-radius: 24px 24px 0 0;
     box-shadow: 0 -8px 32px rgba(20, 15, 28, 0.25);
     --panel-from: translateY(100%);
+    --panel-fade: 1;
   }
 }
 dialog.project-panel[open] > article {
   transform: none;
-  transition: transform var(--q2-dur-slow) var(--q2-ease-out);
+  opacity: 1;
+  transition: transform var(--q2-dur-slow) var(--q2-ease-out), opacity var(--q2-dur-slow) var(--q2-ease-out);
 }
 @starting-style {
   dialog.project-panel[open] > article {
     transform: var(--panel-from);
+    opacity: var(--panel-fade);
   }
+}
+dialog.project-panel.is-switching {
+  transition: none;
+}
+dialog.project-panel[data-dir] > article {
+  --panel-from: translateX(64px);
+  --panel-fade: 0;
+}
+dialog.project-panel[data-dir=prev] > article {
+  --panel-from: translateX(-64px);
 }
 
 .panel-handle {
