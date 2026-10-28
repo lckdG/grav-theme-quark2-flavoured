@@ -84,7 +84,7 @@ form:
                   type: toggle
                   label: Approximate Team Size
                   description: Shows a ~ before the number, e.g. ~40 people.
-                  highlight: 0
+                  highlight: 1
                   default: 0
                   options:
                     1: PLUGIN_ADMIN.YES
