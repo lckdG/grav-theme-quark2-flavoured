@@ -1404,8 +1404,8 @@ body,
     height: auto;
   }
   .project-grid.is-single .project-card .project-body {
-    margin-left: 55%;
     padding: 8px;
+    padding-left: 55%;
   }
 }
 .project-card {
@@ -1470,20 +1470,21 @@ body,
   flex: 1;
   flex-direction: column;
   min-width: 0;
-  padding: 213px 8px 8px;
+  padding: 8px;
+  padding-top: 213px;
 }
 @media (max-width: 600px) {
   .project-body {
-    padding: 213px 0 0;
+    padding-top: 213px;
   }
 }
 .is-compact .project-body {
-  margin-left: 196px;
   padding: 0;
+  padding-left: 196px;
 }
 @media (max-width: 600px) {
   .is-compact .project-body {
-    margin-left: 126px;
+    padding-left: 126px;
   }
 }
 .project-rarity {
