@@ -2396,6 +2396,18 @@ dialog.project-panel[data-dir=prev] > article {
   font-size: 0.75rem;
   color: var(--q2-text-muted);
 }
+.timeline-duration {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 10px;
+  border-radius: 11px;
+  background: color-mix(in oklab, var(--q2-accent) 14%, transparent);
+  font-family: var(--pico-font-family-monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--q2-accent);
+}
 .timeline-title {
   margin: 0 0 4px;
   font-family: var(--pico-font-family-display);

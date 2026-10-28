@@ -48,6 +48,11 @@ en:
     TIMELINE:
       LEVEL_UP: "Level up"
       NOW: "now"
+      YEAR: "%d yr"
+      YEARS: "%d yrs"
+      MONTH: "%d mo"
+      MONTHS: "%d mos"
+      UNDER_MONTH: "< 1 mo"
       EDUCATION: "Education"
     LOOT:
       TITLE: "Latest loot"
@@ -127,6 +132,11 @@ es:
     TIMELINE:
       LEVEL_UP: "Subida de nivel"
       NOW: "ahora"
+      YEAR: "%d año"
+      YEARS: "%d años"
+      MONTH: "%d mes"
+      MONTHS: "%d meses"
+      UNDER_MONTH: "< 1 mes"
       EDUCATION: "Educación"
     LOOT:
       TITLE: "Último botín"

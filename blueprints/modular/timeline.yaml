@@ -19,11 +19,13 @@ form:
 
               fields:
                 .startdate:
-                  type: text
+                  type: date
                   label: Start Date
+                  validate:
+                    required: true
 
                 .enddate:
-                  type: text
+                  type: date
                   label: End Date
 
                 .present:

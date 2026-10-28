@@ -102,6 +102,19 @@
     color: var(--q2-text-muted);
   }
 
+  &-duration {
+    display: inline-flex;
+    align-items: center;
+    height: 22px;
+    padding: 0 10px;
+    border-radius: 11px;
+    background: color-mix(in oklab, var(--q2-accent) 14%, transparent);
+    font-family: var(--pico-font-family-monospace);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--q2-accent);
+  }
+
   &-title {
     margin: 0 0 4px;
     font-family: var(--pico-font-family-display);

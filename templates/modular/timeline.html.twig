@@ -10,10 +10,17 @@
             {% if page.header.timeline %}
                 <ol class="timeline">
                     {% for item in page.header.timeline %}
+                        {% set start = date(item.startdate) %}
+                        {% set end = item.present ? date() : date(item.enddate) %}
+                        {% set span = start.diff(end) %}
+                        {% set parts = [] %}
+                        {% if span.y %}{% set parts = parts|merge([(span.y == 1 ? 'THEME_QUARK2.TIMELINE.YEAR' : 'THEME_QUARK2.TIMELINE.YEARS')|t(span.y)]) %}{% endif %}
+                        {% if span.m %}{% set parts = parts|merge([(span.m == 1 ? 'THEME_QUARK2.TIMELINE.MONTH' : 'THEME_QUARK2.TIMELINE.MONTHS')|t(span.m)]) %}{% endif %}
                         <li class="timeline-item{{ item.level_up ? ' is-level-up' }}">
                             <div class="timeline-meta">
                                 {% if item.level_up %}<span class="timeline-badge">▲ {{ 'THEME_QUARK2.TIMELINE.LEVEL_UP'|t }}</span>{% endif %}
-                                <span class="timeline-date">{{ item.startdate }} – {{ item.present ? 'THEME_QUARK2.TIMELINE.NOW'|t : item.enddate }}</span>
+                                <span class="timeline-date">{{ start|date('M Y') }} – {{ item.present ? 'THEME_QUARK2.TIMELINE.NOW'|t : end|date('M Y') }}</span>
+                                <span class="timeline-duration">{{ parts ? parts|join(' ') : 'THEME_QUARK2.TIMELINE.UNDER_MONTH'|t }}</span>
                             </div>
                             <h3 class="timeline-title">{{ item.header }}</h3>
                             {% if item.subheader %}<p class="timeline-org">{{ item.subheader }}</p>{% endif %}
