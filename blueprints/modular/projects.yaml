@@ -73,6 +73,13 @@ form:
                   type: text
                   label: Platforms
                   placeholder: 'iOS · Android'
+                .team:
+                  type: number
+                  label: Team Size
+                  description: 'Shown as a 5-step scale plus the number: up to 5 · 12 · 25 · 60 · more.'
+                  validate:
+                    type: int
+                    min: 1
                 .highlights:
                   type: array
                   label: What I Built

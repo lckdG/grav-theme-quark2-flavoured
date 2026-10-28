@@ -2082,6 +2082,36 @@ dialog.project-panel[data-dir=prev] > article {
   width: 26px;
   height: 26px;
 }
+.panel-team {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--q2-text-strong);
+}
+.panel-team .team-dots {
+  display: inline-flex;
+  gap: 4px;
+}
+.panel-team .team-dots i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--rarity);
+}
+.panel-team .team-dots i.is-empty {
+  opacity: 0.25;
+}
+.panel-team .team-tier {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 .panel-links {
   display: flex;
   flex-wrap: wrap;

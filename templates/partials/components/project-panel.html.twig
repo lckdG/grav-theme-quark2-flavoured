@@ -30,7 +30,7 @@
                 </div>
             </div>
 
-            {% if project.highlights or project.tags or project.links %}
+            {% if project.highlights or project.tags or project.team or project.links %}
                 <div class="panel-bottom">
                     {% if project.highlights %}
                         <div>
@@ -46,6 +46,17 @@
                             <ul class="icon-row">
                                 {% for tag in project.tags %}{{ macros.icon_tile(page, tag) }}{% endfor %}
                             </ul>
+                        {% endif %}
+                        {% if project.team %}
+                            {# tiers: 1-5, 6-12, 13-25, 26-60, 61+ #}
+                            {% set filled = 1 + [5, 12, 25, 60]|filter(limit => project.team > limit)|length %}
+                            {% set tier = ['XS', 'S', 'M', 'L', 'XL'][filled - 1] %}
+                            <h3 class="kicker">{{ 'THEME_QUARK2.PROJECTS.TEAM'|t }}</h3>
+                            <p class="panel-team" title="{{ ('THEME_QUARK2.PROJECTS.TEAM_' ~ tier)|t }}">
+                                <span class="team-dots" aria-hidden="true">{% for i in 1..5 %}<i{{ (i > filled ? ' class="is-empty"')|raw }}></i>{% endfor %}</span>
+                                <span class="team-count">{{ 'THEME_QUARK2.PROJECTS.PEOPLE'|t(project.team) }}</span>
+                                <span class="team-tier">{{ ('THEME_QUARK2.PROJECTS.TEAM_' ~ tier)|t }}</span>
+                            </p>
                         {% endif %}
                         {% if project.links %}
                             <h3 class="kicker">{{ 'THEME_QUARK2.PROJECTS.LINKS'|t }}</h3>
