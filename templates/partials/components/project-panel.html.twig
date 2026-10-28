@@ -62,7 +62,7 @@
                             <h3 class="kicker">{{ 'THEME_QUARK2.PROJECTS.LINKS'|t }}</h3>
                             <ul class="panel-links">
                                 {% for link in project.links %}
-                                    <li>{% if link.url %}<a href="{{ link.url }}">{{ link.text }}</a>{% else %}<span>{{ link.text }}</span>{% endif %}</li>
+                                    <li>{% if link.url %}<a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.text }}</a>{% else %}<span>{{ link.text }}</span>{% endif %}</li>
                                 {% endfor %}
                             </ul>
                         {% endif %}
