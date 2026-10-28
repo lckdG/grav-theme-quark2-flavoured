@@ -8,17 +8,17 @@
 {% endfor %}
 <div class="terminal" data-pages="{{ term_pages|json_encode|e('html_attr') }}" data-not-found="{{ 'THEME_QUARK2.TERMINAL.NOT_FOUND'|t|e('html_attr') }}" data-no-page="{{ 'THEME_QUARK2.TERMINAL.NO_PAGE'|t|e('html_attr') }}" data-whoami="{{ terminal.whoami|e('html_attr') }}" data-allowed="{{ term_allowed|json_encode|e('html_attr') }}"{% if terminal.commands %} data-commands="{{ terminal.commands|json_encode|e('html_attr') }}"{% endif %}>
     <div class="term-bar" aria-hidden="true">
-        <span class="seg seg-profile"><b>◆</b> {{ terminal.profile|default('default') }}</span>
-        {% if terminal.cwd %}<span class="seg seg-cwd"><b>▸</b> {{ terminal.cwd }}</span>{% endif %}
+        <span class="seg seg-profile"><b><i class="nf nf-md-card_multiple"></i></b> {{ terminal.profile|default('default') }}</span>
+        {% if terminal.cwd %}<span class="seg seg-cwd"><b><i class="nf nf-md-folder_open"></i></b> {{ terminal.cwd }}</span>{% endif %}
         <span class="term-tabs">
             {% for tab in terminal.tabs|default(['zsh']) %}
                 <span class="term-tab{{ loop.first ? ' is-active' }}">{{ loop.index }}: {{ tab }}</span>
             {% endfor %}
         </span>
         {% if terminal.branch %}
-            <span class="seg seg-git"><b>⎇</b> {{ terminal.branch }} <i class="t-git-add">+0</i> <i class="t-git-mod">~0</i> <i class="t-git-del">-0</i></span>
+            <span class="seg seg-git"><b><i class="nf nf-dev-git"></i></b> {{ terminal.branch }} <i class="t-git-add"><i class="nf nf-cod-diff_added"></i>0</i> <i class="t-git-mod"><i class="nf nf-cod-diff_modified"></i>0</i> <i class="t-git-del"><i class="nf nf-cod-diff_removed"></i>0</i></span>
         {% endif %}
-        <span class="seg seg-clock">{{ "now"|date("H:i") }}</span>
+        <span class="seg seg-clock"><b><i class="nf nf-fa-clock_o"></i></b> {{ "now"|date("H:i") }}</span>
     </div>
 
     <div class="term-body">
