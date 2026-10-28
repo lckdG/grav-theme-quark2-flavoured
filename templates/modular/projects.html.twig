@@ -10,7 +10,7 @@
     {% set rarity = project.rarity|default('common') %}
     <article class="glass-card project-card is-{{ size }} rarity-{{ rarity }}">
         {% if image %}
-            <div class="project-thumb">{{ (size == 'compact' ? image.cropZoom(352, 216) : image.cropZoom(692, 390)).html(project.header, project.header)|raw }}</div>
+            <div class="project-thumb">{{ (size == 'compact' ? image.cropZoom(648, 364) : image.cropZoom(692, 390)).html(project.header, project.header)|raw }}</div>
         {% endif %}
         <div class="project-body">
             <span class="project-rarity">{{ rarity|upper }}</span>

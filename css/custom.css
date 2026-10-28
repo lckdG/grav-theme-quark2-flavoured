@@ -1391,21 +1391,26 @@ body,
   }
 }
 @media (min-width: 861px) {
-  .project-grid.is-single .project-card {
-    flex-direction: row;
-    gap: 32px;
+  .project-grid.is-single .project-card::before {
+    background: linear-gradient(to right, transparent, var(--scrim-80) 30%, var(--scrim) 55%);
   }
   .project-grid.is-single .project-card .project-thumb {
-    flex: 0 0 55%;
+    inset: 0 auto 0 0;
+    width: 55%;
+    height: auto;
   }
   .project-grid.is-single .project-card .project-body {
-    padding: 8px 8px 8px 0;
+    margin-left: 55%;
+    padding: 8px;
   }
 }
 .project-card {
+  --scrim: var(--q2-bg-elev);
+  --scrim-80: color-mix(in srgb, var(--scrim) 80%, transparent);
   position: relative;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   padding: 16px;
   border-color: color-mix(in oklab, var(--rarity) 40%, var(--q2-card-border));
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
@@ -1415,21 +1420,32 @@ body,
   border-color: var(--rarity);
   box-shadow: 0 14px 30px -12px color-mix(in oklab, var(--rarity) 45%, transparent);
 }
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to bottom, transparent, var(--scrim) 60%);
+}
 .project-card.is-compact {
   flex-direction: row;
-  gap: 20px;
+  min-height: 182px;
   border-radius: 14px;
+}
+.project-card.is-compact::before {
+  background: linear-gradient(to right, transparent, var(--scrim-80) 40%, var(--scrim) 65%);
 }
 @media (max-width: 600px) {
   .project-card.is-compact {
-    gap: 14px;
+    min-height: 166px;
     padding: 12px;
   }
 }
 .project-thumb {
-  overflow: hidden;
-  border-radius: 12px;
-  aspect-ratio: 346/195;
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 0;
+  height: 251px;
 }
 .project-thumb img {
   display: block;
@@ -1438,31 +1454,32 @@ body,
   object-fit: cover;
 }
 .is-compact .project-thumb {
-  flex: 0 0 176px;
-  aspect-ratio: 176/108;
-  border-radius: 10px;
-}
-@media (max-width: 600px) {
-  .is-compact .project-thumb {
-    flex-basis: 112px;
-    aspect-ratio: 112/84;
-    border-radius: 8px;
-  }
+  inset: 0 auto 0 0;
+  width: 67.5%;
+  height: auto;
 }
 .project-body {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex: 1;
   flex-direction: column;
   min-width: 0;
-  padding: 20px 8px 8px;
+  padding: 213px 8px 8px;
 }
 @media (max-width: 600px) {
   .project-body {
-    padding: 16px 0 0;
+    padding: 213px 0 0;
   }
 }
 .is-compact .project-body {
+  margin-left: 196px;
   padding: 0;
+}
+@media (max-width: 600px) {
+  .is-compact .project-body {
+    margin-left: 126px;
+  }
 }
 .project-rarity {
   position: absolute;
@@ -1524,8 +1541,6 @@ body,
   color: var(--q2-text-muted);
 }
 .is-compact .project-tags {
-  flex-wrap: nowrap;
-  overflow: hidden;
   margin-bottom: 6px;
 }
 .is-compact .project-tags .chip {
@@ -1556,12 +1571,14 @@ body,
   }
 }
 .is-compact .project-text {
+  display: -webkit-box;
   overflow: hidden;
   margin: 0 0 10px;
   font-size: 0.9375rem;
   line-height: 1.2;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 @media (max-width: 600px) {
   .is-compact .project-text {
