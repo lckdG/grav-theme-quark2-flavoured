@@ -54,7 +54,7 @@
                             <h3 class="kicker">{{ 'THEME_QUARK2.PROJECTS.TEAM'|t }}</h3>
                             <p class="panel-team" title="{{ ('THEME_QUARK2.PROJECTS.TEAM_' ~ tier)|t }}">
                                 <span class="team-dots" aria-hidden="true">{% for i in 1..5 %}<i{{ (i > filled ? ' class="is-empty"')|raw }}></i>{% endfor %}</span>
-                                <span class="team-count">{{ 'THEME_QUARK2.PROJECTS.PEOPLE'|t(project.team) }}</span>
+                                <span class="team-count">{{ project.team_approx ? '~' }}{{ 'THEME_QUARK2.PROJECTS.PEOPLE'|t(project.team) }}</span>
                                 <span class="team-tier">{{ ('THEME_QUARK2.PROJECTS.TEAM_' ~ tier)|t }}</span>
                             </p>
                         {% endif %}

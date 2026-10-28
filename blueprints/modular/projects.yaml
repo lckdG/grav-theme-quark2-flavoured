@@ -80,6 +80,17 @@ form:
                   validate:
                     type: int
                     min: 1
+                .team_approx:
+                  type: toggle
+                  label: Approximate Team Size
+                  description: Shows a ~ before the number, e.g. ~40 people.
+                  highlight: 0
+                  default: 0
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+                  validate:
+                    type: bool
                 .highlights:
                   type: array
                   label: What I Built
