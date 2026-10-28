@@ -35,7 +35,7 @@ form:
       type: array
       label: Commands
       value_only: true
-      description: Typed and run on load, in order, instead of History. Output comes from the terminal commands, e.g. `whoami`, `ls`, `help`.
+      description: Typed and run on load, in order. Output comes from the terminal commands, e.g. `whoami`, `ls`, `help`.
 
     header.terminal.pages:
       name: pages
@@ -60,17 +60,3 @@ form:
             t-aqua: Aqua
             t-orange: Orange
             t-gray: Gray
-
-    header.terminal.history:
-      name: history
-      type: list
-      label: History
-
-      fields:
-        .command:
-          type: text
-          label: Command
-        .output:
-          type: textarea
-          label: Output
-          description: 'HTML allowed. Color text with `<span class="t-red">`, also `t-green`, `t-yellow`, `t-blue`, `t-purple`, `t-aqua`, `t-orange`, `t-gray`.'

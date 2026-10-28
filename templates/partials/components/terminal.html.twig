@@ -22,10 +22,6 @@
     </div>
 
     <div class="term-body">
-        {% for entry in terminal.commands ? [] : terminal.history %}
-            <p class="term-cmd"><span class="term-prompt">❯</span> {{ entry.command }}</p>
-            {% if entry.output %}<div class="term-out">{{ entry.output|trim|raw }}</div>{% endif %}
-        {% endfor %}
         <p class="term-input"><span class="term-prompt">❯</span> <input class="term-field" type="text" aria-label="{{ 'THEME_QUARK2.TERMINAL.INPUT'|t|e('html_attr') }}" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="send" disabled><span class="term-cursor" aria-hidden="true">▍</span></p>
     </div>
 </div>

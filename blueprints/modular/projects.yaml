@@ -19,9 +19,6 @@ form:
               label: Projects
 
               fields:
-                .url:
-                  type: text
-                  label: Link
                 .image:
                   type: filepicker
                   label: Project Thumbnail

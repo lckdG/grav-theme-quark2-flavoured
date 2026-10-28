@@ -34,7 +34,6 @@ en:
       BUILT: "What I built"
       TECH: "Tech"
       LINKS: "Links"
-      VISIT: "project page"
       ESC: "esc to close"
     CAROUSEL:
       PREV: "Previous"
@@ -107,7 +106,6 @@ es:
       BUILT: "Lo que construí"
       TECH: "Tecnología"
       LINKS: "Enlaces"
-      VISIT: "página del proyecto"
       ESC: "esc para cerrar"
     CAROUSEL:
       PREV: "Anterior"
