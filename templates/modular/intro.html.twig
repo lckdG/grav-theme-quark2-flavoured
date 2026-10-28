@@ -25,7 +25,7 @@
                     {% endif %}
                     {% for link in header.links %}
                         {% set icon = link.image ? page.media[link.image] : null %}
-                        <a class="icon-btn" href="{{ link.url }}" title="{{ link.title }}" aria-label="{{ link.title }}">
+                        <a class="icon-btn" href="{{ link.url }}" target="_blank" rel="noopener noreferrer" title="{{ link.title }}" aria-label="{{ link.title }}">
                             {% if icon %}{{ icon.html('', '')|raw }}{% endif %}
                         </a>
                     {% endfor %}
