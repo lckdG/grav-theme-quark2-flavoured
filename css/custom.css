@@ -1823,8 +1823,8 @@ dialog.project-panel > article {
   box-shadow: 0 24px 64px rgba(20, 15, 28, 0.35);
   color: var(--q2-text);
   animation: none;
-  --panel-from: translateX(64px);
-  --panel-fade: 0;
+  --panel-from: none;
+  --panel-fade: 1;
   transform: var(--panel-from);
   opacity: var(--panel-fade);
   transition: transform var(--q2-dur-fast) var(--q2-ease-in), opacity var(--q2-dur-fast) var(--q2-ease-in);
@@ -1837,7 +1837,6 @@ dialog.project-panel > article {
     border-radius: 24px 24px 0 0;
     box-shadow: 0 -8px 32px rgba(20, 15, 28, 0.25);
     --panel-from: translateY(100%);
-    --panel-fade: 1;
   }
 }
 dialog.project-panel[open] > article {
@@ -1850,6 +1849,11 @@ dialog.project-panel[open] > article {
     transform: var(--panel-from);
     opacity: var(--panel-fade);
   }
+}
+dialog.project-panel.is-closing {
+  opacity: 0;
+  transition-duration: var(--q2-dur-fast);
+  transition-timing-function: var(--q2-ease-in);
 }
 dialog.project-panel.is-switching {
   transition: none;

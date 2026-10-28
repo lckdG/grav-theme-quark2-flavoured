@@ -47,8 +47,9 @@ dialog.project-panel {
     box-shadow: 0 24px 64px rgba(20, 15, 28, 0.35);
     color: var(--q2-text);
     animation: none;
-    --panel-from: translateX(64px);
-    --panel-fade: 0;
+    // first open only fades (the dialog itself); prev/next slides via [data-dir]
+    --panel-from: none;
+    --panel-fade: 1;
     transform: var(--panel-from);
     opacity: var(--panel-fade);
     transition:
@@ -62,7 +63,6 @@ dialog.project-panel {
       border-radius: 24px 24px 0 0;
       box-shadow: 0 -8px 32px rgba(20, 15, 28, 0.25);
       --panel-from: translateY(100%);
-      --panel-fade: 1;
     }
   }
 
@@ -77,6 +77,13 @@ dialog.project-panel {
       transform: var(--panel-from);
       opacity: var(--panel-fade);
     }
+  }
+
+  // set by project-panel.js, which closes the dialog once this fade has finished
+  &.is-closing {
+    opacity: 0;
+    transition-duration: var(--q2-dur-fast);
+    transition-timing-function: var(--q2-ease-in);
   }
 
   // prev/next: the scrim stays put, only the card slides sideways
