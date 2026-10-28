@@ -274,6 +274,10 @@ $gb-red-dim: #cc241d;
 }
 
 .t-git {
+  .nf {
+    margin-right: 1px;
+  }
+
   &-add { color: $gb-green-dim; }
   &-mod { color: $gb-yellow-dim; }
   &-del { color: $gb-red-dim; }

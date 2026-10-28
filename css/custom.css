@@ -952,6 +952,9 @@ body,
   }
 }
 
+.t-git .nf {
+  margin-right: 4px;
+}
 .t-git-add {
   color: #98971a;
 }
